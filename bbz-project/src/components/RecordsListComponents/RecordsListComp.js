@@ -68,6 +68,9 @@ const RecordsListComp = () => {
             <PageButton leftDirection={false} />
           </div>
         </div>
+        <div id={'pageText'}>
+          1 z 1s
+        </div>
       </div>
     </div>
   )

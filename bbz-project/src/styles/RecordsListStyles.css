@@ -26,6 +26,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .recordsBck {
@@ -103,4 +104,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#pageText {
+    position: absolute;
+    right: 2%;
+    top: 10px;
 }
