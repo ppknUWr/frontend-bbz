@@ -6,6 +6,7 @@ import ImportButton from "./ImportButton";
 import SelectInput from "./SearchBySelectTextField";
 import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
+import PageButton from "./PageButton";
 
 const searchByValues = [
   {
@@ -54,12 +55,19 @@ const RecordsListComp = () => {
             </div>
           </div>
           <div className={'recordsField'}>
-            {/*this is place to add component which displays recors  */}
+            {/*this is place to add component which displays records  */}
           </div>
         </div>
       </div>
       <div className={'bottomPanel'}>
-
+        <div className={'pageButtonBck'}>
+          <div id={'leftPageButton'}>
+            <PageButton leftDirection={true} />
+          </div>
+          <div id={'rightPageButton'}>
+            <PageButton leftDirection={false} />
+          </div>
+        </div>
       </div>
     </div>
   )

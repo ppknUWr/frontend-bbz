@@ -13,7 +13,7 @@
 
 .middlePanel {
     width: 100%;
-    height: 80%;
+    height: 78%;
     display: flex;
     align-items: center;
     /*background-color: antiquewhite;*/
@@ -22,7 +22,7 @@
 .bottomPanel {
     width: 100%;
     height: 10%;
-    background-color: #61dafb;
+    /*background-color: #61dafb;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,4 +75,32 @@
     /*background-color: blue;*/
     width: 100%;
     height: 90%;
+}
+
+.pageButtonBck {
+    width: 10%;
+    height: 60%;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px #B7B7B7;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#leftPageButton {
+    width: 50%;
+    height: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#rightPageButton {
+    width: 50%;
+    height: 96%;
+    border-left: 1px solid #979797;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
