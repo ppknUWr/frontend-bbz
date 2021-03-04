@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useState} from "react";
-import './RecordsListStyles.css';
+import '../../styles/RecordsListStyles.css';
 import AddRecordButton from "./AddRecordButton";
 import ImportButton from "./ImportButton";
 import SelectInput from "./SearchBySelectTextField";
