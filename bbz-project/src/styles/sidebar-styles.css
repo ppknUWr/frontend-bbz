@@ -1,0 +1,29 @@
+.sidebar {
+    background-color: white;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    left: -100%;
+    transition-duration: 850ms;
+}
+
+.sidebar.active {
+    left: 0;
+    transition-duration: 350ms;
+}
+
+.navbar {
+    background-color: blueviolet;
+    flex-direction: row;
+}
+
+.sidebar-item {
+    background-color: white;
+}
+
+.database-container {
+    background-color: #f2f2f2f2;
+    height: 100vh;
+    display: flex;
+}
