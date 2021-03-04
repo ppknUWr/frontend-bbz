@@ -9,6 +9,7 @@ const StyledImportButton = withStyles({
     height: 45,
     marginLeft: 40,
     borderRadius: 0,
+    padding: 0,
   },
 
   label: {
@@ -18,10 +19,31 @@ const StyledImportButton = withStyles({
 
 const ImportButton = () => {
   return (
-    <StyledImportButton variant={'outlined'} startIcon={<SaveIcon />}>
-      Importuj dane
+    <StyledImportButton variant={'outlined'}>
+      <div style={iconBck}>
+        <SaveIcon />
+      </div>
+      <div style={textBck}>
+        Importuj dane
+      </div>
     </StyledImportButton>
   )
 }
 
 export default ImportButton;
+
+const iconBck = {
+  height: '100%',
+  width: '20%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+}
+
+const textBck = {
+  height: '100%',
+  width: '80%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}
