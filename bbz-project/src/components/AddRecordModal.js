@@ -1,9 +1,26 @@
 import React, {useState} from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/NativeSelect";
 import {makeStyles} from "@material-ui/core/styles";
+import SaveIcon from "@material-ui/icons/Save";
 import Modal from "@material-ui/core/Modal";
 
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    button: {
+        margin: theme.spacing(1),
+    },
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '25ch',
+    },
     paper: {
         position: 'absolute',
         width: 400,
@@ -52,7 +69,6 @@ const AddRecordModal = () => {
         added_by: "default",
         addition_date: ""
     });
-
     function handleOpenModal(){
         setOpen(true);
     }
@@ -69,70 +85,104 @@ const AddRecordModal = () => {
     function handleOnChange(e)
     {
         const {value, id} = e.target;
-        //console.log(value, id);
+        console.log(value, id);
         setRecordData({...recordData, [id]:value});
+        isEmpty(e);
         //console.log(recordData);
     }
-
+    function isEmpty(e){
+        const value = e.target.value;
+        console.log(value);
+        if(value) {
+            console.log("True");
+            return true;
+        }
+        console.log("False");
+        return false;
+    }
     const body = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">Dodawanie rekordu</h2>
-            <form onSubmit={handleOnSubmit}>
-                <label htmlFor="author">Twórca/Twórcy: </label>
-                <input type="text" id="author" onChange={handleOnChange} placeholder="Twórca"/>
-                <br/>
-                <label htmlFor="coauthor">Współtwórca/Współtwórcy: </label>
-                <input type="text" id="coauthor" onChange={handleOnChange} placeholder="Współtwórcy"/>
-                <br/>
-                <label htmlFor="title">Tytuł: </label>
-                <input type="text" id="title" onChange={handleOnChange} placeholder="Tytuł"/>
-                <br/>
-                <label htmlFor="subtitle">Podtytuł: </label>
-                <input type="text" id="subtitle" onChange={handleOnChange} placeholder="Podtytuł"/>
-                <br/>
-                <label htmlFor="origin">źródło: </label>
-                <input type="text" id="origin" onChange={handleOnChange} placeholder="źródło"/>
-                <br/>
-                <label htmlFor="edition">Wydanie: </label>
-                <input type="number" id="edition" onChange={handleOnChange} placeholder="Wydanie"/>
-                <br/>
-                <label htmlFor="place_of_issue">Miejsce wydania: </label>
-                <input type="text" id="place_of_issue" onChange={handleOnChange} placeholder="Miejsce wydania"/>
-                <br/>
-                <label htmlFor="publisher">Wydawca: </label>
-                <input type="text" id="publisher" onChange={handleOnChange} placeholder="Wydawca"/>
-                <br/>
-                <label htmlFor="year_of_issue">Rok wydania: </label>
-                <input type="number" id="year_of_issue" onChange={handleOnChange} placeholder="Rok wydania"/>
-                <br/>
-                <label htmlFor="volume">Objętość: </label>
-                <input type="number" id="volume" onChange={handleOnChange} placeholder="Objętość"/>
-                <br/>
-                <label htmlFor="series">Seria: </label>
-                <input type="text" id="series" onChange={handleOnChange} placeholder="Seria"/>
-                <br/>
-                <label htmlFor="language">Język: </label>
-                <input type="text" id="language" onChange={handleOnChange} placeholder="Język"/>
-                <br/>
-                <label htmlFor="type">Typ: </label>
-                <input type="text" id="type" onChange={handleOnChange} placeholder="Typ"/>
-                <br/>
-                <label htmlFor="format">Format: </label>
-                <input type="text" id="format" onChange={handleOnChange} placeholder="Format"/>
-                <br/>
-                <label htmlFor="ide">Identyfikator: </label>
-                <input type="text" id="ide" onChange={handleOnChange} placeholder="Identyfikator"/>
-                <br/>
-                <label htmlFor="source_link">Link do zasobu: </label>
-                <input type="text" id="source_link" onChange={handleOnChange} placeholder="Link do zasobu"/>
-                <br/>
-                <label htmlFor="tags">Treść zasobu: </label>
-                <input type="text" id="tags" onChange={handleOnChange} placeholder="Tagi"/>
-                <br/>
-                <label htmlFor="comment">Uwagi: </label>
-                <input type="text" id="comment" onChange={handleOnChange} placeholder="Komentarze"/>
-                <br/>
-                <input type="submit" value="Dodaj rekord"/>
+            <form className={classes.root} noValidate autoComplete="off" onSubmit={handleOnSubmit}>
+                <TextField required id="author" label="Twórca/Twórcy" style={{margin:8}} placeholder="Twórca" fullWidth
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="coauthor" label="Współtwórca/Współtwórcy" style={{margin:8}} placeholder="Współtwórca" fullWidth
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField required id="title" label="Tytuł" style={{margin:8}} placeholder="Tytuł" fullWidth
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="subtitle" label="Podtytuł" style={{margin:8}} placeholder="Podtytuł" fullWidth
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="origin" label="źródło" style={{margin:8}} placeholder="źródło" fullWidth
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="edition" label="Wydanie" type="number" style={{margin:8}} placeholder="Wydanie"
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="place_of_issue" label="Miejsce wydania" style={{margin:8}} placeholder="Miejsce wydania"
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="publisher" label="Wydawca" style={{margin:8}} placeholder="Wydawca"
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="year_of_issue" label="Rok wydania" style={{margin:8}} placeholder="Rok" type="number"
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="volume" label="Objętość" style={{margin:8}} placeholder="Objętość"
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="series" label="Seria" style={{margin:8}} placeholder="Seria"
+                           margin="normal" onChange={handleOnChange}/>
+                <InputLabel htmlFor="language">Język</InputLabel>
+                <Select
+                    native
+                    onChange={handleOnChange}
+                    inputProps={{
+                        id: 'language',
+                    }}
+                >
+                    <option aria-label="None" value="" />
+                    <option value={"polski"}>Polski</option>
+                    <option value={"angielski"}>Angielski</option>
+                    <option value={"niemiecki"}>Niemiecki</option>
+                </Select>
+                <InputLabel htmlFor="type">Typ</InputLabel>
+                <Select
+                    native
+                    onChange={handleOnChange}
+                    inputProps={{
+                        id: 'type',
+                    }}
+                >
+                    <option aria-label="None" value="" />
+                    <option value={"type1"}>Type1</option>
+                    <option value={"type2"}>Type2</option>
+                    <option value={"type3"}>Type3</option>
+                </Select>
+                <InputLabel htmlFor="format">Format</InputLabel>
+                <Select
+                    native
+                    onChange={handleOnChange}
+                    inputProps={{
+                        id: 'format',
+                    }}
+                >
+                    <option aria-label="None" value="" />
+                    <option value={"format1"}>Format1</option>
+                    <option value={"format2"}>Format2</option>
+                    <option value={"format3"}>Format3</option>
+                </Select>
+                <TextField id="source_link" label="Link do zasobu" style={{margin:8}} placeholder="Link do zasobu" fullWidth
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="ide" label="Identyfikator" style={{margin:8}} placeholder="Identyfikator"
+                           margin="normal" onChange={handleOnChange}/>
+                <TextField id="tags" label="Treść zasobu" style={{margin:8}} placeholder="Treść zasobu"
+                           margin="normal" onChange={handleOnChange} />
+                <TextField id="comment" label="Komentarz" multiline rowsMax={4} fullWidth
+                           onChange={handleOnChange} />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    type="submit"
+                    className={classes.button}
+                    startIcon={<SaveIcon />}
+                >
+                    Dodaj rekord
+                </Button>
             </form>
         </div>
     );
