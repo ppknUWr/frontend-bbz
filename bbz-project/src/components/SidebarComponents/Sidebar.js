@@ -1,5 +1,9 @@
 import React, {useState} from "react";
-import "../styles/sidebar-styles.css";
+import "../../styles/sidebar-styles.css";
+import DataBaseListItem from "./DataBaseListItem";
+import UniversitetLogo from "./UniversitetLogo";
+import Input from "@material-ui/core/Input";
+import MenuButton from "./MenuButton";
 
 const Sidebar = () => {
     const [visible, setVisible] = useState(true);
@@ -27,31 +31,34 @@ const Sidebar = () => {
     ]
     
 
-    return (
+    return (<>
+        {!visible && <button onClick={handleNavbarClick}>X</button>}
         <div className={visible ? "sidebar active" : "sidebar"}>
             <div className="navbar">
-                <p>Bibliografie Specjalne</p>
-                <button onClick={handleNavbarClick}>Bars</button>
+                <div className="title">Bibliografie Specjalne</div>
+                <div>
+                    <button onClick={handleNavbarClick}>Bars</button>
+                </div>
             </div>
-            <div className="search">
+            <div className="search-container">
                 <form>
-                    <input type="text" value="Szukaj" />
+                    <div className="search-input">
+                    <Input placeholder="Szukaj..." fullWidth={true} />
+                    </div>
                 </form>
             </div>
             <div className="database-container">
-                <ul>
                     {
                         testData.map((item, index) => {
                             return (
-                                <div className="sidebar-item">
-                                    <li key={index} >{item.title}</li>
-                                </div>
+                                <DataBaseListItem title={item.title}/>
                             )
                         })
                     }
-                </ul>
             </div>
+            <UniversitetLogo />
         </div>
+        </>
     )
 }
 
