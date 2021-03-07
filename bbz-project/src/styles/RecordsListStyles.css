@@ -1,0 +1,109 @@
+.mainBody {
+    height: 100%;
+    width: 100%;
+}
+
+.topPanel {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.middlePanel {
+    width: 100%;
+    height: 78%;
+    display: flex;
+    align-items: center;
+
+}
+
+.bottomPanel {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.recordsBck {
+    background-color: #F3F3F3;
+    width: 100%;
+    height: 98%;
+    box-shadow: 0 0 10px #B7B7B7;
+}
+
+.sortOptions {
+    background-color: white;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.optionBck {
+    height: 95%;
+    border-left: 1px solid #979797;
+    display: flex;
+    justify-content: center;
+}
+
+.optionBck:nth-child(1) {
+    border-left: 0;
+}
+
+#op1 {
+    width: 25%;
+}
+
+#op2 {
+    width: 10%;
+}
+
+#op3 {
+    width: 35%;
+}
+
+#op4 {
+    width: 25%;
+}
+
+.recordsField {
+    width: 100%;
+    height: 90%;
+}
+
+.pageButtonBck {
+    width: 10%;
+    height: 50%;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px #B7B7B7;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#leftPageButton {
+    width: 50%;
+    height: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#rightPageButton {
+    width: 50%;
+    height: 96%;
+    border-left: 1px solid #979797;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pageText {
+    position: absolute;
+    right: 2%;
+    top: 10px;
+}
