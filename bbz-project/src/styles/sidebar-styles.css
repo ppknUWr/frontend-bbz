@@ -21,6 +21,11 @@
     color: white;
     margin-bottom: 20px;
     margin-left: 10px;
+    align-self: flex-end;
+}
+
+.menu-button {
+    background-color: chartreuse;
 }
 
 .search-container {
@@ -43,7 +48,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
 }
 
 .list-item {

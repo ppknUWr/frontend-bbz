@@ -1,11 +1,9 @@
 import React from "react";
-
+import MenuIcon from '@material-ui/icons/Menu';
 
 const MenuButton = (props) => {
     return (
-        <div>
-            <button></button>
-        </div>
+            <button onClick={props.onClick}><MenuIcon /></button>
     )
 }
 

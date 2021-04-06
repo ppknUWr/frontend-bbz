@@ -37,7 +37,7 @@ const Sidebar = () => {
             <div className="navbar">
                 <div className="title">Bibliografie Specjalne</div>
                 <div>
-                    <button onClick={handleNavbarClick}>Bars</button>
+                    <MenuButton onClick={handleNavbarClick} />
                 </div>
             </div>
             <div className="search-container">
