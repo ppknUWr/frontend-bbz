@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import "../../styles/sidebar-styles.css";
-import DataBaseListItem from "./DataBaseListItem";
+import DataBaseList from "./DataBaseList";
+import DataBaseSearchTextField from "./DataBaseSearchTextField";
 import UniversitetLogo from "./UniversitetLogo";
-import Input from "@material-ui/core/Input";
 import MenuButton from "./MenuButton";
 
 const Sidebar = () => {
@@ -11,25 +11,6 @@ const Sidebar = () => {
     const handleNavbarClick = () => {
         setVisible(prevState => !prevState);
     }
-
-    const testData = [
-        {
-            title: "Źródła informacji o globalnym rynku książki po 2001 roku"
-        },
-        {
-            title: "Ilustrowane i obrazkowe słowniki dla dzieci wydane w Polsce w latach 1989-2015"
-        },
-        {
-            title: "Polska literatura fantastyczna 1901-1945"
-        },
-        {
-            title: "„Irlandia” w zbiorach Biblioteki Uniwersytetu Wrocławskiego"
-        },
-        {
-            title: "International Bibliography of Quantitative Linguistics"
-        }
-    ]
-    
 
     return (<>
         {!visible && <button onClick={handleNavbarClick}>X</button>}
@@ -40,22 +21,8 @@ const Sidebar = () => {
                     <MenuButton onClick={handleNavbarClick} />
                 </div>
             </div>
-            <div className="search-container">
-                <form>
-                    <div className="search-input">
-                    <Input placeholder="Szukaj..." fullWidth={true} />
-                    </div>
-                </form>
-            </div>
-            <div className="database-container">
-                    {
-                        testData.map((item, index) => {
-                            return (
-                                <DataBaseListItem title={item.title}/>
-                            )
-                        })
-                    }
-            </div>
+            <DataBaseSearchTextField />
+            <DataBaseList />
             <UniversitetLogo />
         </div>
         </>

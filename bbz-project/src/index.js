@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Sidebar from "./components/SidebarComponents/Sidebar";
+import Header from "./components/HeaderComponents/Header";
+import WelcomePage from "./components/WelcomePageComponents/WelcomePage"
+import RecordsListComp from "./components/RecordsListComponents/RecordsListComp"
 
 ReactDOM.render(
   <React.StrictMode>
-    <div style={{height: "100px", backgroundColor: "black"}}>
-
-    </div>
+    <Header />
     <Sidebar />
   </React.StrictMode>,
   document.getElementById('root')

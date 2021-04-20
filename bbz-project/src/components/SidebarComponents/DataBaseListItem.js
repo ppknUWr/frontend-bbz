@@ -1,8 +1,7 @@
 import React from "react";
 import "../../styles/sidebar-styles.css";
 
-const DataBaseListItem = (props) => {
-    const {title} = props;
+const DataBaseListItem = ({ title }) => {
 
     return (
         <div className="list-item">
