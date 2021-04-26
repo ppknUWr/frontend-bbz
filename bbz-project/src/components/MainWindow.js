@@ -1,26 +1,26 @@
 import * as React from "react";
 import "../styles/main-window-styles.css";
-import RecordsListComp from "./RecordsListComponents/RecordsListComp";
+import RecordsListManager from "./RecordsListManager";
 
 const MainWindow = () => {
   return (
-    <div id={"mainWindowBck"}>
-      <div id={"databaseHeader"}>
-        <div id={"databaseAuthor"}>
-          <p className={"databaseHeaderText"}>Autor: Hojka Bożena</p>
-        </div>
-        <div id={"databaseTitle"}>
-          <p className={"databaseHeaderText"}>
-            Temat: Ilustrowane i obrazkowe słowniki dla dzieci wydane w Polsce w
-            latach 1989-2015
-          </p>
-        </div>
+    <div id={"mainWindowBck"} className={"w-100"}>
+      <div
+        id={"mainWindowTopBarBck"}
+        className={"w-100 d-flex align-items-center justify-content-center"}
+      >
+        Top bar
       </div>
-      <div id={"databaseRecordsList"}>
-        <RecordsListComp />
+      <div id={"mainWindowMainBodyBck"} className={"w-100 d-flex flex-row"}>
+        <div id={"mainWindowBodyLeftBck"} className={"h-100 d-none d-lg-flex"}>
+          Sidebar
+        </div>
+        <div id={"mainWindowBodyRightBck"}>
+          <RecordsListManager />
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default MainWindow;

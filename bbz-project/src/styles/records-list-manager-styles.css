@@ -1,0 +1,36 @@
+#recordsListManagerMainBck {
+    height: 100%;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#recordsListManagerHeaderBck {
+    width: 100%;
+    height: 10%;
+    border-bottom: 2px solid black;
+    display: flex;
+    flex-direction: row;
+}
+
+#recordsListManagerDatabaseBck {
+    width: 100%;
+    height: 90%;
+}
+
+#recordsListManagerAuthorBck {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-left: 2%;
+    margin-right: 6%;
+}
+
+#recordsListManagerTitleBck {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-right: 2%;
+}

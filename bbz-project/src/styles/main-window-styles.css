@@ -1,40 +1,39 @@
 #mainWindowBck {
-    height: 100%;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: red;
+    height: 100vh;
+    overflow: hidden;
 }
 
-#databaseHeader {
-    width: 100%;
-    height: 10%;
-    border-bottom: 2px solid black;
-    display: flex;
-    flex-direction: row;
+#mainWindowTopBarBck {
+    background-color: green;
+    height: 15%;
 }
 
-#databaseRecordsList {
-    width: 100%;
-    height: 90%;
+#mainWindowMainBodyBck {
+    background-color: yellow;
+    height: 85%;
 }
 
-#databaseAuthor {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    margin-left: 2%;
-    margin-right: 6%;
+#mainWindowBodyLeftBck {
+    background-color: orangered;
+    width: 20%;
 }
 
-#databaseTitle {
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    margin-right: 2%;
+#mainWindowBodyRightBck {
+    background-color: white;
+    width: 80%;
 }
 
-.databaseHeaderText {
-    font-size: 22px;
+@media (max-width: 991px) {
+    #mainWindowTopBarBck {
+        height: 10%;
+    }
+
+    #mainWindowMainBodyBck {
+        height: 90%;
+    }
+
+    #mainWindowBodyRightBck {
+        width: 100%;
+    }
 }
