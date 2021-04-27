@@ -1,50 +1,36 @@
-import {useState} from "react";
-import {withStyles} from "@material-ui/core";
-import Button from '@material-ui/core/Button';
-import ArrowDropDownRoundedIcon from '@material-ui/icons/ArrowDropDownRounded';
+import { useState } from "react";
+import Button from "@material-ui/core/Button";
+import ArrowDropDownRoundedIcon from "@material-ui/icons/ArrowDropDownRounded";
+import { sortButtonStyles } from "../../materialStyles/recordsListComponent/sort-button-mui-styles";
 
-const StyledSortButton = withStyles({
-  root: {
-    backgroundColor: 'white',
-    width: '95%',
-    height: '96%',
-    borderRadius: 4,
-    display: 'flex',
-    justifyContent: 'flex-start',
-  },
-
-  label: {
-    color: 'black',
-    textTransform: 'capitalize',
-    fontSize: 20,
-  },
-})(Button);
-
-const SortButton = ({text}) => {
+const SortButton = ({ text }) => {
+  const buttonClasses = sortButtonStyles();
   const [down, setDown] = useState(true);
 
   const changeStat = () => {
     setDown(!down);
-  }
+  };
   return (
-    <StyledSortButton onClick={changeStat}>
+    <Button classes={{ root: buttonClasses.root, label: buttonClasses.label }} onClick={changeStat}>
       {text}
       <ArrowDropDownRoundedIcon
         style={Object.assign(
           {},
           styles,
-          down ? {transform: 'rotate(0)'} : {transform: 'rotate(180deg)'}
+          down ? { transform: "rotate(0)" } : { transform: "rotate(180deg)" }
         )}
       />
-    </StyledSortButton>
-  )
-}
+    </Button>
+  );
+};
 
 export default SortButton;
 
 const styles = {
-  position: 'absolute',
+  // backgroundColor: "blue",
+  position: "absolute",
+  right: -35,
   fontSize: 100,
-  right: -20,
-  color: '#979797',
-}
+  color: "#979797",
+  height: "100%",
+};

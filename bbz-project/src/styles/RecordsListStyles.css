@@ -1,45 +1,25 @@
-.mainBody {
-    height: 100%;
-    width: 100%;
-}
-
-.topPanel {
-    width: 100%;
+#topPanel {
+    /*background-color: red;*/
     height: 10%;
-    display: flex;
-    align-items: center;
 }
 
-.middlePanel {
-    width: 100%;
+#middlePanel {
     height: 78%;
-    display: flex;
-    align-items: center;
-
 }
 
-.bottomPanel {
-    width: 100%;
+#bottomPanel {
     height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
 }
 
-.recordsBck {
+#recordsBck {
     background-color: #F3F3F3;
-    width: 100%;
     height: 98%;
     box-shadow: 0 0 10px #B7B7B7;
 }
 
-.sortOptions {
+#sortOptions {
     background-color: white;
-    width: 100%;
     height: 10%;
-    display: flex;
-    align-items: center;
 }
 
 .optionBck {
@@ -70,19 +50,15 @@
 }
 
 .recordsField {
-    width: 100%;
     height: 90%;
 }
 
-.pageButtonBck {
-    width: 10%;
+#pageButtonBck {
+    width: 135px;
     height: 50%;
     border-radius: 5px;
     background-color: white;
     box-shadow: 0 0 10px #B7B7B7;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 #leftPageButton {
@@ -106,4 +82,19 @@
     position: absolute;
     right: 2%;
     top: 10px;
+}
+
+@media (max-width: 575px) {
+    #topPanel {
+        height: 8%;
+    }
+
+    #middlePanel {
+        height: 81%;
+    }
+
+    #pageButtonBck {
+        width: 23vw;
+        height: 3.5vh;
+    }
 }

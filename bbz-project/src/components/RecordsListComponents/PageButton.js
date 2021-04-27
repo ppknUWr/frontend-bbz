@@ -1,40 +1,31 @@
-import {withStyles} from "@material-ui/core";
-import Button from '@material-ui/core/Button';
-import ArrowDropDownRoundedIcon from '@material-ui/icons/ArrowDropDownRounded';
+import Button from "@material-ui/core/Button";
+import ArrowDropDownRoundedIcon from "@material-ui/icons/ArrowDropDownRounded";
+import { pageButtonStyles } from "../../materialStyles/recordsListComponent/page-button-mui-styles";
+import {useScreenSizes} from "../../hooks/useScreenSizes";
 
-const StyledPageButton = withStyles({
-  root: {
-    backgroundColor: 'white',
-    width: '95%',
-    height: '96%',
-    borderRadius: 4,
-  },
+const PageButton = ({ leftDirection }) => {
+  const buttonClasses = pageButtonStyles();
+  const {small} = useScreenSizes();
+  const iconSize = small ? "17vw" : 100;
 
-  label: {
-    color: 'black',
-    textTransform: 'capitalize',
-    fontSize: 20,
-  },
-})(Button);
-
-const PageButton = ({leftDirection}) => {
   return (
-    <StyledPageButton>
+    <Button classes={{ root: buttonClasses.root }}>
       <ArrowDropDownRoundedIcon
         style={Object.assign(
           {},
           styles,
-          leftDirection ? {transform: 'rotate(90deg)'} : {transform: 'rotate(-90deg)'}
+          leftDirection
+            ? { transform: "rotate(90deg)", fontSize: iconSize }
+            : { transform: "rotate(-90deg)", fontSize: iconSize }
         )}
       />
-    </StyledPageButton>
-  )
-}
+    </Button>
+  );
+};
 
 export default PageButton;
 
 const styles = {
-  position: 'absolute',
-  fontSize: 100,
-  color: '#979797',
-}
+  position: "absolute",
+  color: "#979797",
+};

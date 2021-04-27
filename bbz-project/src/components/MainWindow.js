@@ -1,23 +1,35 @@
 import * as React from "react";
-import "../styles/main-window-styles.css";
-import RecordsListManager from "./RecordsListManager";
+import "../styles/records-list-manager-styles.css";
+import RecordsListManager from "./RecordsListComponents/RecordsListManager";
+import Typography from "@material-ui/core/Typography";
+import { databaseTitleTypoStyles } from "../materialStyles/records-list-manager-mui-styles";
 
 const MainWindow = () => {
+  const typoClasses = databaseTitleTypoStyles();
+
   return (
-    <div id={"mainWindowBck"} className={"w-100"}>
-      <div
-        id={"mainWindowTopBarBck"}
-        className={"w-100 d-flex align-items-center justify-content-center"}
-      >
-        Top bar
+    <div id={"recordsListManagerMainBck"}>
+      <div id={"recordsListManagerHeaderBck"}>
+        <div
+          id={"recordsListManagerAuthorBck"}
+          className={"d-flex align-items-center justify-content-center"}
+        >
+          <Typography classes={{ root: typoClasses.root }}>
+            Autor: Hojka Bożena
+          </Typography>
+        </div>
+        <div
+          id={"recordsListManagerTitleBck"}
+          className={"d-flex align-items-center justify-content-center"}
+        >
+          <Typography classes={{ root: typoClasses.root }}>
+            Temat: Ilustrowane i obrazkowe słowniki dla dzieci wydane w Polsce w
+            latach 1989-2015
+          </Typography>
+        </div>
       </div>
-      <div id={"mainWindowMainBodyBck"} className={"w-100 d-flex flex-row"}>
-        <div id={"mainWindowBodyLeftBck"} className={"h-100 d-none d-lg-flex"}>
-          Sidebar
-        </div>
-        <div id={"mainWindowBodyRightBck"}>
-          <RecordsListManager />
-        </div>
+      <div id={"recordsListManagerDatabaseBck"}>
+        <RecordsListManager />
       </div>
     </div>
   );

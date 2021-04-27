@@ -1,54 +1,30 @@
 import * as React from "react";
-import {InputAdornment, withStyles} from "@material-ui/core";
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 import SearchIcon from "@material-ui/icons/Search";
-
-
-const StyledInput = withStyles({
-  root: {
-    width: '50%',
-
-    '& .MuiOutlinedInput-root': {
-      height: 45,
-      borderRadius: 4,
-
-      '&:hover .MuiInputAdornment-root': {
-        color: 'black',
-      }
-    },
-
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: 'black',
-      borderWidth: 1,
-    },
-
-    '& .MuiOutlinedInput-root.Mui-focused .MuiInputAdornment-root': {
-      color: 'black',
-    },
-
-    '& .MuiInputAdornment-root': {
-      color: '#979797',
-    },
-  },
-})(TextField);
+import { InputAdornment } from "@material-ui/core";
+import { searchTextFieldStyles } from "../../materialStyles/recordsListComponent/search-textField-mui-styles";
+import { useScreenSizes } from "../../hooks/useScreenSizes";
 
 const SearchInput = () => {
+  const textFieldClasses = searchTextFieldStyles();
+  const { small } = useScreenSizes();
+  const iconSize = small ? "4.5vw" : 32;
+
   return (
-    <StyledInput
-      placeholder={'Wyszukaj'}
-      variant={'outlined'}
-      SelectProps={{native: true}}
+    <TextField
+      classes={{ root: textFieldClasses.root }}
+      placeholder={"Wyszukaj"}
+      variant={"outlined"}
+      SelectProps={{ native: true }}
       InputProps={{
         startAdornment: (
           <InputAdornment position={"start"}>
-            <SearchIcon/>
+            <SearchIcon  style={{ fontSize: iconSize }}/>
           </InputAdornment>
-        )
+        ),
       }}
     />
-  )
-}
+  );
+};
 
 export default SearchInput;
-
-

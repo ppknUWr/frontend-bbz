@@ -1,7 +1,7 @@
-import MainWindow from "./components/MainWindow";
+import AppBase from "./components/AppBase";
 
 function App() {
-  return <MainWindow />;
+  return <AppBase />;
 }
 
 export default App;
