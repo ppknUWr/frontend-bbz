@@ -5,10 +5,21 @@ import DataBaseSearchTextField from "./DataBaseSearchTextField";
 import UniversitetLogo from "./UniversitetLogo";
 import SidebarNav from "./SidebarNav";
 
-const Sidebar = () => {
-    /* visibility options probably will be only used in mobile version */
-    const [visible, setVisible] = useState(true);
 
+/* Can be transformed into hook in the future */
+/* input validation will be needed */
+
+const filterMatchingDBs = (dbArray, query) => {
+    if (!query)
+        return dbArray
+    
+    return dbArray.filter((dbArray) => {
+        const name = dbArray.dbName.toLowerCase();
+        return name.includes(query.toLowerCase());
+    })
+}
+
+const Sidebar = () => {
     const testData = [
         {
             dbName: "Źródła informacji o globalnym rynku książki po 2001 roku"
@@ -32,9 +43,14 @@ const Sidebar = () => {
             dbName: "International Bibliography of Quantitative Linguistics"
         },
         {
-            dbName: "International Bibliography of Quantitative Linguistics"
+            dbName: "International Bib\"liography of Quantitative Linguistics"
         }
     ]
+
+    /* visibility options probably will be only used in mobile version */
+    const [visible, setVisible] = useState(true);
+    const [searchQuery, setSearchQuery] = useState("");
+    const filteredArray = filterMatchingDBs(testData, searchQuery);
 
     const handleMenuBarClick = () => {
         setVisible(prevState => !prevState);
@@ -44,12 +60,13 @@ const Sidebar = () => {
         console.log(dbName)
     }
 
+
     return (<>
         {!visible && <button onClick={handleMenuBarClick}>X</button>}
         <div className={visible ? "sidebar active" : "sidebar"}>
             <SidebarNav handleMenuBarClick={handleMenuBarClick}/>
-            <DataBaseSearchTextField />
-            <DataBaseList handleDBChange={handleDBChange} dbList={testData}/>
+            <DataBaseSearchTextField searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+            <DataBaseList handleDBChange={handleDBChange} dbList={filteredArray}/>
             <UniversitetLogo />
         </div>
         </>
