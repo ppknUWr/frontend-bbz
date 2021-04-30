@@ -6,32 +6,21 @@ const ImportButton = () => {
   const buttonClasses = importButtonStyles();
 
   return (
-    <Button
-      classes={{ root: buttonClasses.root, label: buttonClasses.label }}
-      variant={"outlined"}
-    >
-      <div style={iconBck}>
-        <SaveIcon />
+    <Button classes={buttonClasses} variant={"outlined"}>
+      <div
+        style={{ width: "20%" }}
+        className={"h-100 d-flex align-items-center justify-content-center"}
+      >
+        <SaveIcon style={{ fontSize: "2.8vh" }} />
       </div>
-      <div style={textBck}>Importuj dane</div>
+      <div
+        style={{ width: "80%" }}
+        className={"h-100 d-flex align-items-center justify-content-center"}
+      >
+        Importuj dane
+      </div>
     </Button>
   );
 };
 
 export default ImportButton;
-
-const iconBck = {
-  height: "100%",
-  width: "20%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
-const textBck = {
-  height: "100%",
-  width: "80%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};

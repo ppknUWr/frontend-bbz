@@ -6,32 +6,21 @@ const AddRecordButton = () => {
   const buttonClasses = addRecordButtonStyles();
 
   return (
-    <Button
-      classes={{ root: buttonClasses.root, label: buttonClasses.label }}
-      variant={"outlined"}
-    >
-      <div style={iconBck}>
-        <AddIcon />
+    <Button classes={buttonClasses} variant={"outlined"}>
+      <div
+        style={{ width: "20%" }}
+        className={"h-100 d-flex justify-content-center align-items-center"}
+      >
+        <AddIcon style={{ fontSize: "3.5vh" }} />
       </div>
-      <div style={textBck}>Dodaj rekord</div>
+      <div
+        style={{ width: "80%" }}
+        className={"h-100 d-flex align-items-center justify-content-center"}
+      >
+        Dodaj rekord
+      </div>
     </Button>
   );
 };
 
 export default AddRecordButton;
-
-const iconBck = {
-  height: "100%",
-  width: "20%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
-
-const textBck = {
-  height: "100%",
-  width: "80%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};

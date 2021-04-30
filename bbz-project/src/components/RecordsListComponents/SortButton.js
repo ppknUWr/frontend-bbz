@@ -11,7 +11,7 @@ const SortButton = ({ text }) => {
     setDown(!down);
   };
   return (
-    <Button classes={{ root: buttonClasses.root, label: buttonClasses.label }} onClick={changeStat}>
+    <Button classes={buttonClasses} onClick={changeStat}>
       {text}
       <ArrowDropDownRoundedIcon
         style={Object.assign(
@@ -27,10 +27,8 @@ const SortButton = ({ text }) => {
 export default SortButton;
 
 const styles = {
-  // backgroundColor: "blue",
-  position: "absolute",
-  right: -35,
-  fontSize: 100,
+  position: "relative",
+  fontSize: "8vh",
+  right: -20,
   color: "#979797",
-  height: "100%",
 };

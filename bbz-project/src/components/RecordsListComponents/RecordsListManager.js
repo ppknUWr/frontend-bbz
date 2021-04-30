@@ -1,13 +1,11 @@
 import * as React from "react";
-import { useState } from "react";
-import "../../styles/RecordsListStyles.css";
+import "../../styles/records-list-manager-styles.css";
 import AddRecordButton from "./AddRecordButton";
 import ImportButton from "./ImportButton";
-import SelectInput from "./SearchBySelectTextField";
+import SelectInput from "./SelectInput";
 import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
 import PageButton from "./PageButton";
-import { useScreenSizes } from "../../hooks/useScreenSizes";
 
 const searchByValues = [
   {
@@ -24,9 +22,27 @@ const searchByValues = [
   },
 ];
 
+const sortOptions = [
+  {
+    value: "Twórca/Twórcy",
+    width: "25%",
+  },
+  {
+    value: "Rok",
+    width: "10%",
+  },
+  {
+    value: "Tytuł",
+    width: "35%",
+  },
+  {
+    value: "Wydawca",
+    width: "25%",
+  },
+];
+
 const RecordsListManager = () => {
-  const { large } = useScreenSizes();
-  const [searchByVal, setSearchByVal] = useState("Autor");
+  const [searchByVal, setSearchByVal] = React.useState("Autor");
 
   return (
     <div className={"w-100 h-100"}>
@@ -42,27 +58,17 @@ const RecordsListManager = () => {
       </div>
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
-          {!large ? (
-            <div
-              id={"sortOptions"}
-              className={"w-100 d-flex align-items-center"}
-            >
-              <div className={"optionBck"} id={"op1"}>
-                <SortButton text={"Twórca/Twórcy"} />
+          <div id={"sortOptions"} className={"w-100 d-flex align-items-center"}>
+            {sortOptions.map((item, key) => (
+              <div
+                className={"optionBck"}
+                key={key}
+                style={{ width: item.width }}
+              >
+                <SortButton text={item.value} />
               </div>
-              <div className={"optionBck"} id={"op2"}>
-                <SortButton text={"Rok"} />
-              </div>
-              <div className={"optionBck"} id={"op3"}>
-                <SortButton text={"Tytuł"} />
-              </div>
-              <div className={"optionBck"} id={"op4"}>
-                <SortButton text={"Wydawca"} />
-              </div>
-            </div>
-          ) : (
-            <></>
-          )}
+            ))}
+          </div>
           <div id={"recordsField"} className={"w-100"}>
             {/*this is place to add component which displays records  */}
           </div>
@@ -76,12 +82,23 @@ const RecordsListManager = () => {
       >
         <div
           id={"pageButtonBck"}
-          className={"d-flex flex-row align-items-center"}
+          className={
+            "d-flex flex-row align-items-center justify-content-between"
+          }
         >
-          <div id={"leftPageButton"}>
+          <div
+            className={
+              "pageButton h-100 d-flex align-items-center justify-content-center"
+            }
+          >
             <PageButton leftDirection={true} />
           </div>
-          <div id={"rightPageButton"}>
+          <div
+            id={"rightPageButton"}
+            className={
+              "pageButton h-100 d-flex align-items-center justify-content-center"
+            }
+          >
             <PageButton leftDirection={false} />
           </div>
         </div>

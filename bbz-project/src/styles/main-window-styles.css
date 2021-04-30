@@ -1,42 +1,21 @@
-#mainWindowTopBarBck {
-    background-color: green;
-    height: 15%;
+#mainWindowMainBck {
+    width: 95%;
 }
 
-#mainWindowMainBodyBck {
-    background-color: yellow;
-    height: 85%;
+#mainWindowHeaderBck {
+    height: 9%;
+    border-bottom: 2px solid black;
 }
 
-#mainWindowBodyLeftBck {
-    background-color: orangered;
+#mainWindowDatabaseBck {
+    height: 91%;
+}
+
+#mainWindowAuthorBck {
+    margin-right: 2%;
     width: 20%;
 }
 
-#mainWindowBodyRightBck {
-    background-color: white;
+#mainWindowTitleBck {
     width: 80%;
-}
-
-@media (max-width: 991px) {
-    #mainWindowBodyRightBck {
-        width: 100%;
-    }
-}
-
-@media (max-width: 575px) {
-    #mainWindowTopBarBck {
-        height: 10%;
-    }
-
-    #mainWindowMainBodyBck {
-        height: 90%;
-    }
-
-    #mainWindowBodyLeftBck {
-        position: absolute;
-        z-index: 2;
-        background-color: orangered;
-        width: 70%;
-    }
 }

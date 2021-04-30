@@ -1,16 +1,26 @@
 import { makeStyles, createStyles } from "@material-ui/core";
 
-export const searchTextFieldStyles = makeStyles((theme) =>
+export const searchTextFieldStyles = makeStyles(
   createStyles({
     root: {
       width: "50%",
 
+      "&::after .MuiOutlinedInput-root": {
+        color: "red",
+      },
+
       "& .MuiOutlinedInput-root": {
-        height: 45,
+        height: "4.8vh",
+        fontSize: "2.2vh",
         borderRadius: 4,
+        color: "black",
 
         "&:hover .MuiInputAdornment-root": {
           color: "black",
+        },
+
+        "&::after": {
+          color: "red",
         },
       },
 
@@ -27,24 +37,6 @@ export const searchTextFieldStyles = makeStyles((theme) =>
         color: "#979797",
         height: "100%",
       },
-
-      [theme.breakpoints.down(992)]: {
-        width: "50%",
-      },
-
-      [theme.breakpoints.down(576)]: {
-        width: "55%",
-
-        "& .MuiOutlinedInput-root": {
-          height: "4vh",
-          fontSize: "3.8vw",
-        },
-
-        "& .MuiInputAdornment-root": {
-          transform: "translateX(-35%)",
-          width: "3vw",
-        },
-      }
     },
   })
 );

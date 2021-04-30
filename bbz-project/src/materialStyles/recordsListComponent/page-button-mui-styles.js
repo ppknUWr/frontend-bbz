@@ -1,17 +1,13 @@
 import { makeStyles, createStyles } from "@material-ui/core";
 
-export const pageButtonStyles = makeStyles((theme) =>
+export const pageButtonStyles = makeStyles(
   createStyles({
     root: {
-      backgroundColor: "white",
-      width: "95%",
-      height: "96%",
+      minWidth: 0,
+      overflow: "hidden",
+      width: "90%",
+      height: "90%",
       borderRadius: 4,
-
-      [theme.breakpoints.down(576)]: {
-        width: 70,
-        minWidth: 0,
-      }
     },
   })
 );

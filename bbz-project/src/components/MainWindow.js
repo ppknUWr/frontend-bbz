@@ -1,34 +1,35 @@
 import * as React from "react";
-import "../styles/records-list-manager-styles.css";
+import "../styles/main-window-styles.css";
 import RecordsListManager from "./RecordsListComponents/RecordsListManager";
 import Typography from "@material-ui/core/Typography";
-import { databaseTitleTypoStyles } from "../materialStyles/records-list-manager-mui-styles";
+import { databaseTitleTypoStyles } from "../materialStyles/database-header-typo-mui-styles";
 
 const MainWindow = () => {
   const typoClasses = databaseTitleTypoStyles();
 
   return (
-    <div id={"recordsListManagerMainBck"}>
-      <div id={"recordsListManagerHeaderBck"}>
+    <div id={"mainWindowMainBck"} className={"h-100 ml-auto mr-auto"}>
+      <div
+        id={"mainWindowHeaderBck"}
+        className={"w-100 d-flex flex-row pl-4 pr-4"}
+      >
         <div
-          id={"recordsListManagerAuthorBck"}
-          className={"d-flex align-items-center justify-content-center"}
+          id={"mainWindowAuthorBck"}
+          className={"h-100 d-flex align-items-center justify-content-start"}
         >
-          <Typography classes={{ root: typoClasses.root }}>
-            Autor: Hojka Bożena
-          </Typography>
+          <Typography classes={typoClasses}>Autor: Hojka Bożena</Typography>
         </div>
         <div
-          id={"recordsListManagerTitleBck"}
-          className={"d-flex align-items-center justify-content-center"}
+          id={"mainWindowTitleBck"}
+          className={"h-100 d-flex align-items-center justify-content-start"}
         >
-          <Typography classes={{ root: typoClasses.root }}>
-            Temat: Ilustrowane i obrazkowe słowniki dla dzieci wydane w Polsce w
+          <Typography classes={typoClasses}>
+            Temat:Ilustrowane i obrazkowe słowniki dla dzieci wydane w Polsce w
             latach 1989-2015
           </Typography>
         </div>
       </div>
-      <div id={"recordsListManagerDatabaseBck"}>
+      <div id={"mainWindowDatabaseBck"} className={"w-100"}>
         <RecordsListManager />
       </div>
     </div>

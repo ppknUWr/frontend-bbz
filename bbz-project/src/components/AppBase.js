@@ -1,28 +1,28 @@
 import * as React from "react";
-import "../styles/main-window-styles.css";
+import "../styles/app-base-styles.css";
 import MainWindow from "./MainWindow";
 
 const AppBase = () => {
 
   return (
     <div
-      id={"mainWindowBck"}
+      id={"appBaseBck"}
       className={"w-100 h-100 position-absolute overflow-hidden"}
     >
       <div
-        id={"mainWindowTopBarBck"}
+        id={"appBaseTopBarBck"}
         className={"w-100 d-flex align-items-center"}
       >
         Top bar
       </div>
-      <div
-        id={"mainWindowMainBodyBck"}
-        className={"w-100 d-flex flex-row"}
-      >
-        <div id={"mainWindowBodyLeftBck"} className={"h-100 d-none d-lg-flex"}>
-          Sidebar
+      <div id={"appBaseMainBodyBck"} className={"w-100 d-flex flex-row"}>
+        <div
+          id={"appBaseBodyLeftBck"}
+          className={"h-100"}
+        >
+          Sidebar {/* Kuba Lorek */}
         </div>
-        <div id={"mainWindowBodyRightBck"}>
+        <div id={"appBaseBodyRightBck"}>
           <MainWindow />
         </div>
       </div>

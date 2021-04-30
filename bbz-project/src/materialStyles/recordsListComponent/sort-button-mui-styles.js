@@ -8,14 +8,15 @@ export const sortButtonStyles = makeStyles(
       height: "96%",
       borderRadius: 4,
       display: "flex",
-      justifyContent: "flex-start",
+      justifyContent: "space-between",
       position: "relative",
+      overflow: "hidden",
     },
 
     label: {
       color: "black",
       textTransform: "capitalize",
-      fontSize: 20,
+      fontSize: "2.2vh",
     },
   })
 );
