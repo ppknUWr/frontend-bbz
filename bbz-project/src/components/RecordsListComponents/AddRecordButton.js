@@ -1,53 +1,26 @@
-import {withStyles} from "@material-ui/core";
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-
-const StyledAddRecordButton = withStyles({
-  root: {
-    backgroundColor: '#593B7C',
-    width: '15%',
-    height: 45,
-    marginLeft: 40,
-    borderRadius: 0,
-    padding: 0,
-
-    '&:hover': {
-      backgroundColor: '#28B6B8',
-    }
-  },
-
-  label: {
-    color: 'white',
-  }
-})(Button);
+import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
+import { addRecordButtonStyles } from "../../materialStyles/recordsListComponent/add-record-button-mui-styles";
 
 const AddRecordButton = () => {
+  const buttonClasses = addRecordButtonStyles();
+
   return (
-    <StyledAddRecordButton variant={'outlined'}>
-      <div style={iconBck}>
-        <AddIcon />
+    <Button classes={buttonClasses} variant={"outlined"}>
+      <div
+        style={{ width: "20%" }}
+        className={"h-100 d-flex justify-content-center align-items-center"}
+      >
+        <AddIcon style={{ fontSize: "3.5vh" }} />
       </div>
-      <div style={textBck}>
+      <div
+        style={{ width: "80%" }}
+        className={"h-100 d-flex align-items-center justify-content-center"}
+      >
         Dodaj rekord
       </div>
-    </StyledAddRecordButton>
-  )
-}
+    </Button>
+  );
+};
 
 export default AddRecordButton;
-
-const iconBck = {
-  height: '100%',
-  width: '20%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-}
-
-const textBck = {
-  height: '100%',
-  width: '80%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}

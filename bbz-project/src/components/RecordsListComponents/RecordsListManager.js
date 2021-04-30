@@ -1,0 +1,111 @@
+import * as React from "react";
+import "../../styles/records-list-manager-styles.css";
+import AddRecordButton from "./AddRecordButton";
+import ImportButton from "./ImportButton";
+import SelectInput from "./SelectInput";
+import SearchInput from "./SearchTextField";
+import SortButton from "./SortButton";
+import PageButton from "./PageButton";
+
+const searchByValues = [
+  {
+    value: "Autor",
+  },
+  {
+    value: "Tytuł",
+  },
+  {
+    value: "Rok",
+  },
+  {
+    value: "Wydawca",
+  },
+];
+
+const sortOptions = [
+  {
+    value: "Twórca/Twórcy",
+    width: "25%",
+  },
+  {
+    value: "Rok",
+    width: "10%",
+  },
+  {
+    value: "Tytuł",
+    width: "35%",
+  },
+  {
+    value: "Wydawca",
+    width: "25%",
+  },
+];
+
+const RecordsListManager = () => {
+  const [searchByVal, setSearchByVal] = React.useState("Autor");
+
+  return (
+    <div className={"w-100 h-100"}>
+      <div className={"w-100 d-flex align-items-center"} id={"topPanel"}>
+        <SearchInput />
+        <SelectInput
+          value={searchByVal}
+          setVal={setSearchByVal}
+          allValues={searchByValues}
+        />
+        <ImportButton />
+        <AddRecordButton />
+      </div>
+      <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
+        <div id={"recordsBck"} className={"w-100"}>
+          <div id={"sortOptions"} className={"w-100 d-flex align-items-center"}>
+            {sortOptions.map((item, key) => (
+              <div
+                className={"optionBck"}
+                key={key}
+                style={{ width: item.width }}
+              >
+                <SortButton text={item.value} />
+              </div>
+            ))}
+          </div>
+          <div id={"recordsField"} className={"w-100"}>
+            {/*this is place to add component which displays records  */}
+          </div>
+        </div>
+      </div>
+      <div
+        id={"bottomPanel"}
+        className={
+          "w-100 d-flex justify-content-center align-items-center position-relative"
+        }
+      >
+        <div
+          id={"pageButtonBck"}
+          className={
+            "d-flex flex-row align-items-center justify-content-between"
+          }
+        >
+          <div
+            className={
+              "pageButton h-100 d-flex align-items-center justify-content-center"
+            }
+          >
+            <PageButton leftDirection={true} />
+          </div>
+          <div
+            id={"rightPageButton"}
+            className={
+              "pageButton h-100 d-flex align-items-center justify-content-center"
+            }
+          >
+            <PageButton leftDirection={false} />
+          </div>
+        </div>
+        <div id={"pageText"}>1 z 1s</div>
+      </div>
+    </div>
+  );
+};
+
+export default RecordsListManager;
