@@ -32,8 +32,19 @@
     border-left: 0;
 }
 
-.recordsField {
+#recordsField {
     height: 90%;
+    overflow-y: auto;
+}
+
+#recordsField::-webkit-scrollbar {
+    width: 0.4vw;
+    background-color: #F3F3F3;
+}
+
+#recordsField::-webkit-scrollbar-thumb {
+    background-color: #C4C4C4;
+    border-radius: 6px;
 }
 
 #pageButtonBck {

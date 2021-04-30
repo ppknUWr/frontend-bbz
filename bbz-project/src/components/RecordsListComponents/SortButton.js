@@ -27,7 +27,7 @@ const SortButton = ({ text }) => {
 export default SortButton;
 
 const styles = {
-  position: "relative",
+  position: "absolute",
   fontSize: "8vh",
   right: -20,
   color: "#979797",

@@ -6,6 +6,58 @@ import SelectInput from "./SelectInput";
 import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
 import PageButton from "./PageButton";
+import Record from "./RecordComps/Record";
+
+const recordsData = [
+  {
+    year: "2009",
+    author: "Agnieszka Frączek",
+    title: "Zobacz, Gdzie Mieszka Miś Bodo",
+    wydawca: "Wydawnictwo Uniwersytetu Śląskiego",
+    place: "Katowice",
+    zrodlo: "XYZ",
+  },
+  {
+    year: "2009",
+    author: "Agnieszka Frączek",
+    title: "Zobacz, Gdzie Mieszka Miś Bodo",
+    wydawca: "Wydawnictwo Uniwersytetu Śląskiego",
+    place: "Katowice",
+    zrodlo: "XYZ",
+  },
+  {
+    year: "2009",
+    author: "Agnieszka Frączek",
+    title: "Zobacz, Gdzie Mieszka Miś Bodo",
+    wydawca: "Wydawnictwo Uniwersytetu Śląskiego",
+    place: "Katowice",
+    zrodlo: "XYZ",
+  },
+  {
+    year: "2009",
+    author: "Agnieszka Frączek",
+    title: "Zobacz, Gdzie Mieszka Miś Bodo",
+    wydawca: "Wydawnictwo Uniwersytetu Śląskiego",
+    place: "Katowice",
+    zrodlo: "XYZ",
+  },
+  {
+    year: "2009",
+    author: "Agnieszka Frączek",
+    title: "Zobacz, Gdzie Mieszka Miś Bodo",
+    wydawca: "Wydawnictwo Uniwersytetu Śląskiego",
+    place: "Katowice",
+    zrodlo: "XYZ",
+  },
+  {
+    year: "2009",
+    author: "Agnieszka Frączek",
+    title: "Zobacz, Gdzie Mieszka Miś Bodo",
+    wydawca: "Wydawnictwo Uniwersytetu Śląskiego",
+    place: "Katowice",
+    zrodlo: "XYZ",
+  },
+];
 
 const searchByValues = [
   {
@@ -24,20 +76,28 @@ const searchByValues = [
 
 const sortOptions = [
   {
-    value: "Twórca/Twórcy",
-    width: "25%",
+    value: "Rok",
+    width: "7%",
   },
   {
-    value: "Rok",
-    width: "10%",
+    value: "Twórca/Twórcy",
+    width: "18%",
   },
   {
     value: "Tytuł",
-    width: "35%",
+    width: "25%",
   },
   {
     value: "Wydawca",
-    width: "25%",
+    width: "20%",
+  },
+  {
+    value: "Miejsce wydania",
+    width: "15%",
+  },
+  {
+    value: "Źródło",
+    width: "10%",
   },
 ];
 
@@ -69,8 +129,10 @@ const RecordsListManager = () => {
               </div>
             ))}
           </div>
-          <div id={"recordsField"} className={"w-100"}>
-            {/*this is place to add component which displays records  */}
+          <div id={"recordsField"} className={"w-100 pt-3"}>
+            {recordsData.map((item, key) => (
+              <Record key={key} data={item} />
+            ))}
           </div>
         </div>
       </div>
