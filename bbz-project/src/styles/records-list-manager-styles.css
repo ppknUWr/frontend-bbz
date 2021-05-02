@@ -18,18 +18,14 @@
 
 #sortOptions {
     background-color: white;
-    height: 10%;
+    height: 8%;
 }
 
 .optionBck {
     height: 95%;
-    border-left: 1px solid #979797;
-    display: flex;
-    justify-content: center;
-}
-
-.optionBck:nth-child(1) {
-    border-left: 0;
+    border-right: 1px solid #979797;
+    padding-left: 0.1vw;
+    padding-right: 0.1vw;
 }
 
 #recordsField {

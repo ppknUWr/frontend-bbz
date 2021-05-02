@@ -7,6 +7,7 @@ import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
 import PageButton from "./PageButton";
 import Record from "./RecordComps/Record";
+import { FIELD_WIDTHS } from "../../constants/records-list-manager-const";
 
 const recordsData = [
   {
@@ -77,27 +78,21 @@ const searchByValues = [
 const sortOptions = [
   {
     value: "Rok",
-    width: "7%",
   },
   {
     value: "Twórca/Twórcy",
-    width: "18%",
   },
   {
     value: "Tytuł",
-    width: "25%",
   },
   {
     value: "Wydawca",
-    width: "20%",
   },
   {
     value: "Miejsce wydania",
-    width: "15%",
   },
   {
     value: "Źródło",
-    width: "10%",
   },
 ];
 
@@ -121,9 +116,11 @@ const RecordsListManager = () => {
           <div id={"sortOptions"} className={"w-100 d-flex align-items-center"}>
             {sortOptions.map((item, key) => (
               <div
-                className={"optionBck"}
+                className={
+                  "optionBck d-flex justify-content-start align-items-center"
+                }
                 key={key}
-                style={{ width: item.width }}
+                style={{ width: FIELD_WIDTHS[key] }}
               >
                 <SortButton text={item.value} />
               </div>

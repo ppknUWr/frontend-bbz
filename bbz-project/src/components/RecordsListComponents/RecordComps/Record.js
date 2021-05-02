@@ -3,9 +3,9 @@ import "../../../styles/record-styles.css";
 import Sublist from "./Sublist";
 import { useRecordAnimations } from "../../../hooks/useRecordAnimations";
 import { animated } from "react-spring";
+import {FIELD_WIDTHS} from "../../../constants/records-list-manager-const";
 
 const Record = ({ data }) => {
-  const fieldsWidth = ["7%", "18%", "25%", "20%", "15%", "10%"];
   const keys = Object.keys(data);
 
   const [sublistVisibility, setSublistVisibility] = React.useState(true);
@@ -36,7 +36,7 @@ const Record = ({ data }) => {
           <div
             key={key}
             className={"recordFieldBck h-100 d-flex align-items-center"}
-            style={{ width: fieldsWidth[key] }}
+            style={{ width: FIELD_WIDTHS[key] }}
           >
             {data[item]}
           </div>
