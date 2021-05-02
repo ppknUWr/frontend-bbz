@@ -1,5 +1,6 @@
 import * as React from "react";
 import "../../../styles/record-styles.css";
+import Sublist from "./Sublist";
 import { useRecordAnimations } from "../../../hooks/useRecordAnimations";
 import { animated } from "react-spring";
 
@@ -11,7 +12,8 @@ const Record = ({ data }) => {
   const [openSublist, setOpenSublist] = React.useState(false);
   const { sublistAnimation, marginAnimation } = useRecordAnimations(
     openSublist,
-    setSublistVisibility
+    setSublistVisibility,
+    35,
   );
 
   const handleRecordClick = () => {
@@ -51,9 +53,11 @@ const Record = ({ data }) => {
         style={Object.assign(sublistAnimation, {
           display: sublistVisibility ? "flex" : "none",
         })}
-        className={"sublistBck"}
+        className={
+          "sublistGrayBck w-100 position-absolute overflow-hidden"
+        }
       >
-        sublist
+        <Sublist />
       </animated.div>
     </div>
   );
