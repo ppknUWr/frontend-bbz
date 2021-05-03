@@ -28,7 +28,7 @@ export default SortButton;
 
 const styles = {
   position: "absolute",
-  fontSize: "6.5vh",
-  right: -15,
+  fontSize: "5.5vh",
+  right: -12,
   color: "#979797",
 };

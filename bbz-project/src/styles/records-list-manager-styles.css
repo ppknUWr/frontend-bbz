@@ -19,17 +19,18 @@
 #sortOptions {
     background-color: white;
     height: 8%;
+    border-bottom: 1px solid #979797;
 }
 
 .optionBck {
-    height: 95%;
+    height: 80%;
     border-right: 1px solid #979797;
     padding-left: 0.1vw;
     padding-right: 0.1vw;
 }
 
 #recordsField {
-    height: 90%;
+    height: 92%;
     overflow-y: auto;
 }
 
