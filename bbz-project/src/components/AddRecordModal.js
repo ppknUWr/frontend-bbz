@@ -222,7 +222,7 @@ const AddRecordModal = () => {
                 </Grid>
 
         <DialogActions>
-            <Grid container>
+            <Grid container style={{marginTop:1}} spacing={3}>
             <Grid item xs>
                 <Button
                 onClick={handleCloseModal} 
@@ -242,6 +242,7 @@ const AddRecordModal = () => {
                 size="large"
                 type="submit"
                 startIcon={<CloudUploadIcon />}
+                style={{float:"right"}}
                 autoFocus>
                     Dodaj rekord
                 </Button>
