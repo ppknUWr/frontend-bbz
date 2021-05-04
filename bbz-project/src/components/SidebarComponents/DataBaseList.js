@@ -2,12 +2,15 @@ import React from "react"
 import "../../styles/sidebar-styles.css";
 import DataBaseListItem from "./DataBaseListItem";
 
+/*
+    Wyświetla listę dostępnych baz danych
+*/
 
 const DataBaseList = ({handleDBChange, dbList}) => {
 
     
 
-    /* have to find a way, how to make unique key for eac item in the list*/
+    /* TODO: w przyszłości dodać unikalny klucz do elementów lsty*/
     return (
         <div className="database-container">
         {

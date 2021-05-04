@@ -5,9 +5,11 @@ const SidebarNav = ({ handleMenuBarClick }) => {
     return (
         <div className="navbar">
             <div className="title">Bibliografie Specjalne</div>
-            <div>
-                <MenuButton onClick={handleMenuBarClick} />
-            </div>
+            {
+                // <div>
+                //     <MenuButton onClick={handleMenuBarClick} />
+                // </div>
+            }
     </div>
     )
 }

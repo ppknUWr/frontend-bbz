@@ -10,7 +10,7 @@ import SidebarNav from "./SidebarNav";
 /* input validation will be needed */
 
 const filterMatchingDBs = (dbArray, query) => {
-    if (!query)
+    if (!query) /* jeśli searchfield jest pusty, zwróć całą oryginalną tablice */
         return dbArray
     
     return dbArray.filter((dbArray) => {
@@ -47,7 +47,7 @@ const Sidebar = () => {
         }
     ]
 
-    /* visibility options probably will be only used in mobile version */
+    /* Wysuwanie sidebara będzie raczej dostępne tylko w wersji mobilnej */
     const [visible, setVisible] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
     const filteredArray = filterMatchingDBs(testData, searchQuery);
@@ -62,7 +62,7 @@ const Sidebar = () => {
 
 
     return (<>
-        {!visible && <button onClick={handleMenuBarClick}>X</button>}
+        {/*!visible && <button onClick={handleMenuBarClick}>X</button>*/}
         <div className={visible ? "sidebar active" : "sidebar"}>
             <SidebarNav handleMenuBarClick={handleMenuBarClick}/>
             <DataBaseSearchTextField searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>

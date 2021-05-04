@@ -20,8 +20,8 @@
 }
 
 .title {
-    margin-bottom: 20px;
-    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
     align-self: flex-end;
 
     font-size: 24px;
@@ -74,6 +74,11 @@
     
 }
 
+.list-item:hover {
+    background-color: #D3D3D3;
+    cursor: pointer;
+    transition: 250ms;
+}
 
 .uwrlogo-container {
     height: 120px;
