@@ -1,0 +1,21 @@
+#mainWindowMainBck {
+    width: 95%;
+}
+
+#mainWindowHeaderBck {
+    height: 9%;
+    border-bottom: 2px solid black;
+}
+
+#mainWindowDatabaseBck {
+    height: 91%;
+}
+
+#mainWindowAuthorBck {
+    margin-right: 2%;
+    width: 20%;
+}
+
+#mainWindowTitleBck {
+    width: 80%;
+}

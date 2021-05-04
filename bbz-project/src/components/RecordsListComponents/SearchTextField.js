@@ -1,0 +1,28 @@
+import * as React from "react";
+import TextField from "@material-ui/core/TextField";
+import SearchIcon from "@material-ui/icons/Search";
+import { InputAdornment } from "@material-ui/core";
+import { searchTextFieldStyles } from "../../materialStyles/recordsListComponent/search-textField-mui-styles";
+
+const SearchInput = () => {
+  const textFieldClasses = searchTextFieldStyles();
+  const iconSize = "3vh";
+
+  return (
+    <TextField
+      classes={textFieldClasses}
+      placeholder={"Wyszukaj"}
+      variant={"outlined"}
+      SelectProps={{ native: true }}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position={"start"}>
+            <SearchIcon style={{ fontSize: iconSize }} />
+          </InputAdornment>
+        ),
+      }}
+    />
+  );
+};
+
+export default SearchInput;

@@ -1,0 +1,48 @@
+.recordMainBck {
+    position: relative;
+    margin-bottom: 0.5vh;
+    background-color: #61dafb;
+}
+
+.recordBck {
+    position: relative;
+    background-color: white;
+    height: 5.2vh;
+    transition: 250ms;
+    z-index: 2;
+}
+
+.recordBck:hover {
+    background-color: #D3D3D3;
+    cursor: pointer;
+    transition: 250ms;
+}
+
+.recordBck:hover .recordOptionsBck {
+    display: flex;
+}
+
+.recordFieldBck {
+    padding-left: 0.45vw;
+    padding-right: 0.2vw;
+    margin-right: 0.07vw;
+    font-size: 1.55vh;
+    line-height: 1.9vh;
+}
+
+.sublistGrayBck {
+    position: absolute;
+    top: 50%;
+    background-color: #E1E1E1;
+    padding: 3.5vh 0.5vw 1.5vh;
+}
+
+.recordOptionsBck {
+    right: 0;
+    width: 10%;
+    display: none;
+}
+
+.visibleOptions {
+    display: flex;
+}

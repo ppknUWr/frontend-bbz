@@ -1,11 +1,8 @@
-import logo from './logo.svg';
-import AddRecordModal from './components/AddRecordModal.js';
-import './App.css';
+
+import AppBase from "./components/AppBase";
 
 function App() {
-  return (
-    <AddRecordModal/>
-  );
+  return <AppBase />;
 }
 
 export default App;
