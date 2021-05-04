@@ -1,6 +1,7 @@
 import * as React from "react";
 import "../styles/app-base-styles.css";
 import MainWindow from "./MainWindow";
+import Sidebar from "./SidebarComponents/Sidebar";
 
 const AppBase = () => {
 
@@ -20,7 +21,7 @@ const AppBase = () => {
           id={"appBaseBodyLeftBck"}
           className={"h-100"}
         >
-          Sidebar {/* Kuba Lorek */}
+          <Sidebar />
         </div>
         <div id={"appBaseBodyRightBck"}>
           <MainWindow />
