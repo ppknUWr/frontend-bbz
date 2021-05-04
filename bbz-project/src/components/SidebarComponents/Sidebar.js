@@ -5,7 +5,6 @@ import DataBaseSearchTextField from "./DataBaseSearchTextField";
 import UniversitetLogo from "./UniversitetLogo";
 import SidebarNav from "./SidebarNav";
 
-
 /* Can be transformed into hook in the future */
 /* input validation will be needed */
 

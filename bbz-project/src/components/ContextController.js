@@ -3,18 +3,25 @@ import useFetch from "../hooks/useFetch";
 
 const DataContext = createContext();
 
-const ContextController = () => {
+const ContextController = (props) => {
     const [dbList, setDBList] = useState();
     const [currentDB, setCurrentDB] = useState({});
-    const {fetchDBs, addRecord, editRecord, deleteRecord, exportToPDF} = useFetch("URL");
 
-    const fetchDBs = () => {
-        
+
+    const handleDBChange = (dbName) => {
+        console.log(dbName)
+        setCurrentDB(dbName)
+    }
+
+    const value = {
+        handleDBChange: handleDBChange
     }
 
     return (
-        <DataContext.Provider>
+        <DataContext.Provider value={value}>
         {props.children}
         </DataContext.Provider>
     )
 }
+
+export { ContextController, DataContext };
