@@ -18,22 +18,30 @@
 
 #sortOptions {
     background-color: white;
-    height: 10%;
+    height: 8%;
+    border-bottom: 1px solid #979797;
 }
 
 .optionBck {
-    height: 95%;
-    border-left: 1px solid #979797;
-    display: flex;
-    justify-content: center;
+    height: 80%;
+    border-right: 1px solid #979797;
+    padding-left: 0.1vw;
+    padding-right: 0.1vw;
 }
 
-.optionBck:nth-child(1) {
-    border-left: 0;
+#recordsField {
+    height: 92%;
+    overflow-y: auto;
 }
 
-.recordsField {
-    height: 90%;
+#recordsField::-webkit-scrollbar {
+    width: 0.4vw;
+    background-color: #F3F3F3;
+}
+
+#recordsField::-webkit-scrollbar-thumb {
+    background-color: #C4C4C4;
+    border-radius: 6px;
 }
 
 #pageButtonBck {

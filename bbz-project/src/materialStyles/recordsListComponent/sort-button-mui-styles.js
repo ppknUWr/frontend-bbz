@@ -3,8 +3,9 @@ import { makeStyles, createStyles } from "@material-ui/core";
 export const sortButtonStyles = makeStyles(
   createStyles({
     root: {
+      minWidth: 0,
       backgroundColor: "white",
-      width: "95%",
+      width: "100%",
       height: "96%",
       borderRadius: 4,
       display: "flex",
@@ -16,7 +17,7 @@ export const sortButtonStyles = makeStyles(
     label: {
       color: "black",
       textTransform: "capitalize",
-      fontSize: "2.2vh",
+      fontSize: "1.65vh",
     },
   })
 );
