@@ -1,0 +1,68 @@
+#topPanel {
+    height: 9%;
+}
+
+#middlePanel {
+    height: 80%;
+}
+
+#bottomPanel {
+    height: 10%;
+}
+
+#recordsBck {
+    background-color: #F3F3F3;
+    height: 98%;
+    box-shadow: 0 0 10px #B7B7B7;
+}
+
+#sortOptions {
+    background-color: white;
+    height: 8%;
+    border-bottom: 1px solid #979797;
+}
+
+.optionBck {
+    height: 80%;
+    border-right: 1px solid #979797;
+    padding-left: 0.1vw;
+    padding-right: 0.1vw;
+}
+
+#recordsField {
+    height: 92%;
+    overflow-y: auto;
+}
+
+#recordsField::-webkit-scrollbar {
+    width: 0.4vw;
+    background-color: #F3F3F3;
+}
+
+#recordsField::-webkit-scrollbar-thumb {
+    background-color: #C4C4C4;
+    border-radius: 6px;
+}
+
+#pageButtonBck {
+    width: 14vh;
+    height: 4.4vh;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 10px #B7B7B7;
+}
+
+.pageButton {
+    width: 7vh;
+}
+
+#rightPageButton {
+    border-left: 1px solid #979797;
+}
+
+#pageText {
+    position: absolute;
+    right: 2%;
+    top: 10px;
+}
+

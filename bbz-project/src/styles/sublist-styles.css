@@ -1,0 +1,18 @@
+.sublistBck {
+    background-color: #F3F3F3;
+    border-radius: 6px;
+}
+
+.sublistTopBarBck {
+    background-color: white;
+    height: 3.5vh;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.sublistTopBarKey {
+    padding-left: 0.5vw;
+    height: 75%;
+    border-right: 1px solid #979797;
+    font-size: 1.4vh;
+}

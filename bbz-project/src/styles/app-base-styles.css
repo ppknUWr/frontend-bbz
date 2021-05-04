@@ -1,0 +1,18 @@
+#appBaseTopBarBck {
+    background-color: green;
+    height: 15%;
+}
+
+#appBaseMainBodyBck {
+    height: 85%;
+}
+
+#appBaseBodyLeftBck {
+    background-color: orangered;
+    width: 18%;
+}
+
+#appBaseBodyRightBck {
+    background-color: white;
+    width: 82%;
+}
