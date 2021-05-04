@@ -3,15 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Sidebar from "./components/SidebarComponents/Sidebar";
-import Header from "./components/HeaderComponents/Header";
-import WelcomePage from "./components/WelcomePageComponents/WelcomePage"
-import RecordsListComp from "./components/RecordsListComponents/RecordsListComp"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Sidebar />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
