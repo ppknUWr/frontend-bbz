@@ -6,6 +6,7 @@ const DataContext = createContext();
 const ContextController = (props) => {
     const [dbList, setDBList] = useState();
     const [currentDB, setCurrentDB] = useState({});
+    const { fetchDBs, addRecord, deleteRecord, editRecord} = useFetch("")
 
 
     const handleDBChange = (dbName) => {

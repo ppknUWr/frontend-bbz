@@ -81,6 +81,8 @@ const useFetch = (baseUrl) => {
             console.log(error);
         }
     }
+
+    return { fetchDBs, addRecord, deleteRecord, editRecord, exportToPDF, exportToXLS }
 }
 
 export default useFetch;
