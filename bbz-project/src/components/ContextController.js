@@ -6,7 +6,12 @@ const DataContext = createContext();
 const ContextController = (props) => {
     const [dbList, setDBList] = useState();
     const [currentDB, setCurrentDB] = useState({});
-    const { fetchDBs, addRecord, deleteRecord, editRecord} = useFetch("")
+    const { fetchDBs, addRecord, deleteRecord, editRecord } = useFetch("")
+
+    /* podaj url do endpointa */
+    const handleDBFetch = () => {
+        setDBList(fetchDBs("LINK"));
+    }
 
 
     const handleDBChange = (dbName) => {
@@ -15,7 +20,8 @@ const ContextController = (props) => {
     }
 
     const value = {
-        handleDBChange: handleDBChange
+        handleDBChange: handleDBChange,
+        handleDBFetch: handleDBFetch
     }
 
     return (

@@ -55,17 +55,12 @@ const Sidebar = () => {
         setVisible(prevState => !prevState);
     }
 
-    const handleDBChange = (dbName) => {
-        console.log(dbName)
-    }
-
-
     return (<>
         {/*!visible && <button onClick={handleMenuBarClick}>X</button>*/}
         <div className={visible ? "sidebar active" : "sidebar"}>
             <SidebarNav handleMenuBarClick={handleMenuBarClick}/>
             <DataBaseSearchTextField searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-            <DataBaseList handleDBChange={handleDBChange} dbList={filteredArray}/>
+            <DataBaseList dbList={filteredArray}/>
             <UniversitetLogo />
         </div>
         </>

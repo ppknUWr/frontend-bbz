@@ -1,9 +1,16 @@
-import * as React from "react";
+import React, { useEffect, useContext } from "react";
 import "../styles/app-base-styles.css";
 import MainWindow from "./MainWindow";
 import Sidebar from "./SidebarComponents/Sidebar";
+import { DataContext } from "./ContextController";
 
 const AppBase = () => {
+  const { handleDBFetch } = useContext(DataContext);
+
+  useEffect(() => {
+    handleDBFetch()
+  }, [])
+
 
   return (
     <div
