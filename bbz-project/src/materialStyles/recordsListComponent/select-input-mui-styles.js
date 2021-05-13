@@ -4,7 +4,7 @@ export const formControlStyles = makeStyles(
   createStyles({
     root: {
       marginLeft: 20,
-      width: "13%",
+      width: 200,
     },
   })
 );
@@ -36,7 +36,7 @@ export const outlinedInputStyles = makeStyles(
 export const selectStyles = makeStyles(
   createStyles({
     root: {
-      height: "4.8vh",
+      height: 36,
       padding: 0,
     },
 
@@ -58,14 +58,14 @@ export const selectStyles = makeStyles(
       borderWidth: 0,
       width: "32%",
       borderRadius: 4,
-      fontSize: "4.7vh",
+      fontSize: 36,
       right: 0,
       top: 0,
       zIndex: 2,
     },
 
     select: {
-      fontSize: "2.2vh",
+      fontSize: 16,
       paddingLeft: "0.7vw",
       display: "flex",
       alignItems: "center",

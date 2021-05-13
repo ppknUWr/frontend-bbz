@@ -11,7 +11,7 @@ const ImportButton = () => {
         style={{ width: "20%" }}
         className={"h-100 d-flex align-items-center justify-content-center"}
       >
-        <SaveIcon style={{ fontSize: "2.8vh" }} />
+        <SaveIcon style={{ fontSize: 22 }} />
       </div>
       <div
         style={{ width: "80%" }}

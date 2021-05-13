@@ -111,7 +111,10 @@ const RecordsListManager = () => {
 
   return (
     <div className={"w-100 h-100"}>
-      <div className={"w-100 d-flex align-items-center"} id={"topPanel"}>
+      <div
+        className={"w-100 d-flex align-items-center justify-content-between"}
+        id={"topPanel"}
+      >
         <SearchInput />
         <SelectInput
           value={searchByVal}

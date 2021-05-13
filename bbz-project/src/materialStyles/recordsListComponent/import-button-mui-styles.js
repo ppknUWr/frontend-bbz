@@ -4,8 +4,8 @@ export const importButtonStyles = makeStyles(
   createStyles({
     root: {
       backgroundColor: "white",
-      width: "15%",
-      height: "4.8vh",
+      width: 200,
+      height: 36,
       marginLeft: 40,
       borderRadius: 0,
       padding: 0,
@@ -13,7 +13,7 @@ export const importButtonStyles = makeStyles(
 
     label: {
       color: "black",
-      fontSize: "1.5vh"
+      fontSize: 13
     },
   })
 );
