@@ -24,14 +24,16 @@ const AppBase = () => {
         id={"appBaseBck"}
         className={"w-100 h-100 d-flex flex-row position-absolute"}
       >
-        <div
-          id={"appBaseBodyLeftBck"}
-          className={"h-100 d-lg-flex d-none"}
-        >
-          <Sidebar />
-        </div>
-        <div id={"appBaseBodyRightBck"}>
-          <MainWindow />
+        <div id={"mainContentBck"} className={"w-100 h-100 position-relative"}>
+          <div
+            id={"appBaseBodyLeftBck"}
+            className={"h-100 d-lg-flex position-absolute d-none"}
+          >
+            <Sidebar />
+          </div>
+          <div id={"appBaseBodyRightBck"} className={"w-100 h-100"}>
+            <MainWindow />
+          </div>
         </div>
       </div>
     </>

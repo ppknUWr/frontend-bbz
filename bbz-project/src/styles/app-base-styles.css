@@ -1,6 +1,11 @@
 #appBaseBck {
     padding-top: 125px;
     min-height: 750px;
+    /*height: 100vh;*/
+}
+
+#mainContentBck {
+    padding-left: 270px;
 }
 
 #appBaseTopBarBck {
@@ -10,24 +15,18 @@
     z-index: 5;
 }
 
-#appBaseMainBodyBck {
-    height: 100%;
-}
-
 #appBaseBodyLeftBck {
-    background-color: orangered;
+    left: 0;
     width: 270px;
 }
 
 #appBaseBodyRightBck {
-    background-color: white;
-    width: 85%;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
 }
 
 @media (max-width: 991px) {
-    #appBaseBodyRightBck {
-        width: 100%;
+    #mainContentBck {
+        padding-left: 0;
     }
 }
