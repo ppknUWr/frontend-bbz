@@ -65,7 +65,7 @@ export const selectStyles = makeStyles(
     },
 
     select: {
-      fontSize: 16,
+      fontSize: 15,
       paddingLeft: "0.7vw",
       display: "flex",
       alignItems: "center",

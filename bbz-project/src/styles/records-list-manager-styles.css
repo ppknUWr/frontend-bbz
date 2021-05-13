@@ -19,6 +19,8 @@
 #sortOptions {
     background-color: white;
     height: 8%;
+    min-height: 45px;
+    max-height: 50px;
     border-bottom: 1px solid #979797;
 }
 

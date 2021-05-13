@@ -17,7 +17,7 @@ export const sortButtonStyles = makeStyles(
     label: {
       color: "black",
       textTransform: "capitalize",
-      fontSize: "1.65vh",
+      fontSize: 14,
     },
   })
 );
