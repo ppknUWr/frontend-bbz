@@ -13,20 +13,20 @@ const AppBase = () => {
 
 
   return (
-    <div
-      id={"appBaseBck"}
-      className={"w-100 h-100 position-absolute overflow-hidden"}
-    >
+    <>
       <div
         id={"appBaseTopBarBck"}
-        className={"w-100 d-flex align-items-center"}
+        className={"w-100 d-flex align-items-center position-fixed"}
       >
         Top bar
       </div>
-      <div id={"appBaseMainBodyBck"} className={"w-100 d-flex flex-row"}>
+      <div
+        id={"appBaseBck"}
+        className={"w-100 h-100 d-flex flex-row position-absolute"}
+      >
         <div
           id={"appBaseBodyLeftBck"}
-          className={"h-100"}
+          className={"h-100 d-lg-flex d-none"}
         >
           <Sidebar />
         </div>
@@ -34,7 +34,7 @@ const AppBase = () => {
           <MainWindow />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
