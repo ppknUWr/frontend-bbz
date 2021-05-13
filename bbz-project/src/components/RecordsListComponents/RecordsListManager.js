@@ -160,7 +160,7 @@ const RecordsListManager = () => {
         >
           <div
             className={
-              "pageButton h-100 d-flex align-items-center justify-content-center"
+              "w-50 h-100 d-flex align-items-center justify-content-center"
             }
           >
             <PageButton leftDirection={true} />
@@ -168,7 +168,7 @@ const RecordsListManager = () => {
           <div
             id={"rightPageButton"}
             className={
-              "pageButton h-100 d-flex align-items-center justify-content-center"
+              "w-50 h-100 d-flex align-items-center justify-content-center"
             }
           >
             <PageButton leftDirection={false} />

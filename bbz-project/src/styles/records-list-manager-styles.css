@@ -3,17 +3,18 @@
 }
 
 #middlePanel {
-    height: 81%;
+    height: 80%;
+    margin-bottom: 5px;
 }
 
 #bottomPanel {
-    height: 10%;
+    height: 9%;
 }
 
 #recordsBck {
     background-color: #F3F3F3;
     height: 98%;
-    box-shadow: 0 0 10px #B7B7B7;
+    box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.1) 0 8px 24px, rgba(17, 17, 26, 0.1) 0 16px 56px;
 }
 
 #sortOptions {
@@ -34,6 +35,8 @@
 #recordsField {
     height: 92%;
     overflow-y: auto;
+    scrollbar-color: #C4C4C4 #F3F3F3;
+    scrollbar-width: thin;
 }
 
 #recordsField::-webkit-scrollbar {
@@ -47,15 +50,11 @@
 }
 
 #pageButtonBck {
-    width: 14vh;
-    height: 4.4vh;
+    width: 150px;
+    height: 35px;
     border-radius: 5px;
     background-color: white;
     box-shadow: 0 0 10px #B7B7B7;
-}
-
-.pageButton {
-    width: 7vh;
 }
 
 #rightPageButton {
