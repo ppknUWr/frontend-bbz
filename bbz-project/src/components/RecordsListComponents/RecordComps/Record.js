@@ -4,9 +4,12 @@ import Sublist from "./Sublist";
 import RecordOptions from "./RecordOptions";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
-import { FIELD_WIDTHS } from "../../../constants/records-list-manager-const";
+import {
+  FIELD_WIDTHS,
+  FIELD_WIDTHS_SHORT,
+} from "../../../constants/records-list-manager-const";
 
-const Record = ({ data }) => {
+const Record = ({ data, keysAmount }) => {
   const keys = Object.keys(data);
   const [sublistVisibility, setSublistVisibility] = React.useState(true);
   const [openSublist, setOpenSublist] = React.useState(false);
@@ -16,6 +19,7 @@ const Record = ({ data }) => {
     setSublistVisibility,
     200
   );
+  console.log(keys.length-1, keysAmount, keysAmount === keys.length-1);
 
   const handleRecordClick = (event) => {
     if (typeof event.target.className !== "string") {
@@ -44,15 +48,24 @@ const Record = ({ data }) => {
         className={"recordBck w-100 d-flex flex-row position-relative"}
         onClick={handleRecordClick}
       >
-        {keys.map((item, key) => (
-          <div
-            key={key}
-            className={"recordFieldBck h-100 d-flex align-items-center "}
-            style={{ width: FIELD_WIDTHS[key] }}
-          >
-            {data[item]}
-          </div>
-        ))}
+        {keys.map((item, key) =>
+          key <= keysAmount ? (
+            <div
+              key={key}
+              className={"recordFieldBck h-100 d-flex align-items-center "}
+              style={{
+                width:
+                  keysAmount === keys.length-1
+                    ? FIELD_WIDTHS[key]
+                    : FIELD_WIDTHS_SHORT[key],
+              }}
+            >
+              {data[item]}
+            </div>
+          ) : (
+            <></>
+          )
+        )}
         <RecordOptions visible={optionsVisibility} />
       </animated.div>
       <animated.div

@@ -9,9 +9,11 @@ import PageButton from "./PageButton";
 import Record from "./RecordComps/Record";
 import {
   FIELD_WIDTHS,
+  FIELD_WIDTHS_SHORT,
   SEARCH_BY_KEYS,
   SORT_OPTIONS,
 } from "../../constants/records-list-manager-const";
+import { useScreenSizes } from "../../hooks/useScreenSizes";
 
 const recordsData = [
   {
@@ -107,7 +109,16 @@ const recordsData = [
 ];
 
 const RecordsListManager = () => {
+  const { firstKeyBreakpoint } = useScreenSizes();
+
   const [searchByVal, setSearchByVal] = React.useState("Autor");
+  const [keysAmount, setKeysAmount] = React.useState(SORT_OPTIONS.length - 1);
+
+  React.useEffect(() => {
+    setKeysAmount(
+      firstKeyBreakpoint ? SORT_OPTIONS.length - 2 : SORT_OPTIONS.length - 1
+    );
+  }, [firstKeyBreakpoint]);
 
   return (
     <div className={"w-100 h-100"}>
@@ -127,21 +138,30 @@ const RecordsListManager = () => {
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
           <div id={"sortOptions"} className={"w-100 d-flex align-items-center"}>
-            {SORT_OPTIONS.map((item, key) => (
-              <div
-                className={
-                  "optionBck d-flex justify-content-start align-items-center"
-                }
-                key={key}
-                style={{ width: FIELD_WIDTHS[key] }}
-              >
-                <SortButton text={item} />
-              </div>
-            ))}
+            {SORT_OPTIONS.map((item, key) =>
+              key <= keysAmount ? (
+                <div
+                  className={
+                    "optionBck d-flex justify-content-start align-items-center"
+                  }
+                  key={key}
+                  style={{
+                    width:
+                      keysAmount === SORT_OPTIONS.length - 1
+                        ? FIELD_WIDTHS[key]
+                        : FIELD_WIDTHS_SHORT[key],
+                  }}
+                >
+                  <SortButton text={item} />
+                </div>
+              ) : (
+                <></>
+              )
+            )}
           </div>
           <div id={"recordsField"} className={"w-100 pt-3"}>
             {recordsData.map((item, key) => (
-              <Record key={key} data={item} />
+              <Record key={key} data={item} keysAmount={keysAmount} />
             ))}
           </div>
         </div>
