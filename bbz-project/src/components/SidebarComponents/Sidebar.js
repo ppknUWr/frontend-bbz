@@ -61,7 +61,7 @@ const Sidebar = () => {
             <SidebarNav handleMenuBarClick={handleMenuBarClick}/>
             <DataBaseSearchTextField searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
             <DataBaseList dbList={filteredArray}/>
-            <UniversitetLogo />
+            <UniversitetLogo separatorVisible={true}/>
         </div>
         </>
     )

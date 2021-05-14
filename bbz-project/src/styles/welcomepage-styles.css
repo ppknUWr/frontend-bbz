@@ -3,6 +3,40 @@
     height: 100%;
 
     display: flex;
-    background-color: red;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
 
+    overflow:auto;
+}
+
+.welcomepage-content {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    margin: auto;
+}
+
+.welcomepage-title {
+    display: flex;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.welcomepage-description {
+    max-width: 50%;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+@media screen and (max-width:750px) {
+    .welcomepage-description {
+        max-width: 80%;
+    }
 }

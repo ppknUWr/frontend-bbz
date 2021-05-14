@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import "../styles/app-base-styles.css";
 import MainWindow from "./MainWindow";
+import WelcomePage from "./WelcomePageComponents/WelcomePage";
 import Sidebar from "./SidebarComponents/Sidebar";
 import { DataContext } from "./ContextController";
 
