@@ -6,10 +6,10 @@ import Sidebar from "./SidebarComponents/Sidebar";
 import { DataContext } from "./ContextController";
 
 const AppBase = () => {
-  const { handleDBFetch } = useContext(DataContext);
+  const { handleDbFetch } = useContext(DataContext);
 
   useEffect(() => {
-    handleDBFetch()
+    handleDbFetch()
   }, [])
 
 

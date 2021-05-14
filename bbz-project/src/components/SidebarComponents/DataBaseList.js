@@ -1,4 +1,3 @@
-import React from "react"
 import "../../styles/sidebar-styles.css";
 import DataBaseListItem from "./DataBaseListItem";
 
@@ -10,7 +9,7 @@ import DataBaseListItem from "./DataBaseListItem";
 const DataBaseList = ({ dbList , handleDbChange }) => {
 
 
-    /* TODO: w przyszłości dodać unikalny klucz do elementów lsty*/
+    /* TODO: koło loading, gdy fetchują się bazy*/
     return (
         <div className="database-container">
         {

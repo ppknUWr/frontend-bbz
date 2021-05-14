@@ -1,8 +1,8 @@
-import React from "react";
+
 
 const useFetch = (baseUrl) => {
 
-    const fetchDBNames = async (url) => {
+    const fetchDbNames = async (url) => {
         try {
             const response = await fetch(`${baseUrl+url}`);
             const responseJSON = await response.json();
@@ -83,7 +83,7 @@ const useFetch = (baseUrl) => {
         }
     }
 
-    return { fetchDBNames, addRecord, deleteRecord, editRecord, exportToPDF, exportToXLS }
+    return { fetchDbNames, addRecord, deleteRecord, editRecord, exportToPDF, exportToXLS }
 }
 
 export default useFetch;
