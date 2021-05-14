@@ -3,17 +3,18 @@
 }
 
 #middlePanel {
-    height: 80%;
-    margin-bottom: 5px;
+    height: 82%;
+    margin-bottom: 10px;
 }
 
 #bottomPanel {
-    height: 9%;
+    height: 7%;
 }
 
 #recordsBck {
     background-color: #F3F3F3;
     height: 98%;
+    /*padding-bottom: 20px;*/
     box-shadow: rgba(17, 17, 26, 0.1) 0 4px 16px, rgba(17, 17, 26, 0.1) 0 8px 24px, rgba(17, 17, 26, 0.1) 0 16px 56px;
 }
 
@@ -33,6 +34,9 @@
 }
 
 #recordsField {
+    /*background-color: #282c34;*/
+    display: block;
+    /*padding-bottom: 150px;*/
     height: 92%;
     overflow-y: auto;
     scrollbar-color: #C4C4C4 #F3F3F3;
@@ -40,7 +44,7 @@
 }
 
 #recordsField::-webkit-scrollbar {
-    width: 0.4vw;
+    width: 0.5vw;
     background-color: #F3F3F3;
 }
 

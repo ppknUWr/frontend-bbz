@@ -1,7 +1,10 @@
 .recordMainBck {
     position: relative;
     margin-bottom: 6px;
-    background-color: #61dafb;
+}
+
+.recordMainBck:last-child {
+    margin-bottom: 30px;
 }
 
 .recordBck {
