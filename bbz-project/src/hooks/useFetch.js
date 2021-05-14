@@ -2,10 +2,11 @@ import React from "react";
 
 const useFetch = (baseUrl) => {
 
-    const fetchDBs = async (url) => {
+    const fetchDBNames = async (url) => {
         try {
             const response = await fetch(`${baseUrl+url}`);
-            const dbList = await response.json();
+            const responseJSON = await response.json();
+            const dbList = responseJSON.result.names;
             return dbList
         }
         catch (error) {
@@ -82,7 +83,7 @@ const useFetch = (baseUrl) => {
         }
     }
 
-    return { fetchDBs, addRecord, deleteRecord, editRecord, exportToPDF, exportToXLS }
+    return { fetchDBNames, addRecord, deleteRecord, editRecord, exportToPDF, exportToXLS }
 }
 
 export default useFetch;
