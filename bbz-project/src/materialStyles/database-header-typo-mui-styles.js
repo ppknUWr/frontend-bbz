@@ -4,7 +4,8 @@ export const databaseTitleTypoStyles = makeStyles(
   createStyles({
     root: {
       color: "black",
-      fontSize: 21,
+      fontSize: 20,
+      lineHeight: 1,
     },
   })
 );
