@@ -41,7 +41,7 @@
 }
 
 #recordsField::-webkit-scrollbar {
-    width: 0.5vw;
+    width: 7px;
     background-color: #F3F3F3;
 }
 

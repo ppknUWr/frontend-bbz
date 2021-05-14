@@ -9,6 +9,7 @@ export const importButtonStyles = makeStyles(
       marginLeft: 40,
       borderRadius: 0,
       padding: 0,
+      lineHeight: 1.2,
     },
 
     label: {
