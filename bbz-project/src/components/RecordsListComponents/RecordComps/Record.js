@@ -19,7 +19,6 @@ const Record = ({ data, keysAmount }) => {
     setSublistVisibility,
     200
   );
-  console.log(keys.length-1, keysAmount, keysAmount === keys.length-1);
 
   const handleRecordClick = (event) => {
     if (typeof event.target.className !== "string") {

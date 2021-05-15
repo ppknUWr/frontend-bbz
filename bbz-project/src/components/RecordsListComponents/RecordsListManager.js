@@ -7,6 +7,7 @@ import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
 import PageButton from "./PageButton";
 import Record from "./RecordComps/Record";
+import Button from "@material-ui/core/Button";
 import {
   FIELD_WIDTHS,
   FIELD_WIDTHS_SHORT,
@@ -14,6 +15,8 @@ import {
   SORT_OPTIONS,
 } from "../../constants/records-list-manager-const";
 import { useScreenSizes } from "../../hooks/useScreenSizes";
+import { BsLayoutTextSidebar } from "react-icons/bs";
+import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
 
 const recordsData = [
   {
@@ -108,7 +111,8 @@ const recordsData = [
   },
 ];
 
-const RecordsListManager = () => {
+const RecordsListManager = ({ onSidebarIconClick }) => {
+  const iconButtonClasses = sidebarIconButtonStyles();
   const { firstKeyBreakpoint } = useScreenSizes();
 
   const [searchByVal, setSearchByVal] = React.useState("Autor");
@@ -126,6 +130,9 @@ const RecordsListManager = () => {
         className={"w-100 d-flex align-items-center justify-content-between"}
         id={"topPanel"}
       >
+        <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
+          <BsLayoutTextSidebar style={{ fontSize: 22 }} />
+        </Button>
         <SearchInput />
         <SelectInput
           value={searchByVal}

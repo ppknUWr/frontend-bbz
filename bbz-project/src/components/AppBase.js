@@ -3,14 +3,42 @@ import "../styles/app-base-styles.css";
 import MainWindow from "./MainWindow";
 import Sidebar from "./SidebarComponents/Sidebar";
 import { DataContext } from "./ContextController";
+import { animated } from "react-spring";
+import { useSidebarAnimations } from "../animations/useSidebarAnimations";
+import { useScreenSizes } from "../hooks/useScreenSizes";
 
 const AppBase = () => {
   const { handleDBFetch } = useContext(DataContext);
+  const { large } = useScreenSizes();
+
+  const [openSidebar, setOpenSidebar] = React.useState(false);
+  const [blackBckVisibility, setBlackBckVisibility] = React.useState(false);
 
   useEffect(() => {
-    handleDBFetch()
-  }, [])
+    handleDBFetch();
+  }, []);
 
+  useEffect(() => {
+    if (!large) {
+      setOpenSidebar(false);
+      setBlackBckVisibility(false);
+    }
+  }, [large]);
+
+  const onOpenSidebar = () => {
+    setOpenSidebar(true);
+    setBlackBckVisibility(true);
+  };
+
+  const closeSidebar = () => {
+    setOpenSidebar(false);
+  };
+
+  const closeBlackBck = () => {
+    setBlackBckVisibility(false);
+  }
+
+  const { slideSidebar } = useSidebarAnimations(openSidebar, closeBlackBck);
 
   return (
     <>
@@ -25,17 +53,24 @@ const AppBase = () => {
         className={"w-100 h-100 d-flex flex-row position-absolute"}
       >
         <div id={"mainContentBck"} className={"w-100 h-100 position-relative"}>
-          <div
+          <animated.div
+            style={large ? slideSidebar : {}}
             id={"appBaseBodyLeftBck"}
-            className={"h-100 d-lg-flex position-absolute d-none"}
+            className={"h-100 position-absolute"}
           >
             <Sidebar />
-          </div>
+          </animated.div>
           <div id={"appBaseBodyRightBck"} className={"w-100 h-100"}>
-            <MainWindow />
+            <MainWindow onOpenSidebar={onOpenSidebar} />
           </div>
         </div>
       </div>
+      <div
+        id={"appBaseBlackBck"}
+        className={"position-fixed w-100 h-100"}
+        style={{ display: blackBckVisibility ? "block" : "none" }}
+        onClick={closeSidebar}
+      />
     </>
   );
 };

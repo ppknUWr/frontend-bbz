@@ -17,11 +17,18 @@
 #appBaseBodyLeftBck {
     left: 0;
     width: 270px;
+    z-index: 7;
 }
 
 #appBaseBodyRightBck {
     margin-right: auto;
     margin-left: auto;
+}
+
+#appBaseBlackBck {
+    background-color: black;
+    z-index: 4;
+    opacity: 0.5;
 }
 
 @media (max-width: 991px) {
