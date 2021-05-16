@@ -5,8 +5,8 @@ export const editIconStyles = makeStyles(
     root: {
       borderRadius: 0,
       minWidth: 0,
-      width: "3.5vh",
-      height: "3.5vh",
+      width: 22,
+      height: 22,
       padding: 0,
       color: "#A490CF",
 
@@ -22,11 +22,12 @@ export const deleteIconStyles = makeStyles(
   createStyles({
     root: {
       borderRadius: 0,
-      marginLeft: "0.1vw",
+      marginLeft: 5,
       minWidth: 0,
-      width: "3.5vh",
-      height: "3.5vh",
+      width: 22,
+      height: 22,
       padding: 0,
+      marginRight: 0,
       color: "#DF5F5F",
 
       "&:hover": {

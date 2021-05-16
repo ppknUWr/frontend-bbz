@@ -4,7 +4,7 @@ import RecordsListManager from "./RecordsListComponents/RecordsListManager";
 import Typography from "@material-ui/core/Typography";
 import { databaseTitleTypoStyles } from "../materialStyles/database-header-typo-mui-styles";
 
-const MainWindow = () => {
+const MainWindow = ({ onOpenSidebar }) => {
   const typoClasses = databaseTitleTypoStyles();
 
   return (
@@ -30,7 +30,7 @@ const MainWindow = () => {
         </div>
       </div>
       <div id={"mainWindowDatabaseBck"} className={"w-100"}>
-        <RecordsListManager />
+        <RecordsListManager onSidebarIconClick={onOpenSidebar} />
       </div>
     </div>
   );

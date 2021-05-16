@@ -1,13 +1,16 @@
 .recordMainBck {
     position: relative;
-    margin-bottom: 0.5vh;
-    background-color: #61dafb;
+    margin-bottom: 6px;
+}
+
+.recordMainBck:last-child {
+    margin-bottom: 30px;
 }
 
 .recordBck {
     position: relative;
     background-color: white;
-    height: 5.2vh;
+    height: 46px;
     transition: 250ms;
     z-index: 2;
 }
@@ -23,18 +26,18 @@
 }
 
 .recordFieldBck {
-    padding-left: 0.45vw;
-    padding-right: 0.2vw;
+    padding-left: 6px;
+    padding-right: 5px;
     margin-right: 0.07vw;
-    font-size: 1.55vh;
-    line-height: 1.9vh;
+    font-size: 14px;
+    line-height: 18px;
 }
 
 .sublistGrayBck {
     position: absolute;
     top: 50%;
     background-color: #E1E1E1;
-    padding: 3.5vh 0.5vw 1.5vh;
+    padding: 32px 0.5vw 15px;
 }
 
 .recordOptionsBck {

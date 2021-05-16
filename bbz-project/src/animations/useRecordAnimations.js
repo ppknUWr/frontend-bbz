@@ -1,10 +1,10 @@
 import { useSpring } from "react-spring";
 
 export const useRecordAnimations = (open, setVisibility, height) => {
-  const heightBasic = "0vh";
-  const heightExpanded = height + "vh";
-  const marginBasic = "0vh";
-  const marginExpanded = height - 2.8 + "vh";
+  const heightBasic = 0;
+  const heightExpanded = height;
+  const marginBasic = 0;
+  const marginExpanded = height - 24;
   const sublistConfig = {
     duration: 200,
   };

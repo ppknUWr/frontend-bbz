@@ -24,5 +24,5 @@ export default PageButton;
 
 const styles = {
   color: "#979797",
-  fontSize: "10vh",
+  fontSize: 80,
 };

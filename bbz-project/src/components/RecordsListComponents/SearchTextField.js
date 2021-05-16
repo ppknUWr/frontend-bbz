@@ -6,7 +6,7 @@ import { searchTextFieldStyles } from "../../materialStyles/recordsListComponent
 
 const SearchInput = () => {
   const textFieldClasses = searchTextFieldStyles();
-  const iconSize = "3vh";
+  const iconSize = 20;
 
   return (
     <TextField
