@@ -4,7 +4,7 @@ export const sidebarIconButtonStyles = makeStyles((theme) =>
   createStyles({
     root: {
       minWidth: 0,
-      width: 36,
+      width: 40,
       height: 36,
       borderRadius: 0,
       marginRight: 5,

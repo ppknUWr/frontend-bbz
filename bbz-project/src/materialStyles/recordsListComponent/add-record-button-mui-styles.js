@@ -1,6 +1,6 @@
 import { makeStyles, createStyles } from "@material-ui/core";
 
-export const addRecordButtonStyles = makeStyles(
+export const addRecordButtonStyles = makeStyles((theme) =>
   createStyles({
     root: {
       backgroundColor: "#593B7C",
@@ -14,6 +14,10 @@ export const addRecordButtonStyles = makeStyles(
       "&:hover": {
         backgroundColor: "#28B6B8",
       },
+
+      [theme.breakpoints.down(991)]: {
+        marginLeft: 10,
+      }
     },
 
     label: {

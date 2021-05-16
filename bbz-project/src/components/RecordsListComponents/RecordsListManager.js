@@ -131,7 +131,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
         id={"topPanel"}
       >
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
-          <BsLayoutTextSidebar style={{ fontSize: 22 }} />
+          <BsLayoutTextSidebar style={{ fontSize: 26 }} />
         </Button>
         <SearchInput />
         <SelectInput
@@ -162,7 +162,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
                   <SortButton text={item} />
                 </div>
               ) : (
-                <></>
+                <div key={key} style={{ display: "none" }} />
               )
             )}
           </div>

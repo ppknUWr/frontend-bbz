@@ -1,10 +1,14 @@
 import { makeStyles, createStyles } from "@material-ui/core";
 
-export const formControlStyles = makeStyles(
+export const formControlStyles = makeStyles((theme) =>
   createStyles({
     root: {
       marginLeft: 20,
       width: 200,
+
+      [theme.breakpoints.down(991)]: {
+        marginLeft: 10,
+      }
     },
   })
 );
