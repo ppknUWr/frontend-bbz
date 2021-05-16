@@ -9,14 +9,14 @@ import { useSidebarAnimations } from "../animations/useSidebarAnimations";
 import { useScreenSizes } from "../hooks/useScreenSizes";
 
 const AppBase = () => {
-  const { handleDBFetch } = useContext(DataContext);
+  const { handleDbListFetch } = useContext(DataContext);
   const { large } = useScreenSizes();
 
   const [openSidebar, setOpenSidebar] = React.useState(false);
   const [blackBckVisibility, setBlackBckVisibility] = React.useState(false);
 
   useEffect(() => {
-    handleDBFetch();
+    handleDbListFetch();
   }, []);
 
   useEffect(() => {

@@ -4,24 +4,27 @@ import useFetch from "../hooks/useFetch";
 const DataContext = createContext();
 
 const ContextController = (props) => {
-    const [dbList, setDBList] = useState();
-    const [currentDB, setCurrentDB] = useState({});
-    const { fetchDBs, addRecord, deleteRecord, editRecord } = useFetch("")
+    const [dbList, setDbList] = useState();
+    const [dbNames, setDbNames] = useState();
+    const [currentDb, setCurrentDb] = useState({});
+    const { fetchDbNames, addRecord, deleteRecord, editRecord } = useFetch("https://backend-bbz.herokuapp.com/api")
 
     /* podaj url do endpointa */
-    const handleDBFetch = () => {
-        setDBList(fetchDBs("LINK"));
+    const handleDbListFetch = async () => {
+        const response = await fetchDbNames("/db_names");
+        console.log(response)
+        setDbNames(response)
     }
 
 
-    const handleDBChange = (dbName) => {
-        console.log(dbName)
-        setCurrentDB(dbName)
+    const handleDbChange = (dbName) => {
+        setCurrentDb(dbName)
     }
 
     const value = {
-        handleDBChange: handleDBChange,
-        handleDBFetch: handleDBFetch
+        dbNames: dbNames,
+        handleDbChange: handleDbChange,
+        handleDbListFetch: handleDbListFetch
     }
 
     return (

@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/sidebar-styles.css";
 
 const DataBaseListItem = ({ dbName, handleDBChange }) => {

@@ -1,23 +1,21 @@
-import React, { useContext } from "react"
 import "../../styles/sidebar-styles.css";
 import DataBaseListItem from "./DataBaseListItem";
-import { DataContext } from "../ContextController"
+
 
 /*
     Wyświetla listę dostępnych baz danych
 */
 
-const DataBaseList = ({ dbList }) => {
+const DataBaseList = ({ dbList , handleDbChange }) => {
 
-    const { handleDBChange } = useContext(DataContext);
 
-    /* TODO: w przyszłości dodać unikalny klucz do elementów lsty*/
+    /* TODO: koło loading, gdy fetchują się bazy*/
     return (
         <div className="database-container">
         {
-            dbList.map((item, index) => {
+            dbList && dbList.map((item) => {
                 return (
-                    <DataBaseListItem handleDBChange={handleDBChange} dbName={item.dbName}/>
+                    <DataBaseListItem key={item.id} handleDBChange={handleDbChange} dbName={item.name}/>
                 )
             })
         }
