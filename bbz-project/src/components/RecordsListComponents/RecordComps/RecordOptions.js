@@ -28,10 +28,10 @@ const RecordOptions = ({ visible }) => {
   return (
     <div className={className}>
       <Button classes={editIconClasses} onClick={() => alert("edit")}>
-        <FaEdit style={{ fontSize: "2vh" }} />
+        <FaEdit style={{ fontSize: 17 }} />
       </Button>
       <Button classes={deleteIconClasses} onClick={() => alert("delete")}>
-        <MdDelete style={{ fontSize: "2.3vh" }} />
+        <MdDelete style={{ fontSize: 19 }} />
       </Button>
     </div>
   );

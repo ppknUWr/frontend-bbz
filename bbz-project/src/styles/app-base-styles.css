@@ -1,18 +1,38 @@
-#appBaseTopBarBck {
-    background-color: green;
-    height: 15%;
+#appBaseBck {
+    padding-top: 125px;
+    min-height: 750px;
 }
 
-#appBaseMainBodyBck {
-    height: 85%;
+#mainContentBck {
+    padding-left: 270px;
+}
+
+#appBaseTopBarBck {
+    background-color: green;
+    height: 125px;
+    top: 0;
+    z-index: 6;
 }
 
 #appBaseBodyLeftBck {
-    background-color: orangered;
-    width: 18%;
+    left: 0;
+    width: 270px;
+    z-index: 5;
 }
 
 #appBaseBodyRightBck {
-    background-color: white;
-    width: 82%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#appBaseBlackBck {
+    background-color: black;
+    z-index: 4;
+    opacity: 0.5;
+}
+
+@media (max-width: 991px) {
+    #mainContentBck {
+        padding-left: 0;
+    }
 }

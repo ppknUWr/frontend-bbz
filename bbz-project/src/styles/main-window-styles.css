@@ -3,12 +3,12 @@
 }
 
 #mainWindowHeaderBck {
-    height: 9%;
+    height: 8%;
     border-bottom: 2px solid black;
 }
 
 #mainWindowDatabaseBck {
-    height: 91%;
+    height: 92%;
 }
 
 #mainWindowAuthorBck {

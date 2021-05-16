@@ -3,15 +3,15 @@ import { makeStyles, createStyles } from "@material-ui/core";
 export const searchTextFieldStyles = makeStyles(
   createStyles({
     root: {
-      width: "50%",
+      width: "40vw",
 
       "&::after .MuiOutlinedInput-root": {
         color: "red",
       },
 
       "& .MuiOutlinedInput-root": {
-        height: "4.8vh",
-        fontSize: "2.2vh",
+        height: 36,
+        fontSize: 15,
         borderRadius: 4,
         color: "black",
 

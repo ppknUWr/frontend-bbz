@@ -11,7 +11,7 @@ const AddRecordButton = () => {
         style={{ width: "20%" }}
         className={"h-100 d-flex justify-content-center align-items-center"}
       >
-        <AddIcon style={{ fontSize: "3.5vh" }} />
+        <AddIcon style={{ fontSize: 28 }} />
       </div>
       <div
         style={{ width: "80%" }}
