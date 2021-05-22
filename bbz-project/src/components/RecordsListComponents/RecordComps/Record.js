@@ -14,7 +14,7 @@ const Record = ({ data, keysAmount }) => {
   const [sublistVisibility, setSublistVisibility] = React.useState(true);
   const [openSublist, setOpenSublist] = React.useState(false);
   const [optionsVisibility, setOptionsVisibility] = React.useState(false);
-  const { sublistAnimation, marginAnimation } = useRecordAnimations(
+  const { heightAnim, sublistAnim } = useRecordAnimations(
     openSublist,
     setSublistVisibility,
     400
@@ -41,9 +41,8 @@ const Record = ({ data, keysAmount }) => {
   };
 
   return (
-    <div className={"recordMainBck w-100"}>
-      <animated.div
-        style={marginAnimation}
+    <animated.div style={heightAnim} className={"recordMainBck w-100"}>
+      <div
         className={"recordBck w-100 d-flex flex-row position-relative"}
         onClick={handleRecordClick}
       >
@@ -54,7 +53,7 @@ const Record = ({ data, keysAmount }) => {
               className={"recordFieldBck h-100 d-flex align-items-center "}
               style={{
                 width:
-                  keysAmount === keys.length-1
+                  keysAmount === keys.length - 1
                     ? FIELD_WIDTHS[key]
                     : FIELD_WIDTHS_SHORT[key],
               }}
@@ -66,16 +65,14 @@ const Record = ({ data, keysAmount }) => {
           )
         )}
         <RecordOptions visible={optionsVisibility} />
-      </animated.div>
+      </div>
       <animated.div
-        style={Object.assign(sublistAnimation, {
-          display: sublistVisibility ? "flex" : "none",
-        })}
-        className={"sublistGrayBck w-100 position-absolute overflow-hidden"}
+        style={sublistAnim}
+        className={"sublistGrayBck w-100 overflow-hidden"}
       >
         <Sublist />
       </animated.div>
-    </div>
+    </animated.div>
   );
 };
 export default Record;
