@@ -5,61 +5,57 @@ const Sublist = () => {
   const keys = [
     {
       name: "Id",
-      width: "2.5%",
+      value: "12351234",
     },
     {
       name: "Podtytuł",
-      width: "15%",
+      value: "Lorem ipsum dolor sit amet.",
     },
     {
       name: "Wydanie",
-      width: "5.5%",
+      value: "Lorem ipsum",
     },
     {
       name: "Objętość",
-      width: "6.5%",
+      value: "Lorem ipsum dolor",
     },
     {
       name: "Język",
-      width: "8%",
+      value: "Lorem",
     },
     {
       name: "Typ",
-      width: "6.5%",
+      value: "Lorem ipsum",
     },
     {
       name: "Format",
-      width: "7%",
+      value: "Lorem",
     },
     {
       name: "Identyfikator",
-      width: "7%",
+      value: "612376",
     },
     {
       name: "Treść zasobu",
-      width: "16%",
+      value:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis lacus at nisi cursus accumsan in at dui. Vivamus non pulvinar massa. Curabitur sed ex consequat, pharetra dui et, convallis elit. Class aptent taciti sociosqu ad litora torquent per conubia.",
     },
     {
       name: "Źródło",
-      width: "14%",
+      value: "Lorem ipsum dolor",
     },
   ];
 
   return (
-    <div className={"sublistBck w-100 h-100"}>
-      <div
-        className={"sublistTopBarBck w-100 d-flex flex-row align-items-center"}
-      >
+    <div className={"sublistBck d-flex flex-row w-100 h-100"}>
+      <table className={"sublistTable w-100 h-100"}>
         {keys.map((item, index) => (
-          <div
-            key={index}
-            className={"sublistTopBarKey d-flex align-items-center"}
-            style={{ width: item.width }}
-          >
-            {item.name}
-          </div>
+          <tr key={index}>
+            <th className={"sublistKey"}>{item.name}</th>
+            <td className={"sublistVal"}>{item.value}</td>
+          </tr>
         ))}
-      </div>
+      </table>
     </div>
   );
 };

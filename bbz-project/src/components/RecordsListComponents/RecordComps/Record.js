@@ -17,7 +17,7 @@ const Record = ({ data, keysAmount }) => {
   const { sublistAnimation, marginAnimation } = useRecordAnimations(
     openSublist,
     setSublistVisibility,
-    140
+    400
   );
 
   const handleRecordClick = (event) => {
