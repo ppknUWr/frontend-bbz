@@ -20,6 +20,17 @@ const Record = ({ data, keysAmount }) => {
     400
   );
 
+  //Instrukcja warunkowa na wstępie poniższej funkcji odpowiada za sprawdzenie
+  //który element rekordu został naciśnięty. Sprawdzanie to odbywa się na
+  //podstawie nazwy klasy. Rekord zostaje rozwiniety kiedy event przechwyci
+  //że został nacisnięty jeden z 3 elementów o nazwie klasy:
+  // - recordFieldBck
+  // - recordBck
+  // - recordOptionsBck
+  //Jeśli któryś z elementów rekordu o takiej nazwie klasy został nacisniety
+  //wowczas rozwija/zwija sie rekord. Jesli jakikolwiek inny to rekord pozostaje niezmienny.
+  //Glownym celem tej instrukcji jest zapobiegnięcie rozwijania/zwijania się rekordu, kiedy
+  //nacisniety zostanie któryś z buttonów od obslugi rekordu - usuwania lub edycji.
   const handleRecordClick = (event) => {
     if (typeof event.target.className !== "string") {
       return;
