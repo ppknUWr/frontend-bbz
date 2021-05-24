@@ -1,50 +1,47 @@
 import { useSpring } from "react-spring";
 
 export const useRecordAnimations = (open, setVisibility, height) => {
-  const heightBasic = 0;
+  const heightBasic = 45;
   const heightExpanded = height;
-  const marginBasic = 0;
-  const marginExpanded = height - 24;
-  const sublistConfig = {
-    duration: 200,
-  };
-  const recordConfig = {
-    duration: 100,
+  const sublistInvisible = { height: heightBasic };
+  const sublistVisible = { height: heightExpanded };
+  const config = {
+    mass: 1,
+    tension: 200,
+    friction: 25,
   };
 
-  const sublistAnimation = useSpring(
+  const heightAnim = useSpring(
     open
       ? {
-          from: { height: heightBasic, opacity: 0 },
-          to: { height: heightExpanded, opacity: 1 },
-          config: sublistConfig,
-          onRest() {
-            setVisibility(true);
-          },
+          from: sublistInvisible,
+          to: sublistVisible,
+          config: config,
+          onRest() {},
         }
       : {
-          from: { height: heightExpanded, opacity: 1 },
-          to: { height: heightBasic, opacity: 0 },
-          config: sublistConfig,
+          from: sublistVisible,
+          to: sublistInvisible,
+          config: config,
           onRest() {
             setVisibility(false);
           },
         }
   );
 
-  const marginAnimation = useSpring(
+  const sublistAnim = useSpring(
     open
       ? {
-          from: { marginBottom: marginBasic },
-          to: { marginBottom: marginExpanded },
-          config: recordConfig,
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+          config: config,
         }
       : {
-          from: { marginBottom: marginExpanded },
-          to: { marginBottom: marginBasic },
-          config: recordConfig,
+          from: { opacity: 1 },
+          to: { opacity: 0 },
+          config: config,
         }
   );
 
-  return { sublistAnimation, marginAnimation };
+  return { heightAnim, sublistAnim };
 };

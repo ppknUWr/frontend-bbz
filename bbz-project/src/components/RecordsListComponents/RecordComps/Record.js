@@ -14,12 +14,23 @@ const Record = ({ data, keysAmount }) => {
   const [sublistVisibility, setSublistVisibility] = React.useState(true);
   const [openSublist, setOpenSublist] = React.useState(false);
   const [optionsVisibility, setOptionsVisibility] = React.useState(false);
-  const { sublistAnimation, marginAnimation } = useRecordAnimations(
+  const { heightAnim, sublistAnim } = useRecordAnimations(
     openSublist,
     setSublistVisibility,
-    140
+    400
   );
 
+  //Instrukcja warunkowa na wstępie poniższej funkcji odpowiada za sprawdzenie
+  //który element rekordu został naciśnięty. Sprawdzanie to odbywa się na
+  //podstawie nazwy klasy. Rekord zostaje rozwiniety kiedy event przechwyci
+  //że został nacisnięty jeden z 3 elementów o nazwie klasy:
+  // - recordFieldBck
+  // - recordBck
+  // - recordOptionsBck
+  //Jeśli któryś z elementów rekordu o takiej nazwie klasy został nacisniety
+  //wowczas rozwija/zwija sie rekord. Jesli jakikolwiek inny to rekord pozostaje niezmienny.
+  //Glownym celem tej instrukcji jest zapobiegnięcie rozwijania/zwijania się rekordu, kiedy
+  //nacisniety zostanie któryś z buttonów od obslugi rekordu - usuwania lub edycji.
   const handleRecordClick = (event) => {
     if (typeof event.target.className !== "string") {
       return;
@@ -41,9 +52,8 @@ const Record = ({ data, keysAmount }) => {
   };
 
   return (
-    <div className={"recordMainBck w-100"}>
-      <animated.div
-        style={marginAnimation}
+    <animated.div style={heightAnim} className={"recordMainBck w-100"}>
+      <div
         className={"recordBck w-100 d-flex flex-row position-relative"}
         onClick={handleRecordClick}
       >
@@ -54,7 +64,7 @@ const Record = ({ data, keysAmount }) => {
               className={"recordFieldBck h-100 d-flex align-items-center "}
               style={{
                 width:
-                  keysAmount === keys.length-1
+                  keysAmount === keys.length - 1
                     ? FIELD_WIDTHS[key]
                     : FIELD_WIDTHS_SHORT[key],
               }}
@@ -66,16 +76,14 @@ const Record = ({ data, keysAmount }) => {
           )
         )}
         <RecordOptions visible={optionsVisibility} />
-      </animated.div>
+      </div>
       <animated.div
-        style={Object.assign(sublistAnimation, {
-          display: sublistVisibility ? "flex" : "none",
-        })}
-        className={"sublistGrayBck w-100 position-absolute overflow-hidden"}
+        style={sublistAnim}
+        className={"sublistGrayBck w-100 overflow-hidden"}
       >
         <Sublist />
       </animated.div>
-    </div>
+    </animated.div>
   );
 };
 export default Record;
