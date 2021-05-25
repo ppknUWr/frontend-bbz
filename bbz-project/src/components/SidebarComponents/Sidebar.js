@@ -11,7 +11,7 @@ import { DataContext } from "../ContextController"
 /* input validation will be needed */
 
 const filterMatchingDBs = (dbArray, query) => {
-    if (!query) /* jeśli searchfield jest pusty, zwróć całą oryginalną tablice */
+    if (!query || !dbArray) /* jeśli searchfield jest pusty lub tablica jest niezdefiniowana, zwróć całą oryginalną tablice */
         return dbArray;
     
     return dbArray.filter((dbArray) => {
