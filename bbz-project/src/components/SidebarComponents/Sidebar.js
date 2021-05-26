@@ -1,6 +1,8 @@
 import React, {useState, useContext } from "react";
 import "../../styles/sidebar-styles.css";
 import DataBaseList from "./DataBaseList";
+import useFilter from "../../hooks/useFilter";
+import useSort from "../../hooks/useSort";
 import DataBaseSearchTextField from "./DataBaseSearchTextField";
 import UniversitetLogo from "./UniversitetLogo";
 import SidebarNav from "./SidebarNav";
@@ -9,16 +11,17 @@ import { DataContext } from "../ContextController"
 
 /* Can be transformed into hook in the future */
 /* input validation will be needed */
-
-const filterMatchingDBs = (dbArray, query) => {
-    if (!query || !dbArray) /* jeśli searchfield jest pusty lub tablica jest niezdefiniowana, zwróć całą oryginalną tablice */
-        return dbArray;
+// DO USUNIĘCIA
+// const filterMatchingDBs = (dbArray, query) => {
+//     if (!query || !dbArray) /* jeśli searchfield jest pusty lub tablica jest niezdefiniowana, zwróć całą oryginalną tablice */
+//         return dbArray;
     
-    return dbArray.filter((dbArray) => {
-        const name = dbArray.name.toLowerCase();
-        return name.includes(query.toLowerCase());
-    })
-}
+//     return dbArray.filter((dbArray) => {
+//         const name = dbArray.name.toLowerCase();
+//         return name.includes(query.toLowerCase());
+//     })
+// }
+
 
 const Sidebar = () => {
 
@@ -26,7 +29,7 @@ const Sidebar = () => {
     const [visible, setVisible] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
     const { handleDbChange, dbNames } = useContext(DataContext);
-    const filteredArray = filterMatchingDBs(dbNames, searchQuery);
+    const filteredArray = useFilter(dbNames, searchQuery, "name");
 
 
     const handleMenuBarClick = () => {
