@@ -25,12 +25,23 @@ const RecordOptions = ({ visible }) => {
     }
   }, [visible]);
 
+  const onButtonClick = (event, text) => {
+    event.stopPropagation();
+    alert(text);
+  };
+
   return (
     <div className={className}>
-      <Button classes={editIconClasses} onClick={() => alert("edit")}>
+      <Button
+        classes={editIconClasses}
+        onClick={(event) => onButtonClick(event, "Edit")}
+      >
         <FaEdit style={{ fontSize: 17 }} />
       </Button>
-      <Button classes={deleteIconClasses} onClick={() => alert("delete")}>
+      <Button
+        classes={deleteIconClasses}
+        onClick={(event) => onButtonClick(event, "Delete")}
+      >
         <MdDelete style={{ fontSize: 19 }} />
       </Button>
     </div>
