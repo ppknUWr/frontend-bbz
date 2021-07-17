@@ -3,44 +3,32 @@ import "../styles/app-base-styles.css";
 import MainWindow from "./MainWindow";
 import WelcomePage from "./WelcomePageComponents/WelcomePage";
 import Sidebar from "./SidebarComponents/Sidebar";
+import AddRecordModal from "./AddRecordModal";
 import { DataContext } from "./ContextController";
 import { animated } from "react-spring";
 import { useSidebarAnimations } from "../animations/useSidebarAnimations";
 import { useScreenSizes } from "../hooks/useScreenSizes";
+import { useAppBaseFunctionality } from "../hooks/useAppBaseFunctionality";
 
 const AppBase = () => {
   const { handleDbListFetch } = useContext(DataContext);
   const { large } = useScreenSizes();
-
-  const [openSidebar, setOpenSidebar] = React.useState(false);
-  const [blackBckVisibility, setBlackBckVisibility] = React.useState(false);
+  const {
+    openSidebar,
+    blackBckVisibility,
+    openModal,
+    onOpenSidebar,
+    closeSidebar,
+    closeBlackBck,
+    onOpenModal,
+    onCloseModal,
+  } = useAppBaseFunctionality();
 
   useEffect(() => {
     handleDbListFetch();
   }, []);
 
-  useEffect(() => {
-    if (!large) {
-      setOpenSidebar(false);
-      setBlackBckVisibility(false);
-    }
-  }, [large]);
-
-  const onOpenSidebar = () => {
-    setOpenSidebar(true);
-    setBlackBckVisibility(true);
-  };
-
-  const closeSidebar = () => {
-    setOpenSidebar(false);
-  };
-
-  const closeBlackBck = () => {
-    setBlackBckVisibility(false);
-  }
-
   const { slideSidebar } = useSidebarAnimations(openSidebar, closeBlackBck);
-
   return (
     <>
       <div
@@ -62,7 +50,10 @@ const AppBase = () => {
             <Sidebar />
           </animated.div>
           <div id={"appBaseBodyRightBck"} className={"w-100 h-100"}>
-            <MainWindow onOpenSidebar={onOpenSidebar} />
+            <MainWindow
+              onOpenSidebar={onOpenSidebar}
+              onOpenModal={onOpenModal}
+            />
           </div>
         </div>
       </div>
@@ -72,6 +63,7 @@ const AppBase = () => {
         style={{ display: blackBckVisibility ? "block" : "none" }}
         onClick={closeSidebar}
       />
+      <AddRecordModal open={openModal} onCloseModal={onCloseModal} />
     </>
   );
 };

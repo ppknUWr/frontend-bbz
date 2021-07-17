@@ -111,7 +111,7 @@ const recordsData = [
   },
 ];
 
-const RecordsListManager = ({ onSidebarIconClick }) => {
+const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
   const { firstKeyBreakpoint } = useScreenSizes();
 
@@ -140,7 +140,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
           allValues={SEARCH_BY_KEYS}
         />
         <ImportButton />
-        <AddRecordButton />
+        <AddRecordButton onOpenModal={onOpenModal} />
       </div>
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
