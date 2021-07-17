@@ -2,7 +2,6 @@ import React, {useState, useContext } from "react";
 import "../../styles/sidebar-styles.css";
 import DataBaseList from "./DataBaseList";
 import useFilter from "../../hooks/useFilter";
-import useSort from "../../hooks/useSort";
 import DataBaseSearchTextField from "./DataBaseSearchTextField";
 import UniversitetLogo from "./UniversitetLogo";
 import SidebarNav from "./SidebarNav";
