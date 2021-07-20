@@ -10,6 +10,7 @@ import { animated } from "react-spring";
 import { useSidebarAnimations } from "../animations/useSidebarAnimations";
 import { useScreenSizes } from "../hooks/useScreenSizes";
 import { useAppBaseFunctionality } from "../hooks/useAppBaseFunctionality";
+import bckImage from "../assets/TopBarBackground.jpg";
 
 const AppBase = () => {
   const { handleDbListFetch } = useContext(DataContext);
@@ -32,11 +33,8 @@ const AppBase = () => {
   const { slideSidebar } = useSidebarAnimations(openSidebar, closeBlackBck);
   return (
     <>
-      <div
-        id={"appBaseTopBarBck"}
-        className={"w-100 d-flex align-items-center position-fixed"}
-      >
-        <TopBar />
+      <div className={"position-absolute w-100 overflow-hidden"} id={"topBarImgBck"}>
+        <img src={bckImage} alt={"TopBarImg"} id={"topBarImg"}/>
       </div>
       <div
         id={"appBaseBck"}
@@ -57,6 +55,12 @@ const AppBase = () => {
             />
           </div>
         </div>
+      </div>
+      <div
+        id={"appBaseTopBarBck"}
+        className={"w-100 d-flex align-items-center position-fixed"}
+      >
+        <TopBar />
       </div>
       <div
         id={"appBaseBlackBck"}

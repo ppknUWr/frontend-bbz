@@ -1,0 +1,75 @@
+#ddmiMainBck {
+    position: relative;
+    width: fit-content;
+    float: left;
+    margin-right: 10px;
+}
+
+#ddmiBck {
+    height: 40px;
+}
+
+#ddmiArrowIcon {
+    height: 26px;
+    width: 26px;
+    fill: white;
+    stroke: white;
+    stroke-width: 0.3px;
+    transition: 0.4s;
+}
+
+#ddmiText {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 2px 0 10px;
+}
+
+#ddmiDropDownIcon {
+    font-size: 28px;
+}
+
+#ddmiList {
+    background-color: #0F7699;
+    list-style-type: none;
+    display: none;
+    transition: 0.25s;
+    position: absolute;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+#ddmiList li {
+    text-align: center;
+    margin: 3px 0;
+}
+
+#ddmiBck:hover,
+#ddmiList:hover {
+    cursor: pointer;
+}
+
+#ddmiBck:hover + #ddmiList,
+#ddmiList:hover {
+    display: block;
+    transition: 0.25s;
+}
+
+#ddmiBck #ddmiText,
+#ddmiList li,
+#ddmiDropDownIcon {
+    color: white;
+    transition: 0.4s;
+}
+
+#ddmiBck:hover #ddmiText,
+#ddmiBck:hover #ddmiDropDownIcon,
+#ddmiList li:hover {
+    color: #4CF7EA;
+    transition: 0.4s;
+}
+
+#ddmiBck:hover #ddmiArrowIcon {
+    fill: #4CF7EA;
+    stroke: #4CF7EA;
+    transition: 0.4s;
+}
