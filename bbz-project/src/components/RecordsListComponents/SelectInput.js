@@ -18,7 +18,7 @@ const SelectInput = ({ value, setVal, allValues }) => {
   };
 
   return (
-    <FormControl variant={"outlined"} classes={formControlClasses}>
+    <FormControl variant={"outlined"} classes={formControlClasses} style={{zIndex: 0}}>
       <Select
         classes={selectClasses}
         MenuProps={{

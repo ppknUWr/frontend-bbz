@@ -1,25 +1,43 @@
+#topBarBlackEffect {
+    opacity: 0.2;
+    background-color: black;
+}
+
 #topBarContentBck {
     position: absolute;
-    /*background-color: #61dafb;*/
     z-index: 4;
 }
 
 #topBarBodyBck {
-    /*background-color: #f2f2f2;*/
     display: flex;
     flex-direction: row;
 }
 
 #topBarBodyLeftBck {
-    /*background-color: aqua;*/
 }
 
 #topBarBodyRightBck {
     display: flex;
     align-items: center;
-    background-color: blueviolet;
+    justify-content: center;
 }
 
 #topBarBodyRightHelper {
-    background-color: #61dafb;
+    max-width: 865px;
+}
+
+#topBarLang {
+    padding: 7.5px 0;
+    font-size: 17px;
+    color: white;
+    font-weight: bold;
+    transition: 0.4s;
+    float: left;
+    margin-left: 8px;
+}
+
+#topBarLang:hover {
+    cursor: pointer;
+    color: #4CF7EA;
+    transition: 0.4s;
 }

@@ -1,34 +1,41 @@
-#ddmiMainBck {
+.ddmiMainBck {
+    float: left;
     position: relative;
     width: fit-content;
-    float: left;
-    margin-right: 10px;
+    margin-right: 4px;
 }
 
-#ddmiBck {
+.ddmiBck {
     height: 40px;
 }
 
-#ddmiArrowIcon {
+.ddmiArrowIcon {
     height: 26px;
     width: 26px;
     fill: white;
     stroke: white;
-    stroke-width: 0.3px;
+    stroke-width: 0.7px;
     transition: 0.4s;
 }
 
-#ddmiText {
-    font-weight: 600;
-    font-size: 18px;
+.ddmiText {
+    font-weight: bold;
+    font-size: 17px;
     margin: 0 2px 0 10px;
 }
 
-#ddmiDropDownIcon {
+.ddmiText a:hover,
+.ddmiList a:hover {
+    text-decoration: none;
+}
+
+.ddmiDropDownIcon {
+    padding: 0;
+    transform: translateX(-10%);
     font-size: 28px;
 }
 
-#ddmiList {
+.ddmiList, .ddmiListSublist {
     background-color: #0F7699;
     list-style-type: none;
     display: none;
@@ -38,38 +45,78 @@
     font-weight: bold;
 }
 
-#ddmiList li {
+.ddmiList li {
     text-align: center;
     margin: 3px 0;
+    padding: 0 33px;
+    white-space: nowrap;
 }
 
-#ddmiBck:hover,
-#ddmiList:hover {
+.ddmiBck:hover,
+.ddmiList:hover {
     cursor: pointer;
 }
 
-#ddmiBck:hover + #ddmiList,
-#ddmiList:hover {
+.ddmiBck:hover + .ddmiList,
+.ddmiList:hover,
+.ddmiLiWithSublist:hover {
     display: block;
     transition: 0.25s;
 }
 
-#ddmiBck #ddmiText,
-#ddmiList li,
-#ddmiDropDownIcon {
+.ddmiBck .ddmiText,
+.ddmiList li,
+.ddmiDropDownIcon,
+a,
+a:visited,
+a:active,
+a:link {
     color: white;
     transition: 0.4s;
 }
 
-#ddmiBck:hover #ddmiText,
-#ddmiBck:hover #ddmiDropDownIcon,
-#ddmiList li:hover {
+.ddmiBck:hover .ddmiText,
+.ddmiBck:hover .ddmiDropDownIcon,
+.ddmiList li.ddmiLiWithSublist:hover .ddmiDropDownIcon,
+.ddmiList li:hover,
+.ddmiBck:hover a,
+.ddmiBck:hover a:visited,
+.ddmiBck:hover a:active,
+.ddmiLiWithoutSublist:hover a,
+.ddmiLiWithoutSublist:hover a:visited,
+.ddmiLiWithoutSublist:hover a:active,
+.ddmiLiWithoutSublist:hover a:link,
+.ddmiLiWithSublist li:hover a,
+.ddmiLiWithSublist li:hover a:visited,
+.ddmiLiWithSublist li:hover a:active,
+.ddmiLiWithSublist li:hover a:link {
     color: #4CF7EA;
     transition: 0.4s;
 }
 
-#ddmiBck:hover #ddmiArrowIcon {
+.ddmiBck:hover .ddmiArrowIcon {
     fill: #4CF7EA;
     stroke: #4CF7EA;
     transition: 0.4s;
+}
+
+.ddmiLiWithSublist {
+    position: relative;
+}
+
+.ddmiListSublist {
+    top: 0;
+    right: 0;
+    transform: translateX(99%);
+}
+
+.ddmiList li.ddmiLiWithSublist:hover .ddmiListSublist {
+    display: block;
+    transition: 0.25s;
+}
+
+.ddmiLiWithSublist .ddmiDropDownIcon {
+    position: absolute;
+    right: 6%;
+    transform: rotate(-90deg);
 }
