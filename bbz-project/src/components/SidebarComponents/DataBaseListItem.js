@@ -1,9 +1,9 @@
 import "../../styles/sidebar-styles.css";
 
-const DataBaseListItem = ({ dbName, handleDBChange }) => {
+const DataBaseListItem = ({ dbId, dbName, handleDBChange }) => {
 
     return (
-        <div className="list-item" onClick={() => handleDBChange(dbName)}>
+        <div className="list-item" onClick={() => handleDBChange(dbId)}>
             {dbName}
         </div>
     )
