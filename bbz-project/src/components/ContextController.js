@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 
 const DataContext = createContext();
@@ -6,23 +6,35 @@ const DataContext = createContext();
 const ContextController = (props) => {
     const [dbList, setDbList] = useState();
     const [dbNames, setDbNames] = useState();
-    const [currentDb, setCurrentDb] = useState({});
-    const { fetchDbNames, addRecord, deleteRecord, editRecord } = useFetch("https://backend-bbz.herokuapp.com/api")
+    const [currentDbId, setCurrentDbId] = useState(0);
+    const [currentDb, setCurrentDb] = useState([]);
+    // addRecord, deleteRecord, editRecord are placeholders for future implementation
+    const { get, addRecord, deleteRecord, editRecord } = useFetch("https://backend-bbz.herokuapp.com/api")
+
+    useEffect(async () => {
+        const response = await get(`/request_db?db=${currentDbId}`);
+        let newRecordsList = [];
+        for(let record in response.message) {
+            newRecordsList = [...newRecordsList, response.message[record]]
+        }
+        setCurrentDb(newRecordsList)
+    }, [currentDbId])
 
     /* podaj url do endpointa */
     const handleDbListFetch = async () => {
-        const response = await fetchDbNames("/db_names");
-        console.log(response)
-        setDbNames(response)
+        const response = await get("/db_names");
+        setDbNames(response.result.names)
     }
 
 
-    const handleDbChange = (dbName) => {
-        setCurrentDb(dbName)
+    const handleDbChange = (dbId) => {
+        console.log(dbId)
+        setCurrentDbId(dbId)
     }
 
     const value = {
         dbNames: dbNames,
+        recordsList: currentDb,
         handleDbChange: handleDbChange,
         handleDbListFetch: handleDbListFetch
     }

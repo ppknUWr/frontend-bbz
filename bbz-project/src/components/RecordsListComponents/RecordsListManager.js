@@ -15,6 +15,7 @@ import {
   SORT_OPTIONS,
 } from "../../constants/records-list-manager-const";
 import { useScreenSizes } from "../../hooks/useScreenSizes";
+import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
 
@@ -117,6 +118,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
 
   const [searchByVal, setSearchByVal] = React.useState("Autor");
   const [keysAmount, setKeysAmount] = React.useState(SORT_OPTIONS.length - 1);
+  const { recordsList } = React.useContext(DataContext)
 
   React.useEffect(() => {
     setKeysAmount(
@@ -167,7 +169,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
             )}
           </div>
           <div id={"recordsField"} className={"w-100 pt-3"}>
-            {recordsData.map((item, key) => (
+            {recordsList.map((item, key) => (
               <Record key={key} data={item} keysAmount={keysAmount} />
             ))}
           </div>
