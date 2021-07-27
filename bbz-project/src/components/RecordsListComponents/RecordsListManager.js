@@ -19,8 +19,29 @@ import { sidebarIconButtonStyles } from "../../materialStyles/recordsListCompone
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
 
+  const [maxPage, setMaxPage] = React.useState(50);
+  const [pagesAmount, setPagesAmount] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const [searchByVal, setSearchByVal] = React.useState("Autor");
   const { recordsList } = React.useContext(DataContext);
+
+  React.useEffect(() => {
+    setPagesAmount(Math.ceil(recordsList.length / 50));
+  }, [recordsList]);
+
+  const pageDown = () => {
+    if (currentPage > 1) {
+      setCurrentPage((val) => val - 1);
+      setMaxPage((val) => val - 50);
+    }
+  };
+
+  const pageUp = () => {
+    if (currentPage < pagesAmount) {
+      setCurrentPage((val) => val + 1);
+      setMaxPage((val) => val + 50);
+    }
+  };
 
   return (
     <div className={"w-100 h-100"}>
@@ -43,38 +64,40 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
           <div id={"sortOptions"} className={"w-100 d-flex align-items-center"}>
-            {SORT_OPTIONS.map((item, key) =>
+            {SORT_OPTIONS.map((item, key) => (
               <div
-                className={
-                  "optionBck justify-content-start align-items-center"
-                }
+                className={"optionBck justify-content-start align-items-center"}
                 id={"key" + (key + 1)}
                 key={key}
               >
                 <SortButton text={item} />
               </div>
-            )}
+            ))}
           </div>
           <div id={"recordsField"} className={"w-100 pt-3"}>
-            {recordsList.map((item, key) => (
-              <Record
-                key={key}
-                publicationDate={item["publication_date"]}
-                bookAuthor={item["book_author"]}
-                title={item["title"]}
-                publisher={item["publisher"]}
-                publicationPlace={item["publication_place"]}
-                source={item["source"]}
-                id={item['id']}
-                subtitle={item['subtitle']}
-                originalEdition={item['original_edition']}
-                pages={item['pages']}
-                language={item['language']}
-                series={item['series']}
-                isbnIssnNumber={item['isbn_or_issn_number']}
-                keywordsAndContent={item['keywords_and_content']}
-              />
-            ))}
+            {recordsList.map((item, key) =>
+              key < maxPage && key > maxPage - 50 ? (
+                <Record
+                  key={key}
+                  publicationDate={item["publication_date"]}
+                  bookAuthor={item["book_author"]}
+                  title={item["title"]}
+                  publisher={item["publisher"]}
+                  publicationPlace={item["publication_place"]}
+                  source={item["source"]}
+                  id={item["id"]}
+                  subtitle={item["subtitle"]}
+                  originalEdition={item["original_edition"]}
+                  pages={item["pages"]}
+                  language={item["language"]}
+                  series={item["series"]}
+                  isbnIssnNumber={item["isbn_or_issn_number"]}
+                  keywordsAndContent={item["keywords_and_content"]}
+                />
+              ) : (
+                <div key={key} style={{ display: "none" }} />
+              )
+            )}
           </div>
         </div>
       </div>
@@ -95,7 +118,11 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
               "w-50 h-100 d-flex align-items-center justify-content-center"
             }
           >
-            <PageButton leftDirection={true} />
+            <PageButton
+              leftDirection={true}
+              onClick={pageDown}
+              disabled={currentPage === 1}
+            />
           </div>
           <div
             id={"rightPageButton"}
@@ -103,10 +130,16 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
               "w-50 h-100 d-flex align-items-center justify-content-center"
             }
           >
-            <PageButton leftDirection={false} />
+            <PageButton
+              leftDirection={false}
+              onClick={pageUp}
+              disabled={currentPage === pagesAmount}
+            />
           </div>
         </div>
-        <div id={"pageText"}>1 z 1s</div>
+        <div id={"pageText"}>
+          Strona {currentPage} z {pagesAmount}
+        </div>
       </div>
     </div>
   );
