@@ -6,7 +6,7 @@ const useFetch = (baseUrl) => {
         try {
             const response = await fetch(`${baseUrl+url}`);
             const responseJSON = await response.json();
-            return responseJSON
+            return responseJSON;
         }
         catch (error) {
             console.log(error);

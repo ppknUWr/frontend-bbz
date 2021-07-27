@@ -7,14 +7,16 @@ const ContextController = (props) => {
     const [dbList, setDbList] = useState();
     const [dbNames, setDbNames] = useState();
     const [currentDbId, setCurrentDbId] = useState(0);
-    const [currentDb, setCurrentDb] = useState({});
+    const [currentDb, setCurrentDb] = useState([]);
     const { get, addRecord, deleteRecord, editRecord } = useFetch("https://backend-bbz.herokuapp.com/api")
 
     useEffect(async () => {
-        const response = await get(`/request_db?db=${currentDbId}`)
-        console.log(response.message)
-        setCurrentDb(response.message)
-
+        const response = await get(`/request_db?db=${currentDbId}`);
+        let newRecordsList = [];
+        for(let record in response.message) {
+            newRecordsList = [...newRecordsList, response.message[record]]
+        }
+        setCurrentDb(newRecordsList)
     }, [currentDbId])
 
     /* podaj url do endpointa */
@@ -26,11 +28,12 @@ const ContextController = (props) => {
 
     const handleDbChange = (dbId) => {
         console.log(dbId)
-        setCurrentDb(dbId)
+        setCurrentDbId(dbId)
     }
 
     const value = {
         dbNames: dbNames,
+        recordsList: currentDb,
         handleDbChange: handleDbChange,
         handleDbListFetch: handleDbListFetch
     }
