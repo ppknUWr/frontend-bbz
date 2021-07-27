@@ -31,8 +31,14 @@
     padding-left: 6px;
     padding-right: 5px;
     margin-right: 0.07vw;
+    /*background-color: red;*/
+}
+
+.recordFieldText {
     font-size: 14px;
     line-height: 18px;
+    max-height: calc(18px * 2);
+    overflow: hidden;
 }
 
 .sublistGrayBck {
@@ -50,4 +56,55 @@
 
 .visibleOptions {
     display: flex;
+}
+
+.key1 {
+    width: 5%;
+}
+
+.key2 {
+    width: 15%;
+}
+
+.key3 {
+    width: 27%;
+}
+
+.key4 {
+    width: 17%;
+}
+
+.key5 {
+    width: 12%;
+}
+
+.key6 {
+    display: flex;
+    width: 12%;
+}
+
+@media (max-width: 1300px) {
+    .key1 {
+        width: 8%;
+    }
+
+    .key2 {
+        width: 20%;
+    }
+
+    .key3 {
+        width: 27%;
+    }
+
+    .key4 {
+        width: 17%;
+    }
+
+    .key5 {
+        width: 18%;
+    }
+
+    .key6 {
+        display: none;
+    }
 }

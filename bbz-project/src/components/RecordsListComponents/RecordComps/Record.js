@@ -4,13 +4,23 @@ import Sublist from "./Sublist";
 import RecordOptions from "./RecordOptions";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
-import {
-  FIELD_WIDTHS,
-  FIELD_WIDTHS_SHORT,
-} from "../../../constants/records-list-manager-const";
 
-const Record = ({ data, keysAmount }) => {
-  const keys = Object.keys(data);
+const Record = ({
+  publicationDate,
+  bookAuthor,
+  title,
+  publisher,
+  publicationPlace,
+  source,
+  id,
+  subtitle,
+  originalEdition,
+  pages,
+  language,
+  series,
+  isbnIssnNumber,
+  keywordsAndContent,
+}) => {
   const [sublistVisibility, setSublistVisibility] = React.useState(true);
   const [openSublist, setOpenSublist] = React.useState(false);
   const [optionsVisibility, setOptionsVisibility] = React.useState(false);
@@ -34,31 +44,41 @@ const Record = ({ data, keysAmount }) => {
         className={"recordBck w-100 d-flex flex-row position-relative"}
         onClick={handleRecordClick}
       >
-        {keys.map((item, key) =>
-          key <= keysAmount ? (
-            <div
-              key={key}
-              className={"recordFieldBck h-100 d-flex align-items-center "}
-              style={{
-                width:
-                  keysAmount === keys.length - 1
-                    ? FIELD_WIDTHS[key]
-                    : FIELD_WIDTHS_SHORT[key],
-              }}
-            >
-              {data[item]}
-            </div>
-          ) : (
-            <div key={key} style={{ display: "none" }} />
-          )
-        )}
+        <div className={"key1 recordFieldBck h-100 d-flex align-items-center"}>
+          <div className={"recordFieldText"}>{publicationDate}</div>
+        </div>
+        <div className={"key2 recordFieldBck h-100 d-flex align-items-center"}>
+          <div className={"recordFieldText"}>{bookAuthor}</div>
+        </div>
+        <div className={"key3 recordFieldBck h-100 d-flex align-items-center"}>
+          <div className={"recordFieldText"}>{title}</div>
+        </div>
+        <div className={"key4 recordFieldBck h-100 d-flex align-items-center"}>
+          <div className={"recordFieldText"}>{publisher}</div>
+        </div>
+        <div className={"key5 recordFieldBck h-100 d-flex align-items-center"}>
+          <div className={"recordFieldText"}>{publicationPlace}</div>
+        </div>
+        <div className={"key6 recordFieldBck h-100 align-items-center"}>
+          <div className={"recordFieldText"}>{source}</div>
+        </div>
         <RecordOptions visible={optionsVisibility} />
       </div>
       <animated.div
         style={sublistAnim}
         className={"sublistGrayBck w-100 overflow-hidden"}
       >
-        <Sublist />
+        <Sublist
+          id={id}
+          subtitle={subtitle}
+          originalEdition={originalEdition}
+          pages={pages}
+          language={language}
+          series={series}
+          isbnIssnNumber={isbnIssnNumber}
+          keywordAndContent={keywordsAndContent}
+          source={source}
+        />
       </animated.div>
     </animated.div>
   );
