@@ -8,6 +8,7 @@ const ContextController = (props) => {
     const [dbNames, setDbNames] = useState();
     const [currentDbId, setCurrentDbId] = useState(0);
     const [currentDb, setCurrentDb] = useState([]);
+    // addRecord, deleteRecord, editRecord are placeholders for future implementation
     const { get, addRecord, deleteRecord, editRecord } = useFetch("https://backend-bbz.herokuapp.com/api")
 
     useEffect(async () => {
