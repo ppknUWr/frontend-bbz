@@ -4,6 +4,7 @@ import Sublist from "./Sublist";
 import RecordOptions from "./RecordOptions";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
+import LinesEllipsis from "react-lines-ellipsis";
 
 const Record = ({
   publicationDate,
@@ -21,6 +22,15 @@ const Record = ({
   isbnIssnNumber,
   keywordsAndContent,
 }) => {
+  const valuesToDisplay = [
+    publicationDate,
+    bookAuthor,
+    title,
+    publisher,
+    publicationPlace,
+    source,
+  ];
+  const [enableAnim, setEnableAnim] = React.useState(false);
   const [sublistVisibility, setSublistVisibility] = React.useState(true);
   const [openSublist, setOpenSublist] = React.useState(false);
   const [optionsVisibility, setOptionsVisibility] = React.useState(false);
@@ -31,6 +41,7 @@ const Record = ({
   );
 
   const handleRecordClick = () => {
+    setEnableAnim(true);
     setOpenSublist(!openSublist);
     if (!sublistVisibility) {
       setSublistVisibility(true);
@@ -39,33 +50,37 @@ const Record = ({
   };
 
   return (
-    <animated.div style={heightAnim} className={"recordMainBck w-100"}>
+    <animated.div
+      style={enableAnim ? heightAnim : {}}
+      className={"recordMainBck w-100"}
+    >
       <div
         className={"recordBck w-100 d-flex flex-row position-relative"}
         onClick={handleRecordClick}
       >
-        <div className={"key1 recordFieldBck h-100 d-flex align-items-center"}>
-          <div className={"recordFieldText"}>{publicationDate}</div>
-        </div>
-        <div className={"key2 recordFieldBck h-100 d-flex align-items-center"}>
-          <div className={"recordFieldText"}>{bookAuthor}</div>
-        </div>
-        <div className={"key3 recordFieldBck h-100 d-flex align-items-center"}>
-          <div className={"recordFieldText"}>{title}</div>
-        </div>
-        <div className={"key4 recordFieldBck h-100 d-flex align-items-center"}>
-          <div className={"recordFieldText"}>{publisher}</div>
-        </div>
-        <div className={"key5 recordFieldBck h-100 d-flex align-items-center"}>
-          <div className={"recordFieldText"}>{publicationPlace}</div>
-        </div>
-        <div className={"key6 recordFieldBck h-100 align-items-center"}>
-          <div className={"recordFieldText"}>{source}</div>
-        </div>
-        <RecordOptions visible={optionsVisibility} />
+        {valuesToDisplay.map((item, index) => (
+          <div
+            key={index}
+            className={
+              "key" +
+              (index + 1) +
+              " recordFieldBck h-100 align-items-center"
+            }
+          >
+            <LinesEllipsis
+              className={"recordFieldText"}
+              text={item}
+              maxLine={2}
+              trimRight
+              ellipsis={"..."}
+              basedOn={"letters"}
+            />
+          </div>
+        ))}
+        <RecordOptions visible={enableAnim ? optionsVisibility : false} />
       </div>
       <animated.div
-        style={sublistAnim}
+        style={enableAnim ? sublistAnim : { opacity: 0 }}
         className={"sublistGrayBck w-100 overflow-hidden"}
       >
         <Sublist

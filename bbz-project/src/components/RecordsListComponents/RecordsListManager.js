@@ -18,6 +18,7 @@ import { sidebarIconButtonStyles } from "../../materialStyles/recordsListCompone
 
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
+  const recordsFieldElement = document.getElementById("recordsField");
 
   const [maxPage, setMaxPage] = React.useState(50);
   const [pagesAmount, setPagesAmount] = React.useState(1);
@@ -30,6 +31,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   }, [recordsList]);
 
   const pageDown = () => {
+    recordsFieldElement.scrollTop = 0;
     if (currentPage > 1) {
       setCurrentPage((val) => val - 1);
       setMaxPage((val) => val - 50);
@@ -37,6 +39,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   };
 
   const pageUp = () => {
+    recordsFieldElement.scrollTop = 0;
     if (currentPage < pagesAmount) {
       setCurrentPage((val) => val + 1);
       setMaxPage((val) => val + 50);

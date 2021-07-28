@@ -1,6 +1,5 @@
 .recordMainBck {
     background-color: #E1E1E1;
-    height: 400px;
     position: relative;
     margin-bottom: 6px;
 }
@@ -28,17 +27,15 @@
 }
 
 .recordFieldBck {
+    display: flex;
     padding-left: 6px;
-    padding-right: 5px;
+    padding-right: 6px;
     margin-right: 0.07vw;
-    /*background-color: red;*/
 }
 
 .recordFieldText {
     font-size: 14px;
     line-height: 18px;
-    max-height: calc(18px * 2);
-    overflow: hidden;
 }
 
 .sublistGrayBck {
@@ -51,6 +48,11 @@
 .recordOptionsBck {
     right: 0;
     width: 10%;
+    position: absolute;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
     display: none;
 }
 
@@ -79,7 +81,6 @@
 }
 
 .key6 {
-    display: flex;
     width: 12%;
 }
 
