@@ -10,7 +10,7 @@ const PageButton = ({ leftDirection, onClick, disabled }) => {
       <ArrowDropDownRoundedIcon
         style={Object.assign(
           {},
-          styles,
+          { color: disabled ? "#F4F4F4" : "#979797", fontSize: 80 },
           leftDirection
             ? { transform: "rotate(90deg)" }
             : { transform: "rotate(-90deg)" }
@@ -21,8 +21,3 @@ const PageButton = ({ leftDirection, onClick, disabled }) => {
 };
 
 export default PageButton;
-
-const styles = {
-  color: "#979797",
-  fontSize: 80,
-};
