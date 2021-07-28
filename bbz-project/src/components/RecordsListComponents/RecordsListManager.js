@@ -79,7 +79,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
           </div>
           <div id={"recordsField"} className={"w-100 pt-3"}>
             {recordsList.map((item, key) =>
-              key < maxPage && key > maxPage - 50 ? (
+              key < maxPage && key >= maxPage - 50 ? (
                 <Record
                   key={key}
                   publicationDate={item["publication_date"]}
