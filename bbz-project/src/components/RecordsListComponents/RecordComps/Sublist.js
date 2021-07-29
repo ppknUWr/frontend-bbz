@@ -1,55 +1,45 @@
 import * as React from "react";
 import "../../../styles/sublist-styles.css";
 
-const Sublist = ({
-  id,
-  subtitle,
-  originalEdition,
-  pages,
-  language,
-  series,
-  isbnIssnNumber,
-  keywordAndContent,
-  source,
-}) => {
+const Sublist = ({ sublistData }) => {
   const keyAndValues = [
     {
-      keyName: 'Id',
-      value: id,
+      keyName: "Id",
+      value: sublistData.id,
     },
     {
-      keyName: 'Podtytuł',
-      value: subtitle,
+      keyName: "Podtytuł",
+      value: sublistData.subtitle,
     },
     {
-      keyName: 'Wydanie',
-      value: originalEdition,
+      keyName: "Wydanie",
+      value: sublistData.originalEdition,
     },
     {
-      keyName: 'Objętość',
-      value: pages,
+      keyName: "Objętość",
+      value: sublistData.pages,
     },
     {
-      keyName: 'Język',
-      value: language,
+      keyName: "Język",
+      value: sublistData.language,
     },
     {
-      keyName: 'Typ',
-      value: series,
+      keyName: "Typ",
+      value: sublistData.series,
     },
     {
-      keyName: 'Identyfikator',
-      value: isbnIssnNumber,
+      keyName: "Identyfikator",
+      value: sublistData.isbnIssnNumber,
     },
     {
-      keyName: 'Treść zasobu',
-      value: keywordAndContent,
+      keyName: "Treść zasobu",
+      value: sublistData.keywordAndContent,
     },
     {
-      keyName: 'Źródło',
-      value: source,
-    }
-  ]
+      keyName: "Źródło",
+      value: sublistData.source,
+    },
+  ];
 
   return (
     <div className={"sublistBck d-flex flex-row w-100 h-100"}>

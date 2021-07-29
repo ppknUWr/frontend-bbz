@@ -70,7 +70,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
             {SORT_OPTIONS.map((item, key) => (
               <div
                 className={"optionBck justify-content-start align-items-center"}
-                id={"key" + (key + 1)}
+                id={`key${key + 1}`}
                 key={key}
               >
                 <SortButton text={item} />
@@ -82,20 +82,25 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
               key < maxPage && key >= maxPage - 50 ? (
                 <Record
                   key={key}
-                  publicationDate={item["publication_date"]}
-                  bookAuthor={item["book_author"]}
-                  title={item["title"]}
-                  publisher={item["publisher"]}
-                  publicationPlace={item["publication_place"]}
-                  source={item["source"]}
-                  id={item["id"]}
-                  subtitle={item["subtitle"]}
-                  originalEdition={item["original_edition"]}
-                  pages={item["pages"]}
-                  language={item["language"]}
-                  series={item["series"]}
-                  isbnIssnNumber={item["isbn_or_issn_number"]}
-                  keywordsAndContent={item["keywords_and_content"]}
+                  recordData={{
+                    publicationDate: item["publication_date"],
+                    bookAuthor: item["book_author"],
+                    title: item["title"],
+                    publisher: item["publisher"],
+                    publicationPlace: item["publication_place"],
+                    source: item["source"],
+                  }}
+                  sublistData={{
+                    id: item["id"],
+                    subtitle: item["subtitle"],
+                    originalEdition: item["original_edition"],
+                    pages: item["pages"],
+                    language: item["language"],
+                    series: item["series"],
+                    isbnIssnNumber: item["isbn_or_issn_number"],
+                    keywordsAndContent: item["keywords_and_content"],
+                    source: item["source"],
+                  }}
                 />
               ) : (
                 <div key={key} style={{ display: "none" }} />

@@ -6,29 +6,14 @@ import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
 import LinesEllipsis from "react-lines-ellipsis";
 
-const Record = ({
-  publicationDate,
-  bookAuthor,
-  title,
-  publisher,
-  publicationPlace,
-  source,
-  id,
-  subtitle,
-  originalEdition,
-  pages,
-  language,
-  series,
-  isbnIssnNumber,
-  keywordsAndContent,
-}) => {
+const Record = ({ recordData, sublistData }) => {
   const valuesToDisplay = [
-    publicationDate,
-    bookAuthor,
-    title,
-    publisher,
-    publicationPlace,
-    source,
+    recordData.publicationDate,
+    recordData.bookAuthor,
+    recordData.title,
+    recordData.publisher,
+    recordData.publicationPlace,
+    recordData.source,
   ];
   const [enableAnim, setEnableAnim] = React.useState(false);
   const [sublistVisibility, setSublistVisibility] = React.useState(true);
@@ -61,11 +46,7 @@ const Record = ({
         {valuesToDisplay.map((item, index) => (
           <div
             key={index}
-            className={
-              "key" +
-              (index + 1) +
-              " recordFieldBck h-100 align-items-center"
-            }
+            className={`key${index + 1} recordFieldBck h-100 align-items-center`}
           >
             <LinesEllipsis
               className={"recordFieldText"}
@@ -84,15 +65,17 @@ const Record = ({
         className={"sublistGrayBck w-100 overflow-hidden"}
       >
         <Sublist
-          id={id}
-          subtitle={subtitle}
-          originalEdition={originalEdition}
-          pages={pages}
-          language={language}
-          series={series}
-          isbnIssnNumber={isbnIssnNumber}
-          keywordAndContent={keywordsAndContent}
-          source={source}
+          sublistData={{
+            id: sublistData.id,
+            subtitle: sublistData.subtitle,
+            originalEdition: sublistData.originalEdition,
+            pages: sublistData.pages,
+            language: sublistData.language,
+            series: sublistData.series,
+            isbnIssnNumber: sublistData.isbnIssnNumber,
+            keywordAndContent: sublistData.keywordsAndContent,
+            source: sublistData.source,
+          }}
         />
       </animated.div>
     </animated.div>
