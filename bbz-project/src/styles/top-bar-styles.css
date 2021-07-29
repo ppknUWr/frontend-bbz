@@ -14,6 +14,21 @@
 }
 
 #topBarBodyLeftBck {
+    position: relative;
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+#topBarBodyLeftBck img {
+    position: absolute;
+    transform: scale(0.520);
+    left: 2.5%;
+    top: -44%;
+}
+
+#topBarBodyLeftText {
+    transform: translateX(-10%);
 }
 
 #topBarBodyRightBck {
