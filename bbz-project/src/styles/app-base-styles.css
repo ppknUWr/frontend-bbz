@@ -2,11 +2,6 @@
     height: 125px;
 }
 
-#topBarImg {
-    transform: translate(-1.4%, -26.5%);
-    z-index: 0;
-}
-
 #appBaseBck {
     padding-top: 125px;
     min-height: 750px;
@@ -19,13 +14,11 @@
 #appBaseTopBarBck {
     background-color: transparent;
     height: 125px;
-    top: 0;
 }
 
 #appBaseBodyLeftBck {
     left: 0;
     width: 270px;
-    z-index: 5;
 }
 
 #appBaseBodyRightBck {
@@ -42,5 +35,9 @@
 @media (max-width: 991px) {
     #mainContentBck {
         padding-left: 0;
+    }
+
+    #appBaseBodyLeftBck {
+        z-index: 5;
     }
 }

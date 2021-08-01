@@ -39,7 +39,6 @@
     background-color: #0F7699;
     list-style-type: none;
     display: none;
-    transition: 0.25s;
     position: absolute;
     padding: 20px 0;
     font-weight: bold;
@@ -61,7 +60,6 @@
 .ddmiList:hover,
 .ddmiLiWithSublist:hover {
     display: block;
-    transition: 0.25s;
 }
 
 .ddmiBck .ddmiText,
@@ -104,6 +102,16 @@ a:link {
     position: relative;
 }
 
+.ddmiLiWithSublist > div {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.ddmiLiWithSublist > div > .ddmiDropDownIcon {
+    position: absolute;
+    right: 5%;
+}
+
 .ddmiListSublist {
     top: 0;
     right: 0;
@@ -116,7 +124,34 @@ a:link {
 }
 
 .ddmiLiWithSublist .ddmiDropDownIcon {
-    position: absolute;
     right: 6%;
     transform: rotate(-90deg);
+}
+
+@media (max-width: 1038px) {
+    .ddmiMainBck {
+        float: none;
+    }
+
+    .ddmiList, .ddmiListSublist {
+        position: static;
+        padding: 10px 0;
+    }
+
+    .ddmiListSublist {
+        transform: translateX(0%);
+        position: static;
+    }
+
+    .ddmiLiWithSublist .ddmiDropDownIcon {
+        transform: rotate(0deg);
+    }
+
+    .ddmiLiWithSublist > div {
+        transform: translateX(14%);
+    }
+
+    .ddmiLiWithSublist > div > .ddmiDropDownIcon {
+        position: static;
+    }
 }
