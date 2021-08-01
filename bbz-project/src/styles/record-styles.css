@@ -1,8 +1,8 @@
 .recordMainBck {
     background-color: #E1E1E1;
-    height: 400px;
     position: relative;
     margin-bottom: 6px;
+    z-index: 0;
 }
 
 .recordMainBck:last-child {
