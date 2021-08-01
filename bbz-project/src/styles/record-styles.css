@@ -1,7 +1,6 @@
 .recordMainBck {
     background-color: #E1E1E1;
     height: 400px;
-    z-index: 0;
     position: relative;
     margin-bottom: 6px;
 }
@@ -29,9 +28,13 @@
 }
 
 .recordFieldBck {
+    display: flex;
     padding-left: 6px;
     padding-right: 5px;
     margin-right: 0.07vw;
+}
+
+.recordFieldText {
     font-size: 14px;
     line-height: 18px;
 }
@@ -46,9 +49,64 @@
 .recordOptionsBck {
     right: 0;
     width: 10%;
+    position: absolute;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 4px;
     display: none;
 }
 
 .visibleOptions {
     display: flex;
+}
+
+.key1 {
+    width: 5%;
+}
+
+.key2 {
+    width: 15%;
+}
+
+.key3 {
+    width: 27%;
+}
+
+.key4 {
+    width: 17%;
+}
+
+.key5 {
+    width: 12%;
+}
+
+.key6 {
+    width: 12%;
+}
+
+@media (max-width: 1300px) {
+    .key1 {
+        width: 8%;
+    }
+
+    .key2 {
+        width: 20%;
+    }
+
+    .key3 {
+        width: 27%;
+    }
+
+    .key4 {
+        width: 17%;
+    }
+
+    .key5 {
+        width: 18%;
+    }
+
+    .key6 {
+        display: none;
+    }
 }

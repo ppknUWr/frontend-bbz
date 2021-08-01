@@ -2,12 +2,11 @@
 
 const useFetch = (baseUrl) => {
 
-    const fetchDbNames = async (url) => {
+    const get = async (url) => {
         try {
             const response = await fetch(`${baseUrl+url}`);
             const responseJSON = await response.json();
-            const dbList = responseJSON.result.names;
-            return dbList
+            return responseJSON;
         }
         catch (error) {
             console.log(error);
@@ -83,7 +82,7 @@ const useFetch = (baseUrl) => {
         }
     }
 
-    return { fetchDbNames, addRecord, deleteRecord, editRecord, exportToPDF, exportToXLS }
+    return { get, addRecord, deleteRecord, editRecord, exportToPDF, exportToXLS }
 }
 
 export default useFetch;
