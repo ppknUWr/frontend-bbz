@@ -6,14 +6,15 @@ import image from "../../assets/PhcTopBarFigure.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import bckImage from "../../assets/TopBarBackground.jpg";
-import {useScreenSizes} from "../../hooks/useScreenSizes";
+import { useScreenSizes } from "../../hooks/useScreenSizes";
 
 const TopBar = () => {
+  const [optionsDisplayProp, setOptionsDisplayProp] = React.useState('flex');
   const [areOptionsVisible, setAreOptionsVisible] = React.useState(false);
   const [rightElementPosition, setRightElementPosition] = React.useState(
     "static"
   );
-  const {topBarIconBreakpoint} = useScreenSizes();
+  const { topBarIconBreakpoint } = useScreenSizes();
 
   React.useEffect(() => {
     setAreOptionsVisible(!topBarIconBreakpoint);
@@ -23,6 +24,16 @@ const TopBar = () => {
       setRightElementPosition("static");
     }
   }, [topBarIconBreakpoint]);
+
+  React.useEffect(() => {
+    if (areOptionsVisible && topBarIconBreakpoint) {
+      setOptionsDisplayProp('table');
+    } else if (topBarIconBreakpoint) {
+      setOptionsDisplayProp('none');
+    } else {
+      setOptionsDisplayProp('flex');
+    }
+  }, [areOptionsVisible, topBarIconBreakpoint]);
 
   const onClickIcon = () => {
     setAreOptionsVisible((val) => !val);
@@ -46,9 +57,8 @@ const TopBar = () => {
             id={"topBarBodyRightBck"}
             className={"w-100 align-items-center"}
             style={{
-              display: areOptionsVisible ? "flex" : "none",
+              display: optionsDisplayProp,
               position: rightElementPosition,
-              height: topBarIconBreakpoint ? "fit-content" : "100%",
             }}
           >
             <div id={"topBarBodyRightHelper"}>
@@ -67,7 +77,7 @@ const TopBar = () => {
               "h-100 position-absolute align-items-center justify-content-center"
             }
           >
-            <img src={image} alt={"figure"} className={"position-absolute"}/>
+            <img src={image} alt={"figure"} className={"position-absolute"} />
             <div id={"topBarBodyLeftText"}>
               Pracownia Humanistyki Cyfrowej IINiB UWr
             </div>

@@ -78,10 +78,10 @@
         background-color: #0F7699;
         padding-top: 70px;
         padding-bottom: 16px;
-        justify-content: center;
     }
 
     #topBarBodyRightHelper {
+        margin: 0 auto;
         width: fit-content;
         display: flex;
         flex-direction: column;
