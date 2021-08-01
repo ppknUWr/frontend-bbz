@@ -11,19 +11,6 @@ import {
 const RecordOptions = ({ visible }) => {
   const editIconClasses = editIconStyles();
   const deleteIconClasses = deleteIconStyles();
-  const [className, setClassName] = React.useState("");
-
-  React.useEffect(() => {
-    if (visible) {
-      setClassName(
-        "visibleOptions recordOptionsBck position-absolute h-100 align-items-center justify-content-end pr-2"
-      );
-    } else {
-      setClassName(
-        "recordOptionsBck position-absolute h-100 align-items-center justify-content-end pr-2"
-      );
-    }
-  }, [visible]);
 
   const onButtonClick = (event, text) => {
     event.stopPropagation();
@@ -31,7 +18,11 @@ const RecordOptions = ({ visible }) => {
   };
 
   return (
-    <div className={className}>
+    <div
+      className={
+        visible ? "visibleOptions recordOptionsBck" : "recordOptionsBck"
+      }
+    >
       <Button
         classes={editIconClasses}
         onClick={(event) => onButtonClick(event, "Edit")}

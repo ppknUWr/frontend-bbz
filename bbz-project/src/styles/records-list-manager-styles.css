@@ -26,6 +26,7 @@
 }
 
 .optionBck {
+    display: flex;
     height: 80%;
     border-right: 1px solid #979797;
     padding-left: 0.1vw;
@@ -68,3 +69,53 @@
     top: 10px;
 }
 
+#key1 {
+    width: 5%;
+}
+
+#key2 {
+    width: 15%;
+}
+
+#key3 {
+    width: 27%;
+}
+
+#key4 {
+    width: 17%;
+}
+
+#key5 {
+    width: 12%;
+}
+
+#key6 {
+    display: flex;
+    width: 12%;
+}
+
+@media (max-width: 1300px) {
+    #key1 {
+        width: 8%;
+    }
+
+    #key2 {
+        width: 20%;
+    }
+
+    #key3 {
+        width: 27%;
+    }
+
+    #key4 {
+        width: 17%;
+    }
+
+    #key5 {
+        width: 18%;
+    }
+
+    #key6 {
+        display: none;
+    }
+}

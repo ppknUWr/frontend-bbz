@@ -1,60 +1,57 @@
 import * as React from "react";
 import "../../../styles/sublist-styles.css";
 
-const Sublist = () => {
-  const keys = [
+const Sublist = ({ sublistData }) => {
+  const keyAndValues = [
     {
-      name: "Id",
-      value: "12351234",
+      keyName: "Id",
+      value: sublistData.id,
     },
     {
-      name: "Podtytuł",
-      value: "Lorem ipsum dolor sit amet.",
+      keyName: "Podtytuł",
+      value: sublistData.subtitle,
     },
     {
-      name: "Wydanie",
-      value: "Lorem ipsum",
+      keyName: "Wydanie",
+      value: sublistData.originalEdition,
     },
     {
-      name: "Objętość",
-      value: "Lorem ipsum dolor",
+      keyName: "Objętość",
+      value: sublistData.pages,
     },
     {
-      name: "Język",
-      value: "Lorem",
+      keyName: "Język",
+      value: sublistData.language,
     },
     {
-      name: "Typ",
-      value: "Lorem ipsum",
+      keyName: "Typ",
+      value: sublistData.series,
     },
     {
-      name: "Format",
-      value: "Lorem",
+      keyName: "Identyfikator",
+      value: sublistData.isbnIssnNumber,
     },
     {
-      name: "Identyfikator",
-      value: "612376",
+      keyName: "Treść zasobu",
+      value: sublistData.keywordAndContent,
     },
     {
-      name: "Treść zasobu",
-      value:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis lacus at nisi cursus accumsan in at dui. Vivamus non pulvinar massa. Curabitur sed ex consequat, pharetra dui et, convallis elit. Class aptent taciti sociosqu ad litora torquent per conubia.",
-    },
-    {
-      name: "Źródło",
-      value: "Lorem ipsum dolor",
+      keyName: "Źródło",
+      value: sublistData.source,
     },
   ];
 
   return (
     <div className={"sublistBck d-flex flex-row w-100 h-100"}>
       <table className={"sublistTable w-100 h-100"}>
-        {keys.map((item, index) => (
-          <tr key={index}>
-            <th className={"sublistKey"}>{item.name}</th>
-            <td className={"sublistVal"}>{item.value}</td>
-          </tr>
-        ))}
+        <tbody>
+          {keyAndValues.map((item, index) => (
+            <tr key={index}>
+              <th className={"sublistKey"}>{item.keyName}</th>
+              <td className={"sublistVal"}>{item.value}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
