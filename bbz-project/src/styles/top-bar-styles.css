@@ -1,5 +1,11 @@
+#topBarImgBck {
+    height: 125px;
+}
+
 #topBarImg {
-    transform: translate(-1.4%, -26.5%);
+    width: 101%;
+    object-fit: cover;
+    transform: translate(-0.5%, -26.5%);
 }
 
 #topBarBlackEffect {
