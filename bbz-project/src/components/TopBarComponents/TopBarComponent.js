@@ -9,7 +9,7 @@ import bckImage from "../../assets/TopBarBackground.jpg";
 import { useScreenSizes } from "../../hooks/useScreenSizes";
 
 const TopBar = () => {
-  const [optionsDisplayProp, setOptionsDisplayProp] = React.useState('flex');
+  const [optionsDisplayProp, setOptionsDisplayProp] = React.useState("flex");
   const [areOptionsVisible, setAreOptionsVisible] = React.useState(false);
   const [rightElementPosition, setRightElementPosition] = React.useState(
     "static"
@@ -27,11 +27,11 @@ const TopBar = () => {
 
   React.useEffect(() => {
     if (areOptionsVisible && topBarIconBreakpoint) {
-      setOptionsDisplayProp('table');
+      setOptionsDisplayProp("table");
     } else if (topBarIconBreakpoint) {
-      setOptionsDisplayProp('none');
+      setOptionsDisplayProp("none");
     } else {
-      setOptionsDisplayProp('flex');
+      setOptionsDisplayProp("flex");
     }
   }, [areOptionsVisible, topBarIconBreakpoint]);
 
@@ -79,7 +79,9 @@ const TopBar = () => {
           >
             <img src={image} alt={"figure"} className={"position-absolute"} />
             <div id={"topBarBodyLeftText"}>
-              Pracownia Humanistyki Cyfrowej IINiB UWr
+              <a href={"http://phc.uni.wroc.pl/pl/"}>
+                Pracownia Humanistyki Cyfrowej IINiB UWr
+              </a>
             </div>
           </div>
           {areOptionsVisible ? (

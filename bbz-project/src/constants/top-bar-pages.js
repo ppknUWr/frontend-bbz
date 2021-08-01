@@ -5,7 +5,7 @@ export const TOP_BAR_PAGES = [
     subpages: [
       {
         page: 'Home',
-        link: 'http://phc.uni.wroc.pl/pl/index.html#content1-aa',
+        link: 'http://phc.uni.wroc.pl/pl/',
         subpages: [],
       },
       {

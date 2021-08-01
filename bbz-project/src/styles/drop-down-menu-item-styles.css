@@ -65,10 +65,10 @@
 .ddmiBck .ddmiText,
 .ddmiList li,
 .ddmiDropDownIcon,
-a,
-a:visited,
-a:active,
-a:link {
+.ddmiMainBck a,
+.ddmiMainBck a:visited,
+.ddmiMainBck a:active,
+.ddmiMainBck a:link {
     color: white;
     transition: 0.4s;
 }

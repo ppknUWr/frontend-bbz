@@ -14,7 +14,6 @@
 
 #topBarBodyLeftBck {
     left: 0;
-    color: white;
     width: 710px;
     font-size: 23px;
     font-weight: bold;
@@ -29,6 +28,15 @@
 
 #topBarBodyLeftText {
     transform: translateX(15%);
+}
+
+#topBarBodyLeftText a {
+    color: white;
+}
+
+#topBarBodyLeftText:hover a {
+    text-decoration: none;
+    color: #B3B3B3;
 }
 
 #topBarBodyRightBck {
