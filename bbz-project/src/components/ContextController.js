@@ -13,17 +13,20 @@ const ContextController = (props) => {
 
     useEffect(async () => {
         const response = await get(`/request_db?db=${currentDbId}`);
-        let newRecordsList = [];
-        for(let record in response.message) {
-            newRecordsList = [...newRecordsList, response.message[record]]
+        if (response) {
+            let newRecordsList = [];
+            for(let record in response.message) {
+                newRecordsList.push(response.message[record]);
+            }
+            setCurrentDb(newRecordsList);
         }
-        setCurrentDb(newRecordsList)
     }, [currentDbId])
 
     /* podaj url do endpointa */
     const handleDbListFetch = async () => {
         const response = await get("/db_names");
-        setDbNames(response.result.names)
+        if (response)
+            setDbNames(response.result.names)
     }
 
 
