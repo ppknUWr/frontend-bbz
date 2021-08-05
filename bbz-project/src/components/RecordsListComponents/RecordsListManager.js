@@ -27,6 +27,8 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const { recordsList } = React.useContext(DataContext);
 
   React.useEffect(() => {
+    setCurrentPage(1);
+    setMaxPage(50);
     setPagesAmount(Math.ceil(recordsList.length / 50));
   }, [recordsList]);
 
