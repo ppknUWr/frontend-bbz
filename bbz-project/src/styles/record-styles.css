@@ -2,6 +2,7 @@
     background-color: #E1E1E1;
     position: relative;
     margin-bottom: 6px;
+    z-index: 0;
 }
 
 .recordMainBck:last-child {
@@ -29,7 +30,7 @@
 .recordFieldBck {
     display: flex;
     padding-left: 6px;
-    padding-right: 6px;
+    padding-right: 5px;
     margin-right: 0.07vw;
 }
 
