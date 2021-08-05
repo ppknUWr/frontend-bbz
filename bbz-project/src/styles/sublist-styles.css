@@ -4,15 +4,14 @@
 }
 
 .sublistTable {
-    border-radius: 6px;
     font-size: 13px;
 }
-.sublistTable > tr:last-child > th {
+.sublistTable > tbody > tr:last-child > th {
     border: 0;
     border-bottom-left-radius: 6px;
 }
 
-.sublistTable > tr:first-child > th {
+.sublistTable > tbody > tr:first-child > th {
     border-top-left-radius: 6px;
 }
 
