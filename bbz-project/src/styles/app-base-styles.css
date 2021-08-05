@@ -8,16 +8,13 @@
 }
 
 #appBaseTopBarBck {
-    background-color: green;
+    background-color: transparent;
     height: 125px;
-    top: 0;
-    z-index: 6;
 }
 
 #appBaseBodyLeftBck {
     left: 0;
     width: 270px;
-    z-index: 5;
 }
 
 #appBaseBodyRightBck {
@@ -34,5 +31,9 @@
 @media (max-width: 991px) {
     #mainContentBck {
         padding-left: 0;
+    }
+
+    #appBaseBodyLeftBck {
+        z-index: 5;
     }
 }

@@ -1,0 +1,157 @@
+.ddmiMainBck {
+    float: left;
+    position: relative;
+    width: fit-content;
+    margin-right: 4px;
+}
+
+.ddmiBck {
+    height: 40px;
+}
+
+.ddmiArrowIcon {
+    height: 26px;
+    width: 26px;
+    fill: white;
+    stroke: white;
+    stroke-width: 0.7px;
+    transition: 0.4s;
+}
+
+.ddmiText {
+    font-weight: bold;
+    font-size: 17px;
+    margin: 0 2px 0 10px;
+}
+
+.ddmiText a:hover,
+.ddmiList a:hover {
+    text-decoration: none;
+}
+
+.ddmiDropDownIcon {
+    padding: 0;
+    transform: translateX(-10%);
+    font-size: 28px;
+}
+
+.ddmiList, .ddmiListSublist {
+    background-color: #0F7699;
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+.ddmiList li {
+    text-align: center;
+    margin: 3px 0;
+    padding: 0 33px;
+    white-space: nowrap;
+}
+
+.ddmiBck:hover,
+.ddmiList:hover {
+    cursor: pointer;
+}
+
+.ddmiBck:hover + .ddmiList,
+.ddmiList:hover,
+.ddmiLiWithSublist:hover {
+    display: block;
+}
+
+.ddmiBck .ddmiText,
+.ddmiList li,
+.ddmiDropDownIcon,
+.ddmiMainBck a,
+.ddmiMainBck a:visited,
+.ddmiMainBck a:active,
+.ddmiMainBck a:link {
+    color: white;
+    transition: 0.4s;
+}
+
+.ddmiBck:hover .ddmiText,
+.ddmiBck:hover .ddmiDropDownIcon,
+.ddmiList li.ddmiLiWithSublist:hover .ddmiDropDownIcon,
+.ddmiList li:hover,
+.ddmiBck:hover a,
+.ddmiBck:hover a:visited,
+.ddmiBck:hover a:active,
+.ddmiLiWithoutSublist:hover a,
+.ddmiLiWithoutSublist:hover a:visited,
+.ddmiLiWithoutSublist:hover a:active,
+.ddmiLiWithoutSublist:hover a:link,
+.ddmiLiWithSublist li:hover a,
+.ddmiLiWithSublist li:hover a:visited,
+.ddmiLiWithSublist li:hover a:active,
+.ddmiLiWithSublist li:hover a:link {
+    color: #4CF7EA;
+    transition: 0.4s;
+}
+
+.ddmiBck:hover .ddmiArrowIcon {
+    fill: #4CF7EA;
+    stroke: #4CF7EA;
+    transition: 0.4s;
+}
+
+.ddmiLiWithSublist {
+    position: relative;
+}
+
+.ddmiLiWithSublist > div {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.ddmiLiWithSublist > div > .ddmiDropDownIcon {
+    position: absolute;
+    right: 5%;
+}
+
+.ddmiListSublist {
+    top: 0;
+    right: 0;
+    transform: translateX(99%);
+}
+
+.ddmiList li.ddmiLiWithSublist:hover .ddmiListSublist {
+    display: block;
+    transition: 0.25s;
+}
+
+.ddmiLiWithSublist .ddmiDropDownIcon {
+    right: 6%;
+    transform: rotate(-90deg);
+}
+
+@media (max-width: 1038px) {
+    .ddmiMainBck {
+        float: none;
+    }
+
+    .ddmiList, .ddmiListSublist {
+        position: static;
+        padding: 10px 0;
+    }
+
+    .ddmiListSublist {
+        transform: translateX(0%);
+        position: static;
+    }
+
+    .ddmiLiWithSublist .ddmiDropDownIcon {
+        transform: rotate(0deg);
+    }
+
+    .ddmiLiWithSublist > div {
+        transform: translateX(14%);
+    }
+
+    .ddmiLiWithSublist > div > .ddmiDropDownIcon {
+        position: static;
+    }
+}

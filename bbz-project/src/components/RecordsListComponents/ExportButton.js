@@ -2,7 +2,7 @@ import Button from "@material-ui/core/Button";
 import SaveIcon from "@material-ui/icons/Save";
 import { importButtonStyles } from "../../materialStyles/recordsListComponent/import-button-mui-styles";
 
-const ImportButton = () => {
+const ExportButton = () => {
   const buttonClasses = importButtonStyles();
 
   return (
@@ -17,10 +17,10 @@ const ImportButton = () => {
         style={{ width: "80%" }}
         className={"h-100 d-flex align-items-center justify-content-center"}
       >
-        Importuj dane
+        Eksportuj dane
       </div>
     </Button>
   );
 };
 
-export default ImportButton;
+export default ExportButton;

@@ -4,6 +4,7 @@ import MainWindow from "./MainWindow";
 import WelcomePage from "./WelcomePageComponents/WelcomePage";
 import Sidebar from "./SidebarComponents/Sidebar";
 import AddRecordModal from "./AddRecordModal";
+import TopBar from "./TopBarComponents/TopBarComponent";
 import { DataContext } from "./ContextController";
 import { animated } from "react-spring";
 import { useSidebarAnimations } from "../animations/useSidebarAnimations";
@@ -32,12 +33,6 @@ const AppBase = () => {
   return (
     <>
       <div
-        id={"appBaseTopBarBck"}
-        className={"w-100 d-flex align-items-center position-fixed"}
-      >
-        Top bar
-      </div>
-      <div
         id={"appBaseBck"}
         className={"w-100 h-100 d-flex flex-row position-absolute"}
       >
@@ -56,6 +51,12 @@ const AppBase = () => {
             />
           </div>
         </div>
+      </div>
+      <div
+        id={"appBaseTopBarBck"}
+        className={"w-100 d-flex align-items-center position-fixed"}
+      >
+        <TopBar />
       </div>
       <div
         id={"appBaseBlackBck"}

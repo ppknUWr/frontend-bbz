@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../styles/records-list-manager-styles.css";
 import AddRecordButton from "./AddRecordButton";
-import ImportButton from "./ImportButton";
+import ExportButton from "./ExportButton";
 import SelectInput from "./SelectInput";
 import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
@@ -61,7 +61,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
           setVal={setSearchByVal}
           allValues={SEARCH_BY_KEYS}
         />
-        <ImportButton />
+        <ExportButton />
         <AddRecordButton onOpenModal={onOpenModal} />
       </div>
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
