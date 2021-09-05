@@ -15,7 +15,7 @@ const DataBaseList = ({ dbList , handleDbChange }) => {
         {
             dbList ? dbList.map((item) => {
                 return (
-                    <DataBaseListItem key={item.id} handleDBChange={handleDbChange} dbName={item.name} dbId={item.id}/>
+                    <DataBaseListItem key={item.id} handleDBChange={handleDbChange} dbName={item.db_name} dbId={item.id}/>
                 )
             })
             : <LoadingSpinner />

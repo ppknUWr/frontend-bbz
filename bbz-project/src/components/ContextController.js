@@ -26,7 +26,7 @@ const ContextController = (props) => {
     const handleDbListFetch = async () => {
         const response = await get("/db_names");
         if (response)
-            setDbNames(response.result.names)
+            setDbNames(response.message)
     }
 
 
