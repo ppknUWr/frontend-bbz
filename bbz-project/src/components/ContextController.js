@@ -11,15 +11,18 @@ const ContextController = (props) => {
     // addRecord, deleteRecord, editRecord are placeholders for future implementation
     const { get, addRecord, deleteRecord, editRecord } = useFetch("https://backend-bbz.herokuapp.com/api")
 
-    useEffect(async () => {
-        const response = await get(`/request_db?db=${currentDbId}`);
-        if (response) {
-            let newRecordsList = [];
-            for(let record in response.message) {
-                newRecordsList.push(response.message[record]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await get(`/request_db?db=${currentDbId}`);
+            if (response) {
+                let newRecordsList = [];
+                for(let record in response.message) {
+                    newRecordsList.push(response.message[record]);
+                }
+                setCurrentDb(newRecordsList);
             }
-            setCurrentDb(newRecordsList);
         }
+        fetchData();
     }, [currentDbId])
 
     /* podaj url do endpointa */

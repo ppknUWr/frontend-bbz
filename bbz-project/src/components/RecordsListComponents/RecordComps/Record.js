@@ -64,7 +64,8 @@ const Record = ({ recordData, sublistData }) => {
         style={enableAnim ? sublistAnim : { opacity: 0 }}
         className={"sublistGrayBck w-100 overflow-hidden"}
       >
-        <Sublist
+      {
+        sublistVisibility && <Sublist
           sublistData={{
             id: sublistData.id,
             subtitle: sublistData.subtitle,
@@ -77,6 +78,7 @@ const Record = ({ recordData, sublistData }) => {
             source: sublistData.source,
           }}
         />
+      }
       </animated.div>
     </animated.div>
   );

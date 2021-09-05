@@ -15,6 +15,7 @@ import {
 import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
+import useFilter from "../../hooks/useFilter";
 
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
@@ -23,14 +24,16 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const [maxPage, setMaxPage] = React.useState(50);
   const [pagesAmount, setPagesAmount] = React.useState(1);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [searchByVal, setSearchByVal] = React.useState("Autor");
+  const [searchByVal, setSearchByVal] = React.useState("book_author");
+  const [searchQuery, setSearchQuery] = React.useState("")
   const { recordsList } = React.useContext(DataContext);
+  const filteredList = useFilter(recordsList, searchQuery, searchByVal)
 
   React.useEffect(() => {
     setCurrentPage(1);
     setMaxPage(50);
-    setPagesAmount(Math.ceil(recordsList.length / 50));
-  }, [recordsList]);
+    setPagesAmount(Math.ceil(filteredList.length / 50));
+  }, [filteredList]);
 
   const pageDown = () => {
     recordsFieldElement.scrollTop = 0;
@@ -48,6 +51,10 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
     }
   };
 
+  const handleSearchQuery = (e) => {
+    setSearchQuery(e.target.value);
+  }
+
   return (
     <div className={"w-100 h-100"}>
       <div
@@ -57,7 +64,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
           <BsLayoutTextSidebar style={{ fontSize: 26 }} />
         </Button>
-        <SearchInput />
+        <SearchInput handleOnChange={handleSearchQuery} />
         <SelectInput
           value={searchByVal}
           setVal={setSearchByVal}
@@ -80,7 +87,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
             ))}
           </div>
           <div id={"recordsField"} className={"w-100 pt-3"}>
-            {recordsList.map((item, key) =>
+            {filteredList.map((item, key) =>
               key < maxPage && key >= maxPage - 50 ? (
                 <Record
                   key={key}

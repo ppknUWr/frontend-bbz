@@ -33,8 +33,8 @@ const SelectInput = ({ value, setVal, allValues }) => {
         input={<OutlinedInput classes={outlinedInputClasses} />}
       >
         {allValues.map((item, key) => (
-          <MenuItem value={item} key={key}>
-            {item}
+          <MenuItem value={item.key} key={key}>
+            {item.displayValue}
           </MenuItem>
         ))}
       </Select>
