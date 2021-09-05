@@ -28,7 +28,7 @@ const Sidebar = () => {
     const [visible, setVisible] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
     const { handleDbChange, dbNames } = useContext(DataContext);
-    const filteredArray = useFilter(dbNames, searchQuery, "name");
+    const filteredArray = useFilter(dbNames, searchQuery, "db_name");
 
 
     const handleMenuBarClick = () => {
