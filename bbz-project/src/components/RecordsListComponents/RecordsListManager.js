@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect, useContext } from "react";
 import "../../styles/records-list-manager-styles.css";
 import AddRecordButton from "./AddRecordButton";
 import ExportButton from "./ExportButton";
@@ -16,20 +16,23 @@ import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
 import useFilter from "../../hooks/useFilter";
+import useSort from "../../hooks/useSort";
 
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
   const recordsFieldElement = document.getElementById("recordsField");
 
-  const [maxPage, setMaxPage] = React.useState(50);
-  const [pagesAmount, setPagesAmount] = React.useState(1);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const [searchByVal, setSearchByVal] = React.useState("book_author");
-  const [searchQuery, setSearchQuery] = React.useState("")
-  const { recordsList } = React.useContext(DataContext);
-  const filteredList = useFilter(recordsList, searchQuery, searchByVal)
+  const [maxPage, setMaxPage] = useState(50);
+  const [pagesAmount, setPagesAmount] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchByVal, setSearchByVal] = useState("book_author");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOptions, setSortOptions] = useState({ key: "id", isDescending: false });
+  const { recordsList } = useContext(DataContext);
+  const sortedList = useSort(recordsList, sortOptions.key, sortOptions.isDescending);
+  const filteredList = useFilter(sortedList, searchQuery, searchByVal)
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentPage(1);
     setMaxPage(50);
     setPagesAmount(Math.ceil(filteredList.length / 50));
@@ -51,8 +54,12 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
     }
   };
 
-  const handleSearchQuery = (e) => {
+  const handleSearchQueryChange = (e) => {
     setSearchQuery(e.target.value);
+  }
+
+  const handleSortKeyChange = (newSortOptions) => {
+    setSortOptions(newSortOptions);
   }
 
   return (
@@ -64,7 +71,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
           <BsLayoutTextSidebar style={{ fontSize: 26 }} />
         </Button>
-        <SearchInput handleOnChange={handleSearchQuery} />
+        <SearchInput handleOnChange={handleSearchQueryChange} />
         <SelectInput
           value={searchByVal}
           setVal={setSearchByVal}
@@ -82,7 +89,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
                 id={`key${key + 1}`}
                 key={key}
               >
-                <SortButton text={item} />
+                <SortButton sortOption={item} handleOnClick={handleSortKeyChange} />
               </div>
             ))}
           </div>

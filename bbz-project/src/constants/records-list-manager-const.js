@@ -17,10 +17,28 @@ export const SEARCH_BY_KEYS = [
   }
 ];
 export const SORT_OPTIONS = [
-  "Rok",
-  "Twórca/Twórcy",
-  "Tytuł",
-  "Wydawca",
-  "Miejsce wydania",
-  "Źródło",
+  {
+    displayValue: "Rok",
+    key: "publication_date"
+  },
+  {
+    displayValue: "Twórca/Twórcy",
+    key: "book_author"
+  },
+  {
+    displayValue: "Tytuł",
+    key: "title"
+  },
+  {
+    displayValue: "Wydawca",
+    key: "publisher"
+  },
+  {
+    displayValue: "Miejsce wydania",
+    key: "publication_place"
+  },
+  {
+    displayValue: "Źródło",
+    key: "source"
+  }
 ];

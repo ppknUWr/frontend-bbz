@@ -3,16 +3,21 @@ import Button from "@material-ui/core/Button";
 import ArrowDropDownRoundedIcon from "@material-ui/icons/ArrowDropDownRounded";
 import { sortButtonStyles } from "../../materialStyles/recordsListComponent/sort-button-mui-styles";
 
-const SortButton = ({ text }) => {
+const SortButton = ({ sortOption, handleOnClick }) => {
   const buttonClasses = sortButtonStyles();
   const [down, setDown] = useState(true);
 
   const changeStat = () => {
     setDown(!down);
+    handleOnClick({
+      key: sortOption.key,
+      isDescending: !down
+    });
   };
+  
   return (
-    <Button classes={buttonClasses} onClick={changeStat}>
-      {text}
+    <Button classes={buttonClasses} onClick={changeStat} >
+      {sortOption.displayValue}
       <ArrowDropDownRoundedIcon
         style={Object.assign(
           {},
