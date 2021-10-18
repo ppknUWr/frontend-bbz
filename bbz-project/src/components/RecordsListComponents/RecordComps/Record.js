@@ -4,7 +4,6 @@ import Sublist from "./Sublist";
 import RecordOptions from "./RecordOptions";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
-import LinesEllipsis from "react-lines-ellipsis";
 
 const Record = ({ recordData, sublistData }) => {
   const valuesToDisplay = [
@@ -48,14 +47,7 @@ const Record = ({ recordData, sublistData }) => {
             key={index}
             className={`key${index + 1} recordFieldBck h-100 align-items-center`}
           >
-            <LinesEllipsis
-              className={"recordFieldText"}
-              text={item}
-              maxLine={2}
-              trimRight
-              ellipsis={"..."}
-              basedOn={"letters"}
-            />
+            {item}
           </div>
         ))}
         <RecordOptions visible={enableAnim ? optionsVisibility : false} />
@@ -64,21 +56,21 @@ const Record = ({ recordData, sublistData }) => {
         style={enableAnim ? sublistAnim : { opacity: 0 }}
         className={"sublistGrayBck w-100 overflow-hidden"}
       >
-      {
-        sublistVisibility && <Sublist
-          sublistData={{
-            id: sublistData.id,
-            subtitle: sublistData.subtitle,
-            originalEdition: sublistData.originalEdition,
-            pages: sublistData.pages,
-            language: sublistData.language,
-            series: sublistData.series,
-            isbnIssnNumber: sublistData.isbnIssnNumber,
-            keywordAndContent: sublistData.keywordsAndContent,
-            source: sublistData.source,
-          }}
-        />
-      }
+        {
+          sublistVisibility && <Sublist
+            sublistData={{
+              id: sublistData.id,
+              subtitle: sublistData.subtitle,
+              originalEdition: sublistData.originalEdition,
+              pages: sublistData.pages,
+              language: sublistData.language,
+              series: sublistData.series,
+              isbnIssnNumber: sublistData.isbnIssnNumber,
+              keywordAndContent: sublistData.keywordsAndContent,
+              source: sublistData.source,
+            }}
+          />
+        }
       </animated.div>
     </animated.div>
   );
