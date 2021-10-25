@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import "../../../styles/record-styles.css";
 import Sublist from "./Sublist";
 import RecordOptions from "./RecordOptions";
@@ -14,10 +14,10 @@ const Record = ({ recordData, sublistData }) => {
     recordData.publicationPlace,
     recordData.source,
   ];
-  const [enableAnim, setEnableAnim] = React.useState(false);
-  const [sublistVisibility, setSublistVisibility] = React.useState(true);
-  const [openSublist, setOpenSublist] = React.useState(false);
-  const [optionsVisibility, setOptionsVisibility] = React.useState(false);
+  const [enableAnim, setEnableAnim] = useState(false);
+  const [sublistVisibility, setSublistVisibility] = useState(true);
+  const [openSublist, setOpenSublist] = useState(false);
+  const [optionsVisibility, setOptionsVisibility] = useState(false);
   const { heightAnim, sublistAnim } = useRecordAnimations(
     openSublist,
     setSublistVisibility,
@@ -52,12 +52,12 @@ const Record = ({ recordData, sublistData }) => {
         ))}
         <RecordOptions visible={enableAnim ? optionsVisibility : false} />
       </div>
-      <animated.div
-        style={enableAnim ? sublistAnim : { opacity: 0 }}
-        className={"sublistGrayBck w-100 overflow-hidden"}
-      >
-        {
-          sublistVisibility && <Sublist
+      { sublistVisibility &&
+        <animated.div
+          style={enableAnim ? sublistAnim : { opacity: 0 }}
+          className={"sublistGrayBck w-100 overflow-hidden"}
+        >
+          <Sublist
             sublistData={{
               id: sublistData.id,
               subtitle: sublistData.subtitle,
@@ -70,8 +70,8 @@ const Record = ({ recordData, sublistData }) => {
               source: sublistData.source,
             }}
           />
-        }
-      </animated.div>
+        </animated.div>
+      }
     </animated.div>
   );
 };

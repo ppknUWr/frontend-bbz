@@ -18,31 +18,76 @@ import { sidebarIconButtonStyles } from "../../materialStyles/recordsListCompone
 import useFilter from "../../hooks/useFilter";
 import useSort from "../../hooks/useSort";
 
+
+const filter = (object, query, key) => {
+  if (!query || !object) {
+  /* jeśli searchfield jest pusty lub obiekt jest niezdefiniowana, zwróć całą oryginalny obiekt */
+      return object;
+  }
+  return object.filter( element => {
+      if (key in element){
+          if (typeof(element[key]) === "string") // jeśli wartość pod danym kluczem jest stringiem
+          {
+              const result = element[key].toLowerCase(); // zmiana na małe znaki, by wyłapać wszystkie przypadki
+              return result.includes(query.toLowerCase());
+          }
+          else if (typeof(element[key]) === "number") // jeśli wartość pod danym kluczem jest liczbą
+          {
+              if (element[key] === Number(query))
+                  return element[key];
+          }
+      }
+  });
+}
+
+const sort = (array, key, descending=true) => {
+  if (!array) {
+      return;
+  }
+  const newArray = [...array];
+  (descending) ? newArray.sort((a, b) => (a[key] > b[key])) : newArray.sort((a, b) => (a[key] < b[key]));
+
+  return newArray;
+}
+
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
   const recordsFieldElement = document.getElementById("recordsField");
+  const maxRecordsOnPage = 100;
+  const { recordsList } = useContext(DataContext);
 
-  const [maxPage, setMaxPage] = useState(50);
+  const [maxPage, setMaxPage] = useState(maxRecordsOnPage);
   const [pagesAmount, setPagesAmount] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchByVal, setSearchByVal] = useState("book_author");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOptions, setSortOptions] = useState({ key: "id", isDescending: false });
-  const { recordsList } = useContext(DataContext);
-  const sortedList = useSort(recordsList, sortOptions.key, sortOptions.isDescending);
-  const filteredList = useFilter(sortedList, searchQuery, searchByVal)
+  const [displayList, setDisplayList] = useState([]);
+
+  useEffect(() => {
+    setDisplayList(recordsList);
+  }, [recordsList])
 
   useEffect(() => {
     setCurrentPage(1);
-    setMaxPage(50);
-    setPagesAmount(Math.ceil(filteredList.length / 50));
-  }, [filteredList]);
+    setMaxPage(maxRecordsOnPage);
+    setPagesAmount(Math.ceil(displayList.length / maxRecordsOnPage));
+  }, [displayList]);
+  
+  useEffect(() => {
+    setDisplayList(list => sort(list, sortOptions.key, sortOptions.isDescending));
+  }, [sortOptions]);
+
+  useEffect(() => {
+    setDisplayList(filter(recordsList, searchQuery, searchByVal));
+  }, [searchQuery]);
+
 
   const pageDown = () => {
     recordsFieldElement.scrollTop = 0;
     if (currentPage > 1) {
       setCurrentPage((val) => val - 1);
-      setMaxPage((val) => val - 50);
+      setMaxPage((val) => val - maxRecordsOnPage);
     }
   };
 
@@ -50,7 +95,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
     recordsFieldElement.scrollTop = 0;
     if (currentPage < pagesAmount) {
       setCurrentPage((val) => val + 1);
-      setMaxPage((val) => val + 50);
+      setMaxPage((val) => val + maxRecordsOnPage);
     }
   };
 
@@ -94,10 +139,10 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
             ))}
           </div>
           <div id={"recordsField"} className={"w-100 pt-3"}>
-            {filteredList.map((item, key) =>
-              key < maxPage && key >= maxPage - 50 ? (
+            {displayList.map((item, key) =>
+              key < maxPage && key >= maxPage - maxRecordsOnPage ? (
                 <Record
-                  key={key}
+                  key={item["id"]}
                   recordData={{
                     publicationDate: item["publication_date"],
                     bookAuthor: item["book_author"],
@@ -119,7 +164,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
                   }}
                 />
               ) : (
-                <div key={key} style={{ display: "none" }} />
+                <div key={item["id"]} style={{ display: "none" }} />
               )
             )}
           </div>
