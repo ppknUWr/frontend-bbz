@@ -1,4 +1,3 @@
-import * as React from "react";
 import "../../../styles/record-styles.css";
 import Button from "@material-ui/core/Button";
 import { FaEdit } from "react-icons/fa";

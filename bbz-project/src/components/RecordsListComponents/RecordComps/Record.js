@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "../../../styles/record-styles.css";
 import Sublist from "./Sublist";
 import RecordOptions from "./RecordOptions";
@@ -6,14 +6,6 @@ import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
 
 const Record = ({ recordData, sublistData }) => {
-  const valuesToDisplay = [
-    recordData.publicationDate,
-    recordData.bookAuthor,
-    recordData.title,
-    recordData.publisher,
-    recordData.publicationPlace,
-    recordData.source,
-  ];
   const [enableAnim, setEnableAnim] = useState(false);
   const [sublistVisibility, setSublistVisibility] = useState(true);
   const [openSublist, setOpenSublist] = useState(false);
@@ -42,15 +34,25 @@ const Record = ({ recordData, sublistData }) => {
         className={"recordBck w-100 d-flex flex-row position-relative"}
         onClick={handleRecordClick}
       >
-        {valuesToDisplay.map((item, index) => (
-          <div
-            key={index}
-            className={`key${index + 1} recordFieldBck h-100 align-items-center`}
-          >
-            {item}
+          <div className={`key1 recordFieldBck h-100 align-items-center`}>
+            {recordData.publicationDate}
           </div>
-        ))}
-        <RecordOptions visible={enableAnim ? optionsVisibility : false} />
+          <div className={`key2 recordFieldBck h-100 align-items-center`}>
+            {recordData.bookAuthor}
+          </div>
+          <div className={`key3 recordFieldBck h-100 align-items-center`}>
+            {recordData.title}
+          </div>
+          <div className={`key4 recordFieldBck h-100 align-items-center`}>
+            {recordData.publisher}
+          </div>
+          <div className={`key5 recordFieldBck h-100 align-items-center`}>
+            {recordData.publicationDate}
+          </div>
+          <div className={`key6 recordFieldBck h-100 align-items-center`}>
+            {recordData.source}
+          </div>
+        {/* <RecordOptions visible={enableAnim ? optionsVisibility : false} /> */}
       </div>
       { sublistVisibility &&
         <animated.div

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/records-list-manager-styles.css";
 import AddRecordButton from "./AddRecordButton";
 import ExportButton from "./ExportButton";
@@ -53,7 +53,7 @@ const sort = (array, key, descending=true) => {
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
   const recordsFieldElement = document.getElementById("recordsField");
-  const maxRecordsOnPage = 100;
+  const maxRecordsOnPage = 50;
   const { recordsList } = useContext(DataContext);
 
   const [maxPage, setMaxPage] = useState(maxRecordsOnPage);
