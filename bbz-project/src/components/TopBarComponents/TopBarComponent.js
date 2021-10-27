@@ -64,6 +64,7 @@ const TopBar = () => {
             <div id={"topBarBodyRightHelper"}>
               {TOP_BAR_PAGES.map((item, index) => (
                 <DropDownMenuItem
+                  key={index}
                   pages={item}
                   zIndex={TOP_BAR_PAGES.length - index + 1}
                 />

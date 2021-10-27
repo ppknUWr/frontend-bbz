@@ -12,7 +12,7 @@ import { useScreenSizes } from "../hooks/useScreenSizes";
 import { useAppBaseFunctionality } from "../hooks/useAppBaseFunctionality";
 
 const AppBase = () => {
-  const { handleDbListFetch } = useContext(DataContext);
+  const { handleDbListFetch, isDbSelected } = useContext(DataContext);
   const { large } = useScreenSizes();
   const {
     openSidebar,
@@ -45,10 +45,14 @@ const AppBase = () => {
             <Sidebar />
           </animated.div>
           <div id={"appBaseBodyRightBck"} className={"w-100 h-100"}>
-            <MainWindow
-              onOpenSidebar={onOpenSidebar}
-              onOpenModal={onOpenModal}
-            />
+            {
+              isDbSelected ?             
+                <MainWindow
+                  onOpenSidebar={onOpenSidebar}
+                  onOpenModal={onOpenModal}
+                /> :
+                <WelcomePage />
+            }
           </div>
         </div>
       </div>

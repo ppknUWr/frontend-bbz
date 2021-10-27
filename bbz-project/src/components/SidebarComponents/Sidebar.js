@@ -27,7 +27,7 @@ const Sidebar = () => {
     /* Wysuwanie sidebara będzie raczej dostępne tylko w wersji mobilnej */
     const [visible, setVisible] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
-    const { handleDbChange, dbNames } = useContext(DataContext);
+    const { handleDbChange, dbNames, setIsDbSelected } = useContext(DataContext);
     const filteredArray = useFilter(dbNames, searchQuery, "db_name");
 
 
@@ -38,7 +38,7 @@ const Sidebar = () => {
     return (<>
         {/*!visible && <button onClick={handleMenuBarClick}>X</button>*/}
         <div className={visible ? "sidebar active" : "sidebar"}>
-            <SidebarNav handleMenuBarClick={handleMenuBarClick}/>
+            <SidebarNav handleOnClick={setIsDbSelected}/>
             <DataBaseSearchTextField searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
             <DataBaseList dbList={filteredArray} handleDbChange={handleDbChange}/>
             <UniversitetLogo separatorVisible={true}/>
