@@ -15,40 +15,7 @@ import {
 import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
-import useFilter from "../../hooks/useFilter";
-import useSort from "../../hooks/useSort";
-
-
-const filter = (object, query, key) => {
-  if (!query || !object) {
-  /* jeśli searchfield jest pusty lub obiekt jest niezdefiniowana, zwróć całą oryginalny obiekt */
-      return object;
-  }
-  return object.filter( element => {
-      if (key in element){
-          if (typeof(element[key]) === "string") // jeśli wartość pod danym kluczem jest stringiem
-          {
-              const result = element[key].toLowerCase(); // zmiana na małe znaki, by wyłapać wszystkie przypadki
-              return result.includes(query.toLowerCase());
-          }
-          else if (typeof(element[key]) === "number") // jeśli wartość pod danym kluczem jest liczbą
-          {
-              if (element[key] === Number(query))
-                  return element[key];
-          }
-      }
-  });
-}
-
-const sort = (array, key, descending=true) => {
-  if (!array) {
-      return;
-  }
-  const newArray = [...array];
-  (descending) ? newArray.sort((a, b) => (a[key] > b[key])) : newArray.sort((a, b) => (a[key] < b[key]));
-
-  return newArray;
-}
+import { sort, filter } from "../../helpers/helper-functions";
 
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
@@ -64,8 +31,14 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const [sortOptions, setSortOptions] = useState({ key: "id", isDescending: false });
   const [displayList, setDisplayList] = useState([]);
 
+  // used to reset sort buttons state
+  const [toggleResetState, setToggleResetState] = useState(true);
+
   useEffect(() => {
     setDisplayList(recordsList);
+    setSearchQuery("");
+    setSortOptions({ key: "id", isDescending: false });
+    setToggleResetState(state => !state);
   }, [recordsList])
 
   useEffect(() => {
@@ -110,20 +83,20 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   return (
     <div className={"w-100 h-100"}>
       <div
-        className={"w-100 d-flex align-items-center justify-content-between"}
+        className={"w-100 d-flex align-items-center"}
         id={"topPanel"}
       >
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
           <BsLayoutTextSidebar style={{ fontSize: 26 }} />
         </Button>
-        <SearchInput handleOnChange={handleSearchQueryChange} />
+        <SearchInput handleOnChange={handleSearchQueryChange} searchQuery={searchQuery} />
         <SelectInput
           value={searchByVal}
           setVal={setSearchByVal}
           allValues={SEARCH_BY_KEYS}
         />
         <ExportButton />
-        <AddRecordButton onOpenModal={onOpenModal} />
+        {/* <AddRecordButton onOpenModal={onOpenModal} /> */}
       </div>
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
@@ -134,7 +107,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
                 id={`key${key + 1}`}
                 key={key}
               >
-                <SortButton sortOption={item} handleOnClick={handleSortKeyChange} />
+                <SortButton sortOption={item} handleOnClick={handleSortKeyChange} resetState={toggleResetState} />
               </div>
             ))}
           </div>

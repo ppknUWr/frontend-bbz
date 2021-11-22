@@ -22,7 +22,7 @@ export const SORT_OPTIONS = [
     key: "publication_date"
   },
   {
-    displayValue: "Twórca/Twórcy",
+    displayValue: "Autor",
     key: "book_author"
   },
   {

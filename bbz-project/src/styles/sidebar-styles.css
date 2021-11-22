@@ -71,7 +71,14 @@
 
     background-color: white;
     font-size: 16px;
-    
+}
+
+.list-item-active {
+    margin-top: 4px;
+    padding: 15px;
+
+    background-color: #D3D3D3;
+    font-size: 16px;
 }
 
 .list-item:hover {
@@ -105,5 +112,5 @@
     margin-top: 5px;
     align-self: center;
 
-    border: 1px solid #000000;
+    border: 1px solid #D3D3D3;
 }

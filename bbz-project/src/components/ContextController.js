@@ -4,9 +4,8 @@ import useFetch from "../hooks/useFetch";
 const DataContext = createContext();
 
 const ContextController = (props) => {
-    const [dbNames, setDbNames] = useState();
-    const [currentDbId, setCurrentDbId] = useState();
-    const [isDbSelected, setIsDbSelected] = useState(false);
+    const [dbNames, setDbNames] = useState("");
+    const [currentDbId, setCurrentDbId] = useState(null);
     const [currentDb, setCurrentDb] = useState([]);
 
     // addRecord, deleteRecord, editRecord are placeholders for future implementation
@@ -14,8 +13,10 @@ const ContextController = (props) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            if (!currentDbId)
+            if (!currentDbId) {
+                setCurrentDb([]);
                 return;
+            }
                 
             const response = await get(`/request_db?db=${currentDbId}`);
             if (response) {
@@ -38,15 +39,13 @@ const ContextController = (props) => {
 
 
     const handleDbChange = (dbId) => {
-        setIsDbSelected(true);
         setCurrentDbId(dbId);
     }
 
     const value = {
         dbNames: dbNames,
         recordsList: currentDb,
-        isDbSelected: isDbSelected,
-        setIsDbSelected: setIsDbSelected,
+        currentDbId: currentDbId,
         handleDbChange: handleDbChange,
         handleDbListFetch: handleDbListFetch
     }

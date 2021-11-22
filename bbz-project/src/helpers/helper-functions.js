@@ -1,12 +1,8 @@
-
-// Funkcja do filtrowania obiektów po danym kluczu
-
-const useFilter = (object, query, key) => {
+export const filter = (object, query, key) => {
     if (!query || !object) {
     /* jeśli searchfield jest pusty lub obiekt jest niezdefiniowana, zwróć całą oryginalny obiekt */
         return object;
     }
-
     return object.filter( element => {
         if (key in element){
             if (typeof(element[key]) === "string") // jeśli wartość pod danym kluczem jest stringiem
@@ -20,7 +16,15 @@ const useFilter = (object, query, key) => {
                     return element[key];
             }
         }
-    })
-}
-
-export default useFilter;
+    });
+  }
+  
+  export const sort = (array, key, descending=true) => {
+    if (!array) {
+        return;
+    }
+    const newArray = [...array];
+    (descending) ? newArray.sort((a, b) => (a[key] > b[key])) : newArray.sort((a, b) => (a[key] < b[key]));
+  
+    return newArray;
+  }
