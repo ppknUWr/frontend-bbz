@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/records-list-manager-styles.css";
 import AddRecordButton from "./AddRecordButton";
 import ExportButton from "./ExportButton";
@@ -15,31 +15,52 @@ import {
 import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
-import useFilter from "../../hooks/useFilter";
+import { sort, filter } from "../../helpers/helper-functions";
 
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
   const recordsFieldElement = document.getElementById("recordsField");
+  const maxRecordsOnPage = 50;
+  const { recordsList } = useContext(DataContext);
 
-  const [maxPage, setMaxPage] = React.useState(50);
-  const [pagesAmount, setPagesAmount] = React.useState(1);
-  const [currentPage, setCurrentPage] = React.useState(1);
-  const [searchByVal, setSearchByVal] = React.useState("book_author");
-  const [searchQuery, setSearchQuery] = React.useState("")
-  const { recordsList } = React.useContext(DataContext);
-  const filteredList = useFilter(recordsList, searchQuery, searchByVal)
+  const [maxPage, setMaxPage] = useState(maxRecordsOnPage);
+  const [pagesAmount, setPagesAmount] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchByVal, setSearchByVal] = useState("book_author");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOptions, setSortOptions] = useState({ key: "id", isDescending: false });
+  const [displayList, setDisplayList] = useState([]);
 
-  React.useEffect(() => {
+  // used to reset sort buttons state
+  const [toggleResetState, setToggleResetState] = useState(true);
+
+  useEffect(() => {
+    setDisplayList(recordsList);
+    setSearchQuery("");
+    setSortOptions({ key: "id", isDescending: false });
+    setToggleResetState(state => !state);
+  }, [recordsList])
+
+  useEffect(() => {
     setCurrentPage(1);
-    setMaxPage(50);
-    setPagesAmount(Math.ceil(filteredList.length / 50));
-  }, [filteredList]);
+    setMaxPage(maxRecordsOnPage);
+    setPagesAmount(Math.ceil(displayList.length / maxRecordsOnPage));
+  }, [displayList]);
+  
+  useEffect(() => {
+    setDisplayList(list => sort(list, sortOptions.key, sortOptions.isDescending));
+  }, [sortOptions]);
+
+  useEffect(() => {
+    setDisplayList(filter(recordsList, searchQuery, searchByVal));
+  }, [searchQuery]);
+
 
   const pageDown = () => {
     recordsFieldElement.scrollTop = 0;
     if (currentPage > 1) {
       setCurrentPage((val) => val - 1);
-      setMaxPage((val) => val - 50);
+      setMaxPage((val) => val - maxRecordsOnPage);
     }
   };
 
@@ -47,31 +68,35 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
     recordsFieldElement.scrollTop = 0;
     if (currentPage < pagesAmount) {
       setCurrentPage((val) => val + 1);
-      setMaxPage((val) => val + 50);
+      setMaxPage((val) => val + maxRecordsOnPage);
     }
   };
 
-  const handleSearchQuery = (e) => {
+  const handleSearchQueryChange = (e) => {
     setSearchQuery(e.target.value);
+  }
+
+  const handleSortKeyChange = (newSortOptions) => {
+    setSortOptions(newSortOptions);
   }
 
   return (
     <div className={"w-100 h-100"}>
       <div
-        className={"w-100 d-flex align-items-center justify-content-between"}
+        className={"w-100 d-flex align-items-center"}
         id={"topPanel"}
       >
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
           <BsLayoutTextSidebar style={{ fontSize: 26 }} />
         </Button>
-        <SearchInput handleOnChange={handleSearchQuery} />
+        <SearchInput handleOnChange={handleSearchQueryChange} searchQuery={searchQuery} />
         <SelectInput
           value={searchByVal}
           setVal={setSearchByVal}
           allValues={SEARCH_BY_KEYS}
         />
         <ExportButton />
-        <AddRecordButton onOpenModal={onOpenModal} />
+        {/* <AddRecordButton onOpenModal={onOpenModal} /> */}
       </div>
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
@@ -82,15 +107,15 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
                 id={`key${key + 1}`}
                 key={key}
               >
-                <SortButton text={item} />
+                <SortButton sortOption={item} handleOnClick={handleSortKeyChange} resetState={toggleResetState} />
               </div>
             ))}
           </div>
           <div id={"recordsField"} className={"w-100 pt-3"}>
-            {filteredList.map((item, key) =>
-              key < maxPage && key >= maxPage - 50 ? (
+            {displayList.map((item, key) =>
+              key < maxPage && key >= maxPage - maxRecordsOnPage ? (
                 <Record
-                  key={key}
+                  key={item["id"]}
                   recordData={{
                     publicationDate: item["publication_date"],
                     bookAuthor: item["book_author"],
@@ -112,7 +137,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
                   }}
                 />
               ) : (
-                <div key={key} style={{ display: "none" }} />
+                <div key={item["id"]} style={{ display: "none" }} />
               )
             )}
           </div>

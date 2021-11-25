@@ -50,6 +50,23 @@
     justify-content: flex-end;
 }
 
+#topBarBodyRightTextContainer {
+    margin-right: 60px;
+}
+
+#topBarBodyRightText {
+    color: white;
+    font-size: 23px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#topBarBodyRightText:hover {
+    text-decoration: none;
+    color: #dcdcdc;
+}
+
 #topBarBodyRightHelper {
     width: 100%;
     max-width: 906px;

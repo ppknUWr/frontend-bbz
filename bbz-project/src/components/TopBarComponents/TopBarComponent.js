@@ -1,12 +1,11 @@
 import * as React from "react";
 import "../../styles/top-bar-styles.css";
-import DropDownMenuItem from "./DropDownMenuItem";
-import { TOP_BAR_PAGES } from "../../constants/top-bar-pages";
 import image from "../../assets/PhcTopBarFigure.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 import bckImage from "../../assets/TopBarBackground.jpg";
 import { useScreenSizes } from "../../hooks/useScreenSizes";
+import { DataContext } from "../ContextController"
 
 const TopBar = () => {
   const [optionsDisplayProp, setOptionsDisplayProp] = React.useState("flex");
@@ -14,30 +13,32 @@ const TopBar = () => {
   const [rightElementPosition, setRightElementPosition] = React.useState(
     "static"
   );
+  const { handleDbChange } = React.useContext(DataContext);
+
   const { topBarIconBreakpoint } = useScreenSizes();
 
-  React.useEffect(() => {
-    setAreOptionsVisible(!topBarIconBreakpoint);
-    if (topBarIconBreakpoint) {
-      setRightElementPosition("absolute");
-    } else {
-      setRightElementPosition("static");
-    }
-  }, [topBarIconBreakpoint]);
+  // React.useEffect(() => {
+  //   setAreOptionsVisible(!topBarIconBreakpoint);
+  //   if (topBarIconBreakpoint) {
+  //     setRightElementPosition("absolute");
+  //   } else {
+  //     setRightElementPosition("static");
+  //   }
+  // }, [topBarIconBreakpoint]);
 
-  React.useEffect(() => {
-    if (areOptionsVisible && topBarIconBreakpoint) {
-      setOptionsDisplayProp("table");
-    } else if (topBarIconBreakpoint) {
-      setOptionsDisplayProp("none");
-    } else {
-      setOptionsDisplayProp("flex");
-    }
-  }, [areOptionsVisible, topBarIconBreakpoint]);
+  // React.useEffect(() => {
+  //   if (areOptionsVisible && topBarIconBreakpoint) {
+  //     setOptionsDisplayProp("table");
+  //   } else if (topBarIconBreakpoint) {
+  //     setOptionsDisplayProp("none");
+  //   } else {
+  //     setOptionsDisplayProp("flex");
+  //   }
+  // }, [areOptionsVisible, topBarIconBreakpoint]);
 
-  const onClickIcon = () => {
-    setAreOptionsVisible((val) => !val);
-  };
+  // const onClickIcon = () => {
+  //   setAreOptionsVisible((val) => !val);
+  // };
 
   return (
     <>
@@ -61,14 +62,10 @@ const TopBar = () => {
               position: rightElementPosition,
             }}
           >
-            <div id={"topBarBodyRightHelper"}>
-              {TOP_BAR_PAGES.map((item, index) => (
-                <DropDownMenuItem
-                  pages={item}
-                  zIndex={TOP_BAR_PAGES.length - index + 1}
-                />
-              ))}
-              <div id={"topBarLang"}>EN</div>
+            <div id={"topBarBodyRightTextContainer"}>
+              <div id={"topBarBodyRightText"} onClick={() => handleDbChange(null)}>
+                Bibliografie Tematyczne
+              </div>
             </div>
           </div>
           <div
@@ -84,7 +81,7 @@ const TopBar = () => {
               </a>
             </div>
           </div>
-          {areOptionsVisible ? (
+          {/* {areOptionsVisible ? (
             <VscChromeClose
               style={{ display: topBarIconBreakpoint ? "block" : "none" }}
               className={"position-absolute topBarIcon"}
@@ -100,7 +97,7 @@ const TopBar = () => {
               color={"white"}
               onClick={onClickIcon}
             />
-          )}
+          )} */}
         </div>
       </div>
     </>

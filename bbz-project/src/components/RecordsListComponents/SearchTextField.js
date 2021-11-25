@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import { InputAdornment } from "@material-ui/core";
 import { searchTextFieldStyles } from "../../materialStyles/recordsListComponent/search-textField-mui-styles";
 
-const SearchInput = ({ handleOnChange }) => {
+const SearchInput = ({ handleOnChange, searchQuery }) => {
   const textFieldClasses = searchTextFieldStyles();
   const iconSize = 20;
 
@@ -14,6 +14,7 @@ const SearchInput = ({ handleOnChange }) => {
       onChange={handleOnChange}
       placeholder={"Wyszukaj"}
       variant={"outlined"}
+      value={searchQuery}
       SelectProps={{ native: true }}
       InputProps={{
         startAdornment: (

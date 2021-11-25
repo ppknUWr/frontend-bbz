@@ -4,15 +4,20 @@ import useFetch from "../hooks/useFetch";
 const DataContext = createContext();
 
 const ContextController = (props) => {
-    const [dbList, setDbList] = useState();
-    const [dbNames, setDbNames] = useState();
-    const [currentDbId, setCurrentDbId] = useState(0);
+    const [dbNames, setDbNames] = useState("");
+    const [currentDbId, setCurrentDbId] = useState(null);
     const [currentDb, setCurrentDb] = useState([]);
+
     // addRecord, deleteRecord, editRecord are placeholders for future implementation
-    const { get, addRecord, deleteRecord, editRecord } = useFetch("https://backend-bbz.herokuapp.com/api")
+    const { get } = useFetch("https://backend-bbz.herokuapp.com/api")
 
     useEffect(() => {
         const fetchData = async () => {
+            if (!currentDbId) {
+                setCurrentDb([]);
+                return;
+            }
+                
             const response = await get(`/request_db?db=${currentDbId}`);
             if (response) {
                 let newRecordsList = [];
@@ -29,18 +34,18 @@ const ContextController = (props) => {
     const handleDbListFetch = async () => {
         const response = await get("/db_names");
         if (response)
-            setDbNames(response.message)
+            setDbNames(response.message);
     }
 
 
     const handleDbChange = (dbId) => {
-        console.log(dbId)
-        setCurrentDbId(dbId)
+        setCurrentDbId(dbId);
     }
 
     const value = {
         dbNames: dbNames,
         recordsList: currentDb,
+        currentDbId: currentDbId,
         handleDbChange: handleDbChange,
         handleDbListFetch: handleDbListFetch
     }
