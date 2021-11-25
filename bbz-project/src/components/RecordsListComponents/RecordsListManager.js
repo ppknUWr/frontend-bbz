@@ -28,16 +28,15 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchByVal, setSearchByVal] = useState("book_author");
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOptions, setSortOptions] = useState({ key: "id", isDescending: false });
+  const [sortOptions, setSortOptions] = useState({ key: "id", isDescending: true });
   const [displayList, setDisplayList] = useState([]);
-
   // used to reset sort buttons state
   const [toggleResetState, setToggleResetState] = useState(true);
 
   useEffect(() => {
     setDisplayList(recordsList);
     setSearchQuery("");
-    setSortOptions({ key: "id", isDescending: false });
+    setSortOptions({ key: "id", isDescending: true });
     setToggleResetState(state => !state);
   }, [recordsList])
 

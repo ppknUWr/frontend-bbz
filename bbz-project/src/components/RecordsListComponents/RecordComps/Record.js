@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../../styles/record-styles.css";
 import Sublist from "./Sublist";
-import RecordOptions from "./RecordOptions";
+import RecordCitationModal from "./RecordCitationModal";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
 
@@ -47,12 +47,12 @@ const Record = ({ recordData, sublistData }) => {
             {recordData.publisher}
           </div>
           <div className={`key5 recordFieldBck h-100 align-items-center`}>
-            {recordData.publicationDate}
+            {recordData.publicationPlace}
           </div>
           <div className={`key6 recordFieldBck h-100 align-items-center`}>
             {recordData.source}
           </div>
-        {/* <RecordOptions visible={enableAnim ? optionsVisibility : false} /> */}
+          <RecordCitationModal isVisible={enableAnim ? optionsVisibility : false} recordData={recordData} />
       </div>
       { sublistVisibility &&
         <animated.div

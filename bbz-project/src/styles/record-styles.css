@@ -49,6 +49,11 @@
     padding: 10px 0.5vw 10px;
 }
 
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 .recordOptionsBck {
     right: 0;
     width: 10%;
@@ -58,11 +63,15 @@
     justify-content: flex-end;
     padding-right: 4px;
     display: none;
+    animation-name: fadein;
+    animation-duration: 0.9s;
 }
+
 
 .visibleOptions {
     display: flex;
 }
+
 
 .key1 {
     width: 5%;

@@ -24,7 +24,11 @@ export const filter = (object, query, key) => {
         return;
     }
     const newArray = [...array];
-    (descending) ? newArray.sort((a, b) => (a[key] > b[key])) : newArray.sort((a, b) => (a[key] < b[key]));
+
+    if (key === "publication_date")
+        (descending) ? newArray.sort((a, b) => (b[key] - a[key])) : newArray.sort((a, b) => (a[key] - b[key]));
+    else
+        (descending) ? newArray.sort((a, b) => (a[key] > b[key])) : newArray.sort((a, b) => (a[key] < b[key]));
   
     return newArray;
   }
