@@ -5,7 +5,7 @@ import RecordCitationModal from "./RecordCitationModal";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
 
-const Record = React.memo(({ recordData, sublistData }) => {
+const Record = ({ recordData, sublistData }) => {
   const [enableAnim, setEnableAnim] = useState(false);
   const [sublistVisibility, setSublistVisibility] = useState(true);
   const [openSublist, setOpenSublist] = useState(false);
@@ -76,5 +76,6 @@ const Record = React.memo(({ recordData, sublistData }) => {
       }
     </animated.div>
   );
-});
+};
+
 export default Record;
