@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../styles/records-list-manager-styles.css";
 import AddRecordButton from "./AddRecordButton";
+import PageManager from "./PageManager";
 import ExportButton from "./ExportButton";
 import SelectInput from "./SelectInput";
 import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
-import PageButton from "./PageButton";
 import Record from "./RecordComps/Record";
 import Button from "@material-ui/core/Button";
+import RecordCitationModal from "./RecordComps/RecordCitationModal";
 import {
   SEARCH_BY_KEYS,
   SORT_OPTIONS,
@@ -16,9 +17,8 @@ import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
 import { sort, filter } from "../../helpers/helper-functions";
-import RecordCitationModal from "./RecordComps/RecordCitationModal";
 
-const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
+const RecordsListManager = ({ onSidebarIconClick }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
   const recordsFieldElement = document.getElementById("recordsField");
   const maxRecordsOnPage = 50;
@@ -95,10 +95,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   return (
     <div className={"w-100 h-100"}>
       <RecordCitationModal open={openModal} handleClose={handleCloseModal} citation={citationString} />
-      <div
-        className={"w-100 d-flex align-items-center"}
-        id={"topPanel"}
-      >
+      <div className={"w-100 d-flex align-items-center"} id={"topPanel"}>
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
           <BsLayoutTextSidebar style={{ fontSize: 26 }} />
         </Button>
@@ -157,27 +154,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
           </div>
         </div>
       </div>
-      <div id={"bottomPanel"} className={"w-100 d-flex justify-content-center align-items-center position-relative"}>
-        <div id={"pageButtonBck"} className={"d-flex flex-row align-items-center justify-content-between"}>
-          <div className={"w-50 h-100 d-flex align-items-center justify-content-center"}>
-            <PageButton
-              leftDirection={true}
-              onClick={pageDown}
-              disabled={currentPage === 1}
-            />
-          </div>
-          <div id={"rightPageButton"} className={"w-50 h-100 d-flex align-items-center justify-content-center"}>
-            <PageButton
-              leftDirection={false}
-              onClick={pageUp}
-              disabled={currentPage === pagesAmount}
-            />
-          </div>
-        </div>
-        <div id={"pageText"}>
-          Strona {currentPage} z {pagesAmount}
-        </div>
-      </div>
+      <PageManager handlePageUp={pageUp} handlePageDown={pageDown} currentPage={currentPage} pagesAmount={pagesAmount} />
     </div>
   );
 };
