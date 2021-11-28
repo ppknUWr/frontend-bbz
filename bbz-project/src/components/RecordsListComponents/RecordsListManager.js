@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "../../styles/records-list-manager-styles.css";
 import AddRecordButton from "./AddRecordButton";
 import PageManager from "./PageManager";
@@ -20,7 +20,7 @@ import { sort, filter } from "../../helpers/helper-functions";
 
 const RecordsListManager = ({ onSidebarIconClick }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
-  const recordsFieldElement = document.getElementById("recordsField");
+  const recordsFieldElement = useRef();
   const maxRecordsOnPage = 50;
   const { recordsList } = useContext(DataContext);
 
@@ -57,29 +57,17 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
     setDisplayList(filter(recordsList, searchQuery, searchByVal));
   }, [searchQuery]);
 
-
-  const pageDown = () => {
-    recordsFieldElement.scrollTop = 0;
-    if (currentPage > 1) {
-      setCurrentPage((val) => val - 1);
-      setMaxPage((val) => val - maxRecordsOnPage);
+  const handlePageChange = (direction) => {
+    recordsFieldElement.current.scrollTop = 0;
+    switch (direction) {
+      case 'UP':
+          setCurrentPage((val) => val + 1);
+          setMaxPage((val) => val + maxRecordsOnPage);
+        break;
+      case 'DOWN':
+          setCurrentPage((val) => val - 1);
+          setMaxPage((val) => val - maxRecordsOnPage);
     }
-  };
-
-  const pageUp = () => {
-    recordsFieldElement.scrollTop = 0;
-    if (currentPage < pagesAmount) {
-      setCurrentPage((val) => val + 1);
-      setMaxPage((val) => val + maxRecordsOnPage);
-    }
-  };
-
-  const handleSearchQueryChange = (e) => {
-    setSearchQuery(e.target.value);
-  }
-
-  const handleSortKeyChange = (newSortOptions) => {
-    setSortOptions(newSortOptions);
   }
 
   const handleOpenModal = (event, citation) => {
@@ -88,18 +76,14 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
     setCitationString(citation);
   }
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  }
-
   return (
     <div className={"w-100 h-100"}>
-      <RecordCitationModal open={openModal} handleClose={handleCloseModal} citation={citationString} />
+      <RecordCitationModal open={openModal} setOpenModal={setOpenModal} citation={citationString} />
       <div className={"w-100 d-flex align-items-center"} id={"topPanel"}>
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
           <BsLayoutTextSidebar style={{ fontSize: 26 }} />
         </Button>
-        <SearchInput handleOnChange={handleSearchQueryChange} searchQuery={searchQuery} />
+        <SearchInput handleOnChange={setSearchQuery} searchQuery={searchQuery} />
         <SelectInput
           value={searchByVal}
           setVal={setSearchByVal}
@@ -117,11 +101,11 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
                 id={`key${key + 1}`}
                 key={key}
               >
-                <SortButton sortOption={item} handleOnClick={handleSortKeyChange} resetState={toggleResetState} />
+                <SortButton sortOption={item} handleOnClick={setSortOptions} resetState={toggleResetState} />
               </div>
             ))}
           </div>
-          <div id={"recordsField"} className={"w-100 pt-3"}>
+          <div ref={recordsFieldElement} id={"recordsField"} className={"w-100 pt-3"}>
             {displayList.map((item, key) =>
               key < maxPage && key >= maxPage - maxRecordsOnPage ? (
                 <Record
@@ -154,7 +138,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
           </div>
         </div>
       </div>
-      <PageManager handlePageUp={pageUp} handlePageDown={pageDown} currentPage={currentPage} pagesAmount={pagesAmount} />
+      <PageManager handlePageChange={handlePageChange} currentPage={currentPage} pagesAmount={pagesAmount} />
     </div>
   );
 };

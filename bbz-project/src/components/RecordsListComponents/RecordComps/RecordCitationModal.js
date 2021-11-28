@@ -5,24 +5,20 @@ import Dialog from "@material-ui/core/Dialog";
 import { DialogContent, DialogTitle, DialogActions } from '@material-ui/core';
 import RecordCitationSnackbar from './RecordCitationSnackbar';
 
-const RecordCitationModal = ({ open, handleClose, citation }) => {
+const RecordCitationModal = ({ open, setOpenModal, citation }) => {
     const [openSnackbar, setOpenSnackbar] = useState(false);
    
     const handleCopyToClipboard = (event) => {
         event.stopPropagation();
         navigator.clipboard.writeText(citation);
         setOpenSnackbar(true);
-        handleClose(event);
-    }
-
-    const handleCloseSnackbar = () => {
-      setOpenSnackbar(false);
+        setOpenModal(false);
     }
 
     return (
       <>
         <Dialog
-          onClose={handleClose}
+          onClose={() => setOpenModal(false)}
           aria-labelledby="customized-dialog-title"
           onClick={e => e.stopPropagation()}
           onBackdropClick={e => e.stopPropagation()}
@@ -39,10 +35,10 @@ const RecordCitationModal = ({ open, handleClose, citation }) => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCopyToClipboard}>Copy</Button>
-            <Button onClick={handleClose}>Close</Button>
+            <Button onClick={() => setOpenModal(false)}>Close</Button>
           </DialogActions>
         </Dialog>
-        <RecordCitationSnackbar open={openSnackbar} onClose={handleCloseSnackbar}/>
+        <RecordCitationSnackbar open={openSnackbar} onClose={() => setOpenSnackbar(false)}/>
       </>
     );
   }
