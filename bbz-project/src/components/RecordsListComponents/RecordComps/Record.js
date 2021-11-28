@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "../../../styles/record-styles.css";
 import Sublist from "./Sublist";
-import RecordCitationModal from "./RecordCitationModal";
+import SaveAlt from '@material-ui/icons/SaveAlt';
+import Button from "@material-ui/core/Button";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
 
-const Record = ({ recordData, sublistData }) => {
+const Record = ({ recordData, sublistData, handleOpenModal }) => {
   const [enableAnim, setEnableAnim] = useState(false);
   const [sublistVisibility, setSublistVisibility] = useState(true);
   const [openSublist, setOpenSublist] = useState(false);
@@ -15,6 +16,8 @@ const Record = ({ recordData, sublistData }) => {
     setSublistVisibility,
     400
   );
+  const citation = `${recordData.bookAuthor}, ${recordData.publicationDate}, ${recordData.title}, ${recordData.publisher}, ${recordData.publicationPlace}`;
+
 
   const handleRecordClick = () => {
     setEnableAnim(true);
@@ -52,7 +55,11 @@ const Record = ({ recordData, sublistData }) => {
           <div className={`key6 recordFieldBck h-100 align-items-center`}>
             {recordData.source}
           </div>
-          <RecordCitationModal isVisible={enableAnim ? optionsVisibility : false} recordData={recordData} />
+          <div className={optionsVisibility ? "visibleOptions recordOptionsBck" : "recordOptionsBck"}>
+            <Button onClick={(e) => handleOpenModal(e, citation)}>
+                <SaveAlt />
+            </Button>
+          </div>
       </div>
       { sublistVisibility &&
         <animated.div

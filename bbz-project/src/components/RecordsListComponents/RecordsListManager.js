@@ -16,6 +16,7 @@ import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
 import { sort, filter } from "../../helpers/helper-functions";
+import RecordCitationModal from "./RecordComps/RecordCitationModal";
 
 const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
@@ -32,6 +33,8 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
   const [displayList, setDisplayList] = useState([]);
   // used to reset sort buttons state
   const [toggleResetState, setToggleResetState] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [citationString, setCitationString] = useState("");
 
   useEffect(() => {
     setDisplayList(recordsList);
@@ -79,8 +82,19 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
     setSortOptions(newSortOptions);
   }
 
+  const handleOpenModal = (event, citation) => {
+    event.stopPropagation();
+    setOpenModal(state => !state);
+    setCitationString(citation);
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  }
+
   return (
     <div className={"w-100 h-100"}>
+      <RecordCitationModal open={openModal} handleClose={handleCloseModal} citation={citationString} />
       <div
         className={"w-100 d-flex align-items-center"}
         id={"topPanel"}
@@ -134,6 +148,7 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
                     keywordsAndContent: item["keywords_and_content"],
                     source: item["source"],
                   }}
+                  handleOpenModal={handleOpenModal}
                 />
               ) : (
                 <div key={item["id"]} style={{ display: "none" }} />
@@ -142,35 +157,16 @@ const RecordsListManager = ({ onSidebarIconClick, onOpenModal }) => {
           </div>
         </div>
       </div>
-      <div
-        id={"bottomPanel"}
-        className={
-          "w-100 d-flex justify-content-center align-items-center position-relative"
-        }
-      >
-        <div
-          id={"pageButtonBck"}
-          className={
-            "d-flex flex-row align-items-center justify-content-between"
-          }
-        >
-          <div
-            className={
-              "w-50 h-100 d-flex align-items-center justify-content-center"
-            }
-          >
+      <div id={"bottomPanel"} className={"w-100 d-flex justify-content-center align-items-center position-relative"}>
+        <div id={"pageButtonBck"} className={"d-flex flex-row align-items-center justify-content-between"}>
+          <div className={"w-50 h-100 d-flex align-items-center justify-content-center"}>
             <PageButton
               leftDirection={true}
               onClick={pageDown}
               disabled={currentPage === 1}
             />
           </div>
-          <div
-            id={"rightPageButton"}
-            className={
-              "w-50 h-100 d-flex align-items-center justify-content-center"
-            }
-          >
+          <div id={"rightPageButton"} className={"w-50 h-100 d-flex align-items-center justify-content-center"}>
             <PageButton
               leftDirection={false}
               onClick={pageUp}
