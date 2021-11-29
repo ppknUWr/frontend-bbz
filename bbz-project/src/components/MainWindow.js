@@ -1,11 +1,13 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import "../styles/main-window-styles.css";
 import RecordsListManager from "./RecordsListComponents/RecordsListManager";
+import { DataContext } from "./ContextController";
 import Typography from "@material-ui/core/Typography";
 import { databaseTitleTypoStyles } from "../materialStyles/database-header-typo-mui-styles";
 
 const MainWindow = ({ onOpenSidebar, onOpenModal }) => {
   const typoClasses = databaseTitleTypoStyles();
+  const { currentDbName } = useContext(DataContext);
 
   return (
     <div id={"mainWindowMainBck"} className={"h-100 ml-auto mr-auto"}>
@@ -24,8 +26,7 @@ const MainWindow = ({ onOpenSidebar, onOpenModal }) => {
           className={"h-100 d-flex align-items-center justify-content-start"}
         >
           <Typography classes={typoClasses}>
-            Temat:Ilustrowane i obrazkowe słowniki dla dzieci wydane w Polsce w
-            latach 1989-2015
+            {`Temat: ${currentDbName}`}
           </Typography>
         </div>
       </div>
