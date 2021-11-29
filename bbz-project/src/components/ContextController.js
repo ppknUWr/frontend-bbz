@@ -16,6 +16,7 @@ const ContextController = (props) => {
         const fetchData = async () => {
             if (!currentDbId) {
                 setCurrentDb([]);
+                setCurrentDbDetails({});
                 return;
             }
                 
@@ -48,7 +49,7 @@ const ContextController = (props) => {
         dbNames: dbNames,
         recordsList: currentDb,
         currentDbId: currentDbId,
-        currentDbName: currentDbDetails.db_name,
+        currentDbDetails: currentDbDetails,
         handleDbChange: handleDbChange,
         handleDbListFetch: handleDbListFetch
     }

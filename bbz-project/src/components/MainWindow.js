@@ -7,7 +7,7 @@ import { databaseTitleTypoStyles } from "../materialStyles/database-header-typo-
 
 const MainWindow = ({ onOpenSidebar, onOpenModal }) => {
   const typoClasses = databaseTitleTypoStyles();
-  const { currentDbName } = useContext(DataContext);
+  const { currentDbDetails } = useContext(DataContext);
 
   return (
     <div id={"mainWindowMainBck"} className={"h-100 ml-auto mr-auto"}>
@@ -26,7 +26,7 @@ const MainWindow = ({ onOpenSidebar, onOpenModal }) => {
           className={"h-100 d-flex align-items-center justify-content-start"}
         >
           <Typography classes={typoClasses}>
-            {`Temat: ${currentDbName}`}
+            {`Temat: ${currentDbDetails.db_name}`}
           </Typography>
         </div>
       </div>
