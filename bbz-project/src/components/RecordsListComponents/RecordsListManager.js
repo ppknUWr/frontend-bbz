@@ -6,7 +6,7 @@ import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
 import Record from "./RecordComps/Record";
 import Button from "@material-ui/core/Button";
-import RecordCitationModal from "./RecordComps/RecordCitationModal";
+import RecordCitationModal from "./CitationModal/RecordCitationModal";
 import {
   SEARCH_BY_KEYS,
   SORT_OPTIONS,
