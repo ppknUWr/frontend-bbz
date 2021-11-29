@@ -8,15 +8,14 @@ import { animated } from "react-spring";
 
 const Record = ({ recordData, sublistData, handleOpenModal }) => {
   const [enableAnim, setEnableAnim] = useState(false);
-  const [sublistVisibility, setSublistVisibility] = useState(true);
+  const [sublistVisibility, setSublistVisibility] = useState(false);
   const [openSublist, setOpenSublist] = useState(false);
-  const [optionsVisibility, setOptionsVisibility] = useState(false);
   const { heightAnim, sublistAnim } = useRecordAnimations(
     openSublist,
     setSublistVisibility,
     400
   );
-  const citation = `${recordData.bookAuthor}, ${recordData.publicationDate}, ${recordData.title}, ${recordData.publisher}, ${recordData.publicationPlace}`;
+
 
 
   const handleRecordClick = () => {
@@ -25,7 +24,6 @@ const Record = ({ recordData, sublistData, handleOpenModal }) => {
     if (!sublistVisibility) {
       setSublistVisibility(true);
     }
-    setOptionsVisibility(!optionsVisibility);
   };
 
   return (
@@ -55,15 +53,15 @@ const Record = ({ recordData, sublistData, handleOpenModal }) => {
           <div className={`key6 recordFieldBck h-100 align-items-center`}>
             {recordData.source}
           </div>
-          <div className={optionsVisibility ? "visibleOptions recordOptionsBck" : "recordOptionsBck"}>
-            <Button onClick={(e) => handleOpenModal(e, citation)}>
+          <div className={"recordOptionsBck"}>
+            <Button onClick={(e) => handleOpenModal(e, `${recordData.bookAuthor}, ${recordData.publicationDate}, ${recordData.title}, ${recordData.publisher}, ${recordData.publicationPlace}`)}>
                 <SaveAlt />
             </Button>
           </div>
       </div>
       { sublistVisibility &&
         <animated.div
-          style={enableAnim ? sublistAnim : { opacity: 0 }}
+          style={sublistAnim}
           className={"sublistGrayBck w-100 overflow-hidden"}
         >
           <Sublist

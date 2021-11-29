@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import "../../styles/records-list-manager-styles.css";
-import AddRecordButton from "./AddRecordButton";
 import PageManager from "./PageManager";
-import ExportButton from "./ExportButton";
 import SelectInput from "./SelectInput";
 import SearchInput from "./SearchTextField";
 import SortButton from "./SortButton";
@@ -20,9 +18,9 @@ import { sort, filter } from "../../helpers/helper-functions";
 
 const RecordsListManager = ({ onSidebarIconClick }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
-  const recordsFieldElement = useRef();
   const maxRecordsOnPage = 50;
   const { recordsList } = useContext(DataContext);
+  const recordsFieldElement = useRef();
 
   const [maxPage, setMaxPage] = useState(maxRecordsOnPage);
   const [pagesAmount, setPagesAmount] = useState(1);
@@ -89,8 +87,6 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
           setVal={setSearchByVal}
           allValues={SEARCH_BY_KEYS}
         />
-        <ExportButton />
-        {/* <AddRecordButton onOpenModal={onOpenModal} /> */}
       </div>
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
