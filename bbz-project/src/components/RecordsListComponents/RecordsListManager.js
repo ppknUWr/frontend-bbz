@@ -101,7 +101,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
               </div>
             ))}
           </div>
-          <div ref={recordsFieldElement} id={"recordsField"} className={"w-100 pt-3"}>
+          <div ref={recordsFieldElement} id={"recordsField"} className={"w-100 pt-1"}>
             {displayList.map((item, key) =>
               key < maxPage && key >= maxPage - maxRecordsOnPage ? (
                 <Record

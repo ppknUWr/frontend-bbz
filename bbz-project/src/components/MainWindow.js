@@ -13,7 +13,7 @@ const MainWindow = ({ onOpenSidebar, onOpenModal }) => {
     <div id={"mainWindowMainBck"} className={"h-100 ml-auto mr-auto"}>
       <div
         id={"mainWindowHeaderBck"}
-        className={"w-100 d-flex flex-row pl-4 pr-4"}
+        className={"w-100 d-flex flex-row"}
       >
         <div
           id={"mainWindowAuthorBck"}

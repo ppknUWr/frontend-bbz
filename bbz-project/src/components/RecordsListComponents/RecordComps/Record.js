@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../../styles/record-styles.css";
 import Sublist from "./Sublist";
 import SaveAlt from '@material-ui/icons/SaveAlt';
-import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
 
@@ -54,9 +54,9 @@ const Record = ({ recordData, sublistData, handleOpenModal }) => {
             {recordData.source}
           </div>
           <div className={"recordOptionsBck"}>
-            <Button onClick={(e) => handleOpenModal(e, `${recordData.bookAuthor}, ${recordData.publicationDate}, ${recordData.title}, ${recordData.publisher}, ${recordData.publicationPlace}`)}>
+            <IconButton onClick={(e) => handleOpenModal(e, `${recordData.bookAuthor}, ${recordData.publicationDate}, ${recordData.title}, ${recordData.publisher}, ${recordData.publicationPlace}`)}>
                 <SaveAlt />
-            </Button>
+            </IconButton>
           </div>
       </div>
       { sublistVisibility &&

@@ -74,7 +74,7 @@
 
 
 .key1 {
-    width: 5%;
+    width: 4em;
 }
 
 .key2 {
@@ -99,7 +99,7 @@
 
 @media (max-width: 1300px) {
     .key1 {
-        width: 8%;
+        width: 4em;
     }
 
     .key2 {
