@@ -5,9 +5,9 @@
     z-index: 0;
 }
 
-.recordMainBck:last-child {
+/* .recordMainBck:last-child {
     margin-bottom: 30px;
-}
+} */
 
 .recordBck {
     position: relative;

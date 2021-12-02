@@ -15,6 +15,8 @@ import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
 import { sort, filter } from "../../helpers/helper-functions";
+import LazyLoad, { forceCheck } from "react-lazyload";
+import LoadingSpinner from "../LoadingSpinner";
 
 const RecordsListManager = ({ onSidebarIconClick }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
@@ -33,6 +35,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
   const [toggleResetState, setToggleResetState] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [citationString, setCitationString] = useState("");
+  const recordDiv = document.getElementById("recordsField");
 
   useEffect(() => {
     setDisplayList(recordsList);
@@ -42,16 +45,19 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
   }, [recordsList])
 
   useEffect(() => {
+    console.log("force check")
     setCurrentPage(1);
     setMaxPage(maxRecordsOnPage);
     setPagesAmount(Math.ceil(displayList.length / maxRecordsOnPage));
   }, [displayList]);
   
   useEffect(() => {
+    recordsFieldElement.current.scrollTop = 0;
     setDisplayList(list => sort(list, sortOptions.key, sortOptions.isDescending));
   }, [sortOptions]);
 
   useEffect(() => {
+    recordsFieldElement.current.scrollTop = 0;
     setDisplayList(filter(recordsList, searchQuery, searchByVal));
   }, [searchQuery]);
 
@@ -102,39 +108,39 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
             ))}
           </div>
           <div ref={recordsFieldElement} id={"recordsField"} className={"w-100 pt-1"}>
-            {displayList.map((item, key) =>
-              key < maxPage && key >= maxPage - maxRecordsOnPage ? (
-                <Record
-                  key={item["id"]}
-                  recordData={{
-                    publicationDate: item["publication_date"],
-                    bookAuthor: item["book_author"],
-                    title: item["title"],
-                    publisher: item["publisher"],
-                    publicationPlace: item["publication_place"],
-                    source: item["source"],
-                  }}
-                  sublistData={{
-                    id: item["id"],
-                    subtitle: item["subtitle"],
-                    originalEdition: item["original_edition"],
-                    pages: item["pages"],
-                    language: item["language"],
-                    series: item["series"],
-                    isbnIssnNumber: item["isbn_or_issn_number"],
-                    keywordsAndContent: item["keywords_and_content"],
-                    source: item["source"],
-                  }}
-                  handleOpenModal={handleOpenModal}
-                />
-              ) : (
-                <div key={item["id"]} style={{ display: "none" }} />
-              )
-            )}
+            {displayList.map((item, key) => {
+              // if (key < maxPage && key >= maxPage - maxRecordsOnPage) {
+                return <LazyLoad key={key} scrollContainer={recordDiv} overflow={true} offset={400} height={10} >
+                  <Record
+                    key={item["id"]}
+                    recordData={{
+                      publicationDate: item["publication_date"],
+                      bookAuthor: item["book_author"],
+                      title: item["title"],
+                      publisher: item["publisher"],
+                      publicationPlace: item["publication_place"],
+                      source: item["source"],
+                    }}
+                    sublistData={{
+                      id: item["id"],
+                      subtitle: item["subtitle"],
+                      originalEdition: item["original_edition"],
+                      pages: item["pages"],
+                      language: item["language"],
+                      series: item["series"],
+                      isbnIssnNumber: item["isbn_or_issn_number"],
+                      keywordsAndContent: item["keywords_and_content"],
+                      source: item["source"],
+                    }}
+                    handleOpenModal={handleOpenModal}
+                  />
+                </LazyLoad>
+              // }
+            })}
           </div>
         </div>
       </div>
-      <PageManager handlePageChange={handlePageChange} currentPage={currentPage} pagesAmount={pagesAmount} />
+      {/* <PageManager handlePageChange={handlePageChange} currentPage={currentPage} pagesAmount={pagesAmount} /> */}
     </div>
   );
 };
