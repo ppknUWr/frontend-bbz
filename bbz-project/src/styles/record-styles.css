@@ -49,6 +49,11 @@
     padding: 10px 0.5vw 10px;
 }
 
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 .recordOptionsBck {
     right: 0;
     width: 10%;
@@ -58,14 +63,18 @@
     justify-content: flex-end;
     padding-right: 4px;
     display: none;
+    animation-name: fadein;
+    animation-duration: 0.9s;
 }
+
 
 .visibleOptions {
     display: flex;
 }
 
+
 .key1 {
-    width: 5%;
+    width: 4em;
 }
 
 .key2 {
@@ -73,7 +82,7 @@
 }
 
 .key3 {
-    width: 27%;
+    width: 30%;
 }
 
 .key4 {
@@ -90,7 +99,7 @@
 
 @media (max-width: 1300px) {
     .key1 {
-        width: 8%;
+        width: 4em;
     }
 
     .key2 {
@@ -98,7 +107,7 @@
     }
 
     .key3 {
-        width: 27%;
+        width: 30%;
     }
 
     .key4 {

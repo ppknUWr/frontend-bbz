@@ -7,6 +7,7 @@ const ContextController = (props) => {
     const [dbNames, setDbNames] = useState("");
     const [currentDbId, setCurrentDbId] = useState(null);
     const [currentDb, setCurrentDb] = useState([]);
+    const [currentDbDetails, setCurrentDbDetails] = useState({});
 
     // addRecord, deleteRecord, editRecord are placeholders for future implementation
     const { get } = useFetch("https://backend-bbz.herokuapp.com/api")
@@ -15,6 +16,7 @@ const ContextController = (props) => {
         const fetchData = async () => {
             if (!currentDbId) {
                 setCurrentDb([]);
+                setCurrentDbDetails({});
                 return;
             }
                 
@@ -40,12 +42,14 @@ const ContextController = (props) => {
 
     const handleDbChange = (dbId) => {
         setCurrentDbId(dbId);
+        setCurrentDbDetails(dbNames[dbId-1]);
     }
 
     const value = {
         dbNames: dbNames,
         recordsList: currentDb,
         currentDbId: currentDbId,
+        currentDbDetails: currentDbDetails,
         handleDbChange: handleDbChange,
         handleDbListFetch: handleDbListFetch
     }

@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import "../../../styles/record-styles.css";
 import Sublist from "./Sublist";
-import RecordOptions from "./RecordOptions";
+import SaveAlt from '@material-ui/icons/SaveAlt';
+import IconButton from "@material-ui/core/IconButton";
 import { useRecordAnimations } from "../../../animations/useRecordAnimations";
 import { animated } from "react-spring";
 
-const Record = ({ recordData, sublistData }) => {
+const Record = ({ recordData, sublistData, handleOpenModal }) => {
   const [enableAnim, setEnableAnim] = useState(false);
-  const [sublistVisibility, setSublistVisibility] = useState(true);
+  const [sublistVisibility, setSublistVisibility] = useState(false);
   const [openSublist, setOpenSublist] = useState(false);
-  const [optionsVisibility, setOptionsVisibility] = useState(false);
   const { heightAnim, sublistAnim } = useRecordAnimations(
     openSublist,
     setSublistVisibility,
     400
   );
+
+
 
   const handleRecordClick = () => {
     setEnableAnim(true);
@@ -22,7 +24,6 @@ const Record = ({ recordData, sublistData }) => {
     if (!sublistVisibility) {
       setSublistVisibility(true);
     }
-    setOptionsVisibility(!optionsVisibility);
   };
 
   return (
@@ -47,16 +48,20 @@ const Record = ({ recordData, sublistData }) => {
             {recordData.publisher}
           </div>
           <div className={`key5 recordFieldBck h-100 align-items-center`}>
-            {recordData.publicationDate}
+            {recordData.publicationPlace}
           </div>
           <div className={`key6 recordFieldBck h-100 align-items-center`}>
             {recordData.source}
           </div>
-        {/* <RecordOptions visible={enableAnim ? optionsVisibility : false} /> */}
+          <div className={"recordOptionsBck"}>
+            <IconButton onClick={(e) => handleOpenModal(e, `${recordData.bookAuthor}, ${recordData.publicationDate}, ${recordData.title}, ${recordData.publisher}, ${recordData.publicationPlace}`)}>
+                <SaveAlt />
+            </IconButton>
+          </div>
       </div>
       { sublistVisibility &&
         <animated.div
-          style={enableAnim ? sublistAnim : { opacity: 0 }}
+          style={sublistAnim}
           className={"sublistGrayBck w-100 overflow-hidden"}
         >
           <Sublist
@@ -77,4 +82,5 @@ const Record = ({ recordData, sublistData }) => {
     </animated.div>
   );
 };
+
 export default Record;

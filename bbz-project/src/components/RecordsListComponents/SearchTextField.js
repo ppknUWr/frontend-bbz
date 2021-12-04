@@ -11,7 +11,7 @@ const SearchInput = ({ handleOnChange, searchQuery }) => {
   return (
     <TextField
       classes={textFieldClasses}
-      onChange={handleOnChange}
+      onChange={(e) => handleOnChange(e.target.value)}
       placeholder={"Wyszukaj"}
       variant={"outlined"}
       value={searchQuery}
