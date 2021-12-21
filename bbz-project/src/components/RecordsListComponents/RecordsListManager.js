@@ -67,6 +67,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
       case 'DOWN':
           setCurrentPage((val) => val - 1);
           setMaxPage((val) => val - maxRecordsOnPage);
+          break;
     }
   }
 
