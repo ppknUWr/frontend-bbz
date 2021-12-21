@@ -83,4 +83,11 @@ const Record = ({ recordData, sublistData, handleOpenModal }) => {
   );
 };
 
-export default Record;
+export default React.memo(Record, (prevProps, nextProps) => {
+    if (prevProps.recordData.title === nextProps.recordData.title) {
+      return true;
+    }
+    return false;
+
+});
+  

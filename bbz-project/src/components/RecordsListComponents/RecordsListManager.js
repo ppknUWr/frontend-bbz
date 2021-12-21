@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext, useCallback } from "react";
 import "../../styles/records-list-manager-styles.css";
 import PageManager from "./PageManager";
 import SelectInput from "./SelectInput";
@@ -15,6 +15,7 @@ import { DataContext } from "../../components/ContextController";
 import { BsLayoutTextSidebar } from "react-icons/bs";
 import { sidebarIconButtonStyles } from "../../materialStyles/recordsListComponent/sidebar-iconButton-mui-styles";
 import { sort, filter } from "../../helpers/helper-functions";
+import InfoSidebar from "./InfoSidebar";
 
 const RecordsListManager = ({ onSidebarIconClick }) => {
   const iconButtonClasses = sidebarIconButtonStyles();
@@ -32,6 +33,7 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
   // used to reset sort buttons state
   const [toggleResetState, setToggleResetState] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [openInfoSidebar, setOpenInfoSidebar] = useState(false);
   const [citationString, setCitationString] = useState("");
 
   useEffect(() => {
@@ -65,18 +67,20 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
       case 'DOWN':
           setCurrentPage((val) => val - 1);
           setMaxPage((val) => val - maxRecordsOnPage);
+          break;
     }
   }
 
-  const handleOpenModal = (event, citation) => {
+  const handleOpenModal = useCallback((event, citation) => {
     event.stopPropagation();
     setOpenModal(state => !state);
     setCitationString(citation);
-  }
+  }, []);
 
   return (
     <div className={"w-100 h-100"}>
       <RecordCitationModal open={openModal} setOpenModal={setOpenModal} citation={citationString} />
+      <InfoSidebar open={openInfoSidebar} onClose={setOpenInfoSidebar}/>
       <div className={"w-100 d-flex align-items-center"} id={"topPanel"}>
         <Button onClick={onSidebarIconClick} classes={iconButtonClasses}>
           <BsLayoutTextSidebar style={{ fontSize: 26 }} />
@@ -87,6 +91,11 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
           setVal={setSearchByVal}
           allValues={SEARCH_BY_KEYS}
         />
+        <div style={{ marginLeft: 20 }}>
+          <Button variant="outlined" onClick={() => setOpenInfoSidebar(true)}>
+            Info
+          </Button>
+        </div>
       </div>
       <div id={"middlePanel"} className={"w-100 d-flex align-items-center"}>
         <div id={"recordsBck"} className={"w-100"}>
@@ -139,4 +148,4 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
   );
 };
 
-export default RecordsListManager;
+export default React.memo(RecordsListManager);

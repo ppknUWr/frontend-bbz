@@ -8,7 +8,7 @@ const DataBaseListItem = ({ dbId, dbName, handleDBChange }) => {
 
     useEffect(() => {
         setClassName((dbId === currentDbId) ? "list-item-active" : "list-item");
-    }, [currentDbId])
+    }, [currentDbId, dbId])
 
     return (
         <div className={className} onClick={() => handleDBChange(dbId)}>

@@ -1,21 +1,21 @@
 import * as React from "react";
 import "../../styles/top-bar-styles.css";
 import image from "../../assets/PhcTopBarFigure.png";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { VscChromeClose } from "react-icons/vsc";
+// import { GiHamburgerMenu } from "react-icons/gi";
+// import { VscChromeClose } from "react-icons/vsc";
 import bckImage from "../../assets/TopBarBackground.jpg";
-import { useScreenSizes } from "../../hooks/useScreenSizes";
+// import { useScreenSizes } from "../../hooks/useScreenSizes";
 import { DataContext } from "../ContextController"
 
 const TopBar = () => {
   const [optionsDisplayProp, setOptionsDisplayProp] = React.useState("flex");
-  const [areOptionsVisible, setAreOptionsVisible] = React.useState(false);
+  // const [areOptionsVisible, setAreOptionsVisible] = React.useState(false);
   const [rightElementPosition, setRightElementPosition] = React.useState(
     "static"
   );
   const { handleDbChange } = React.useContext(DataContext);
 
-  const { topBarIconBreakpoint } = useScreenSizes();
+  // const { topBarIconBreakpoint } = useScreenSizes();
 
   // React.useEffect(() => {
   //   setAreOptionsVisible(!topBarIconBreakpoint);

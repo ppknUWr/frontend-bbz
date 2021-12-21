@@ -19,7 +19,7 @@ const MainWindow = ({ onOpenSidebar, onOpenModal }) => {
           id={"mainWindowAuthorBck"}
           className={"h-100 d-flex align-items-center justify-content-start"}
         >
-          <Typography classes={typoClasses}>Twórca: Hojka Bożena</Typography>
+          <Typography classes={typoClasses}>{`Twórca: ${currentDbDetails.author}`}</Typography>
         </div>
         <div
           id={"mainWindowTitleBck"}
