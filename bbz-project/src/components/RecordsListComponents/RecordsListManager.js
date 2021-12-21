@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext, useCallback } from "react";
 import "../../styles/records-list-manager-styles.css";
 import PageManager from "./PageManager";
 import SelectInput from "./SelectInput";
@@ -70,11 +70,11 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
     }
   }
 
-  const handleOpenModal = (event, citation) => {
+  const handleOpenModal = useCallback((event, citation) => {
     event.stopPropagation();
     setOpenModal(state => !state);
     setCitationString(citation);
-  }
+  }, []);
 
   return (
     <div className={"w-100 h-100"}>
@@ -147,4 +147,4 @@ const RecordsListManager = ({ onSidebarIconClick }) => {
   );
 };
 
-export default RecordsListManager;
+export default React.memo(RecordsListManager);

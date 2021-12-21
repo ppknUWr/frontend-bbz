@@ -30,6 +30,10 @@ const ContextController = (props) => {
             }
         }
         fetchData();
+
+        return () => {
+            setCurrentDb([]);
+        }
     }, [currentDbId])
 
     /* podaj url do endpointa */
